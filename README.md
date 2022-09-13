@@ -1,10 +1,12 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
+
 # A10_Training_Lab
-
-
 ```
-Sample Code
+安装前准备
+设备初始化
+网络层配置
+Active/Standby配置
 ```
 
 #### For details, please refer to A10_4.1.4-GR1-P5_DMG.pdf
