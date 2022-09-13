@@ -1,5 +1,4 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
----
 
 ## A10 Lab. Setup
 1. 安装 Virtualbox - https://www.virtualbox.org/wiki/Downloads
