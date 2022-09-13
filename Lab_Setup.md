@@ -1,34 +1,33 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## A10 Lab. Setup
-1. 安装 VirtualBox - https://www.virtualbox.org/wiki/Downloads
-1. 安装 VMWare Workstation - https://www.vmware.com/go/getplayer-win
+1. 安装 VMWare Workstation - https://www.vmware.com/go/getplayer-win (For Win8 or above)
 2. 安装 (i) A10 vADC - https://a10networks.sharefile.com/d-s7cf6644f59004178b57aa135e5f7d531
     + 最少 4 vCPU (建议 4+ vCPU)
-    + 最少 2 网卡 (必须 2 网卡或更多)
-    + 建议 8GB Memory
-    + 最少 16G 磁盘 (建议 30GB)
+    + 必须 2 网卡 (或更多)
+    + 最少 4GB 内存
+    + 最少 16G 磁盘
 3. 安装 (ii)一个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
     + 可考虑用3个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
-
 ## 安装 (i) A10 vADC
 ```
-Run VirtualBox (version 6.1.38)
-Create a NEW Machine (Name=vADC01, Type=Linux, Version=Ubuntu (64-bits)
-Create a virtual hard disk (10.00GB)
-Select VDI (VirtualBox Disk Image)
-Select Dynamically Allocated
-Change Setting
-  + Base Memory 8GB
-  + 4 vCPU
-  + Add 2 NICs
-  + Storage
-Start Virtual Machine to install vADC
-  + username=install, password=password
-  + YesS
+Run VMWare Workstation
+Create a NEW Virtual Machine - Typical
+Installer disc image file (iso) - ACOS_vThunder_5_2_1-p5_114.iso (Linux, Ubuntu 64-bit)
+Virtual machine name - vADC521_01 (20G disk, Store virtual disk into multiple files)
+Customize Hardware
+  + 4+ GB Memory
+  + 4+ vCPU
+  + Network Adapter = Custom VMnet1
+  + Add Network Adapter 2 = Custom VMNet8
+Power on the NEW Virtual Machine
+  + localhost login:
+    + username=install, password=password
+    + continue=YesS
 Remove ISO after install vADC
+
 Start vADC (It may takes 7 mins)
   + username=admin, password=a10
 ```
@@ -43,6 +42,12 @@ Start vADC (It may takes 7 mins)
 ```
 
 ## 客户端和服务器 配置
+```
+# /etc/netplan/00-installer-config.yaml
+
+
+```
+
 ```
 # NTP 配置
 sudo systemctl set-timezone Asia/Shanghai
