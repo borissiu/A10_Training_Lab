@@ -4,10 +4,10 @@
 ## A10 Lab. Setup
 1. 安装 Virtualbox - https://www.virtualbox.org/wiki/Downloads
 2. 安装 A10 vADC - https://a10networks.sharefile.com/d-s7cf6644f59004178b57aa135e5f7d531
-  + 最少 2 vCPU (建议 4+ vCPU)
-  + 最少 2 网卡 (必须)
-  + 建议 8GB Memory
-  + 最少 20G 磁盘   
+    + 最少 2 vCPU (建议 4+ vCPU)
+    + 最少 2 网卡 (必须)
+    + 建议 8GB Memory
+    + 最少 20G 磁盘   
 3. 安装 客户端和服务器 - https://ubuntu.com/download/server
 4. 配置 (i)vADC, (ii)客户端 和 (iii)服务器 都能够上网
 
