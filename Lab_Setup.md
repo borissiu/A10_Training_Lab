@@ -8,6 +8,7 @@
     + 最少 2 网卡 (必须)
     + 建议 8GB Memory
     + 最少 20G 磁盘   
-3. 安装 (ii) 客户端和 (iii)服务器 - https://ubuntu.com/download/server
+3. 安装 (ii)一个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
+    + 可以考虑把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
