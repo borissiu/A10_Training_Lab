@@ -26,10 +26,21 @@ Power on the NEW Virtual Machine
   + localhost login:
     + username=install, password=password
     + continue=YesS
-Remove ISO after install vADC
 
 Start vADC (It may takes 7 mins)
-  + username=admin, password=a10
+  + vThunder login:
+    + username=admin, password=a10
+
+Remove ISO after install vADC
+
+Edit .vmx file
+  + change E1000 to vmx3net
+
+Start vADC (It may takes 7 mins)
+  + vThunder login:
+    + username=admin, password=a10
+
+
 ```
 
 
