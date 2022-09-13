@@ -7,6 +7,13 @@
 设备初始化
 网络层配置
 Active/Standby配置
+
+健康检查
+会话保持（可选）
+SSL卸载
+HTTP 源地址插入
+
+常见问题及处理
 ```
 
 #### For details, please refer to A10_4.1.4-GR1-P5_DMG.pdf
