@@ -53,7 +53,7 @@ Start vADC521_01
     + show interface brief (you should see 3 NICs)
 ```
 
-## 配置第一台 vADC (通过 VMWare Workstation 控制台) 
+#### 配置第一台 vADC (通过 VMWare Workstation 控制台) 
 Start vADC521_01
 ```
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
@@ -137,7 +137,7 @@ Power on the NEW Virtual Machine
       Open SSH Server
 ```
 
-## 配置客户端和服务器 
+#### 配置客户端和服务器 
 将以下配置复制并粘贴到 Ubuntu01
 ```
 # 配置 NTP 
@@ -151,9 +151,9 @@ sudo apt-get -y install nginx
 sudo cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
 ```
 
-## 配置示例 - 添加额外的ip地址 
+#### 配置示例 - 添加额外的ip地址 
 ```
-boris@ubuntu100:~$ more /etc/netplan/00-installer-config.yaml
+# boris@ubuntu100:~$ more /etc/netplan/00-installer-config.yaml
 
 # This is the network config written by 'subiquity'
 network:
@@ -170,27 +170,27 @@ network:
   version: 2
 ```
 
-## 添加额外的ip地址
+#### 添加额外的ip地址
 ```
 sudo vi /etc/netplan/00-installer-config.yaml
 
 sudo netplan apply
 ```
 
-## 基本测试
+#### 基本测试
 + vADC, 客户端和服务器, 都能 ping 通 114.114.114.114 
 + vADC 能 ping 通客户端和服务器
 + SSH 和 GUI 能登录 vADC (用户名=admin, 密码=a10)
 + SSH 能登录客户端和服务器
 
 ## 配置第 2 和第 3 台 A10 vADC 
-Shutdown vADC521_01
+#### Shutdown vADC521_01
 ```
 write memory
 shutdown
 ```
 
-## Clone 2台 vADC
+#### Clone 2台 vADC
 ```
 Select vADC521_01
   + Click VM > Manage > Clone > Select "Current State" > Select "Create a FULL clone" > Change Virtual Name to vADC521_02
@@ -198,7 +198,7 @@ Select vADC521_01
   + Click VM > Manage > Clone > Select "Current State" > Select "Create a FULL clone" > Change Virtual Name to vADC521_03
 ```
 
-## 修改第2台 vADC 配置
+#### 修改第2台 vADC 配置
 ```
 configure terminal
 !
@@ -218,7 +218,7 @@ end
 write memory
 ```
 
-## 修改第3台 vADC 配置
+#### 修改第3台 vADC 配置
 ```
 configure terminal
 !
@@ -238,7 +238,7 @@ end
 write memory
 ```
 
-## 基本测试
+#### 基本测试
 + vADC521_02 和 vADC521_03, 都能 ping 通 114.114.114.114 
 + vADC521_02 和 vADC521_03, 都能 ping 通客户端和服务器
 + SSH 和 GUI 能登录 vADC521_02 和 vADC521_03 (用户名=admin, 密码=a10)
