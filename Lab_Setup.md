@@ -7,10 +7,10 @@
       + v12版本, 支持Win7
 2. 安装 (i) 2至3台 A10 vADC 
     + 下载 https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
-    + 每台最少 4 vCPU (建议 4+ vCPU)
-    + 每台必须 2 网卡 (或更多)
-    + 每台最少 4GB 内存
-    + 每台最少 16G 磁盘
+    + 每台 vADC 最少 4 vCPU (建议 4+ vCPU)
+    + 每台 vADC 必须 2 网卡 (或更多)
+    + 每台 vADC 最少 4GB 内存
+    + 每台 vADC 最少 16G 磁盘
 3. 安装 (ii)两个客户端 和 (iii)两个服务器
     + 下载 https://ubuntu.com/download/server
     + 可考虑用多个IP address(es), 把(ii)和(iii)配置在同一台服务器上
@@ -223,3 +223,8 @@ interface ve 20
 end
 write memory
 ```
+
+## 基本测试
++ vADC521_02 和 vADC521_03, 都能 ping 通 114.114.114.114 
++ vADC521_02 和 vADC521_03, 都能 ping 通客户端和服务器
++ SSH 和 GUI 能登录 vADC521_02 和 vADC521_03 (用户名=admin, 密码=a10)
