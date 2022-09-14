@@ -19,8 +19,8 @@
 ## IP Addresses
 Run VMWare Workstation
   + Click Edit > Virtual Network Editor
-  + Check IP subnet of VMNet1 (Type : Host-Only)
-  + Check IP subnet of VMNet8 (Type : NAT)
+    + Check IP subnet of VMNet1 (Type : Host-Only)
+    + Check IP subnet of VMNet8 (Type : NAT)
 
 IP Addresses 示例 
 |  | vADC521_01 | vADC521_02 | vADC521_03 | 客户端_1 | 客户端_2 | 服务器_1 | 服务器_2 |
