@@ -3,11 +3,11 @@
 ## A10 Lab. Setup
 1. 安装 VMWare Workstation Version 16 - https://www.vmware.com/go/getplayer-win
     + (Version 16 do NOT supports Win7.  Search Workstation Version 12 for Win7)
-2. 安装 (i) A10 vADC - https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
-    + 最少 4 vCPU (建议 4+ vCPU)
-    + 必须 2 网卡 (或更多)
-    + 最少 4GB 内存
-    + 最少 16G 磁盘
+2. 安装 (i) 2至3台 A10 vADC - https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
+    + 每台最少 4 vCPU (建议 4+ vCPU)
+    + 每台必须 2 网卡 (或更多)
+    + 每台最少 4GB 内存
+    + 每台最少 16G 磁盘
 3. 安装 (ii)两个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
     + 可考虑用4个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
@@ -45,13 +45,56 @@ Start vADC521_01
     + show interface brief (you should see 3 NICs)
 ```
 
-
-##
-
-
-## vADC 配置 (通过VirtualBox控制台) 
+## vADC 配置 (通过 VMWare Workstation 控制台) 
+Start vADC521_01
+```
+  + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
+    + username=admin, password=a10
+    + enable
 ```
 
+将以下配置复制并粘贴到vADC
+```
+configure terminal
+!
+system shared-poll-mode enable
+!
+hostname vADC521_01
+timezone Asia/Shanghai
+ip dns primary 114.114.114.114
+ntp server stdtime.gov.hk
+!
+interface management
+  ip add 192.168.247.11 /24
+!
+vlan 10
+  untag ethernet 1
+  route ve 10
+interface ve 10
+  ip address 192.168.226.11 /24
+  enable
+  name Data
+!
+vlan 20
+  untag ethernet 2
+  route ve 20
+interface ve 20
+  ip address 10.10.10.11 /24
+  enable
+  name Heartbeat
+!
+ip route 0.0.0.0 /0 192.168.226.2
+!
+enable-management service ssh
+  ve 10
+  ve 20
+enable-management service https
+  ve 10
+  ve 20
+enable-management service snmp
+  ve 10
+end
+write memory
 ```
 
 ## 客户端和服务器 配置
