@@ -53,15 +53,15 @@ Start vADC521_01
     + show interface brief (you should see 3 NICs)
 ```
 
-#### 配置第一台 vADC (通过 VMWare Workstation 控制台) 
-Start vADC521_01
+## 配置第一台 vADC (通过 VMWare Workstation 控制台) 
+#### Start vADC521_01
 ```
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
     + username=admin, password=a10
     + enable
 ```
 
-将以下配置复制并粘贴到vADC
+#### 将以下配置复制并粘贴到vADC
 ```
 configure terminal
 !
@@ -137,7 +137,7 @@ Power on the NEW Virtual Machine
       Open SSH Server
 ```
 
-#### 配置客户端和服务器 
+## 配置客户端和服务器 
 将以下配置复制并粘贴到 Ubuntu01
 ```
 # 配置 NTP 
