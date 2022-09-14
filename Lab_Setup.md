@@ -1,24 +1,31 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## A10 Lab. Setup
-1. 安装 VMWare Workstation Version 16 - https://www.vmware.com/go/getplayer-win
+1. 安装 VMWare Workstation Version 16
+    + 下载 https://www.vmware.com/go/getplayer-win
     + (Version 16 do NOT supports Win7.  Search Workstation Version 12 for Win7)
-2. 安装 (i) 2至3台 A10 vADC - https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
+2. 安装 (i) 2至3台 A10 vADC 
+    + 下载 https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 每台最少 4 vCPU (建议 4+ vCPU)
     + 每台必须 2 网卡 (或更多)
     + 每台最少 4GB 内存
     + 每台最少 16G 磁盘
-3. 安装 (ii)两个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
+3. 安装 (ii)两个客户端 和 (iii)两个服务器
+    + 下载 https://ubuntu.com/download/server
     + 可考虑用4个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
-## 安装 (i) A10 vADC
+## 安装第一台 (i) A10 vADC
 ```
 Run VMWare Workstation
-Create a NEW Virtual Machine - 选择 Typical
-Installer disc image file (ISO) - 选择 ACOS_vThunder_5_2_1-p5_114.ISO, Linux, Ubuntu 64-bit
-  + Record the installation "drive:/directory/"
-Virtual machine name - vADC521_01, 选择 20G disk, Store virtual disk into multiple files
+Create a NEW Virtual Machine
+  + 选择 Typical
+Installer disc image file (ISO)
+  + 选择 ACOS_vThunder_5_2_1-p5_114.ISO, Linux, Ubuntu 64-bit
+  + 记录安装路径 "drive:/directory/"
+Virtual machine name
+  + vADC521_01
+  + 选择 20G disk, Store virtual disk into multiple files
 Customize Hardware
   + 选择 4+ GB Memory
   + 选择 4+ vCPU
@@ -45,7 +52,7 @@ Start vADC521_01
     + show interface brief (you should see 3 NICs)
 ```
 
-## vADC 配置 (通过 VMWare Workstation 控制台) 
+## 配置第一台 vADC (通过 VMWare Workstation 控制台) 
 Start vADC521_01
 ```
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
@@ -63,6 +70,11 @@ hostname vADC521_01
 timezone Asia/Shanghai
 ip dns primary 114.114.114.114
 ntp server stdtime.gov.hk
+authentication login privilege-mode local
+multi-config enable
+!
+terminal idle-timeout 0
+web-service gui-timeout-policy idle 0
 !
 interface management
   ip add 192.168.247.11 /24
@@ -97,21 +109,62 @@ end
 write memory
 ```
 
-## 客户端和服务器 配置
+## 安装 (ii) 客户端和 (iii)服务器
 ```
-# /etc/netplan/00-installer-config.yaml
-
-
+Run VMWare Workstation
+Create a NEW Virtual Machine
+  + 选择 Typical
+Installer disc image file (ISO)
+  + 选择 Ubuntu-22.04.1-live-server-amd64.ISO, Linux, Ubuntu 64-bit
+Virtual machine name
+  + ubuntu_01
+  + 选择 20G disk, Store virtual disk into multiple files
+Customize Hardware
+  + 选择 2+ GB Memory
+  + 选择 4+ vCPU
+  + 选择 Network Adapter = Custom VMnet1
+  + 必须 Add Network Adapter 2 = Custom VMNet8
+Power on the NEW Virtual Machine
+  + Install Ubuntu
+  + 必须修改 NIC-1
+      ip address 192.168.247.21/24 (Not DHCP)
+  + 必须修改 NIC-2
+      ip address 192.168.226.21/24 (Not DHCP)
+      gateway 192.168.226.2
+      dns 114.114.114.114
+  + 必须添加安装
+      Open SSH Server
 ```
 
+## 配置客户端和服务器 
+将以下配置复制并粘贴到 Ubuntu01
 ```
-# NTP 配置
+# 配置 NTP 
 sudo systemctl set-timezone Asia/Shanghai
 sudo systemctl restart systemd-timesyncd.service
+
+# 配置 WebServer 
+sudo apt-get -y install nginx
+
+# 备份 Network setting
+sudo cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
 ```
 
+配置示例 - 添加额外的ip地址 
+```
+
+```
+
+添加额外的ip地址
+```
+sudo vi /etc/netplan/00-installer-config.yaml
+
+sudo netplan apply
+```
+
+
 ## 基本测试
-+ vADC, 客户端和服务器, 都能ping通 114.114.114.114 
-+ vADC 能ping 通客户端和服务器
-+ SSH 和GUI 能登录vADC (用户名=admin, 密码=a10)
++ vADC, 客户端和服务器, 都能 ping 通 114.114.114.114 
++ vADC 能 ping 通客户端和服务器
++ SSH 和 GUI 能登录 vADC (用户名=admin, 密码=a10)
 + SSH 能登录客户端和服务器
