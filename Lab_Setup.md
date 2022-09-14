@@ -80,6 +80,11 @@ web-service gui-timeout-policy idle 0
 interface management
   ip add 192.168.247.11 /24
 !
+interface ethernet 1
+  enable
+interface ethernet 2
+  enable
+!
 vlan 10
   untag ethernet 1
   route ve 10
@@ -204,9 +209,6 @@ configure terminal
 !
 hostname vADC521_02
 !
-interface management
-  ip add 192.168.247.12 /24
-  no ip add 192.168.247.11 /24
 interface ve 10
   ip address 192.168.226.12 /24
   no ip address 192.168.226.11 /24
@@ -214,8 +216,11 @@ interface ve 20
   ip address 10.10.10.12 /24
   no ip address 10.10.10.11 /24
 !
-end
 write memory
+!
+interface management
+  ip add 192.168.247.12 /24
+
 ```
 
 #### 修改第3台 vADC 配置
@@ -224,9 +229,6 @@ configure terminal
 !
 hostname vADC521_03
 !
-interface management
-  ip add 192.168.247.13 /24
-  no ip add 192.168.247.11 /24
 interface ve 10
   ip address 192.168.226.13 /24
   no ip address 192.168.226.11 /24
@@ -234,8 +236,10 @@ interface ve 20
   ip address 10.10.10.13 /24
   no ip address 10.10.10.11 /24
 !
-end
 write memory
+!
+interface management
+  ip add 192.168.247.13 /24
 ```
 
 ## 基本测试
