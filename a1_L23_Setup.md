@@ -26,15 +26,22 @@ show run vlan
 
 #### 显示 Layer 3 信息。
 ```
-show ip route
 show run ip route
+show ip route
+```
+
+#### 显示 syslog 信息。
+```
+show run logging
+show log
+show log debug
 ```
 
 ## Check Connectivity
 ```
+show run ip dns
 ping 114.114.114.114
 ping 114.114.114.114 use-mgmt-port
-show run ip dns
 ping www.baidu.com
 ```
 
@@ -45,13 +52,14 @@ show run enable-management
 
 ## Check Access Control List
 ```
-show access-list
 show run access-list
+show access-list
 ```
 
-## Check Misc
+## Check Clock
 ```
 show run ntp
 show ntp status
 show clock
+show timezone
 ```
