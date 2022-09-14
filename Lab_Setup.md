@@ -141,7 +141,7 @@ Power on the NEW Virtual Machine
 将以下配置复制并粘贴到 Ubuntu01
 ```
 # 配置 NTP 
-sudo systemctl set-timezone Asia/Shanghai
+sudo timedatectl set-timezone Asia/Shanghai
 sudo systemctl restart systemd-timesyncd.service
 
 # 配置 WebServer 
