@@ -15,29 +15,29 @@
 ## 安装 (i) A10 vADC
 ```
 Run VMWare Workstation
-Create a NEW Virtual Machine - Typical
-Installer disc image file (ISO) - ACOS_vThunder_5_2_1-p5_114.ISO (Linux, Ubuntu 64-bit)
+Create a NEW Virtual Machine - 选择 Typical
+Installer disc image file (ISO) - 选择 ACOS_vThunder_5_2_1-p5_114.ISO, Linux, Ubuntu 64-bit
   + Record the installation "drive:/directory/"
-Virtual machine name - vADC521_01 (20G disk, Store virtual disk into multiple files)
+Virtual machine name - vADC521_01, 选择 20G disk, Store virtual disk into multiple files
 Customize Hardware
-  + 4+ GB Memory
-  + 4+ vCPU
-  + Network Adapter = Custom VMnet1
-  + Add Network Adapter 2 = Custom VMNet8
-  + Add Network Adapter 3 = Custom VMNet9
+  + 选择 4+ GB Memory
+  + 选择 4+ vCPU
+  + 选择 Network Adapter = Custom VMnet1
+  + 必须 Add Network Adapter 2 = Custom VMNet8
+  + 必须 Add Network Adapter 3 = Custom VMNet9
 Power on the NEW Virtual Machine
-  + localhost login:
+  + 等待 localhost login:
     + username=install, password=password
     + continue=YesS
-Logon vADC and shutdown it (vThunder(LOADING)> mean vADC NOT yet bootup)
-  + vThunder login:
+Logon vADC and Shutdown it
+  + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
     + username=admin, password=a10
     + enable
     + shutdown
 Edit vADC521_01.vmx file (driver:/directory/)
-  + keep ethernet0.virtualDev setting remain unchange
-  + change ethernet1.virtualDev from e1000 to vmx3net
-  + change ethernet2.virtualDev from e1000 to vmx3net
+  + 保持不变 ethernet0.virtualDev = "e1000"
+  + 必须修改 ethernet1.virtualDev = "vmx3net"
+  + 必须修改 ethernet2.virtualDev = "vmx3net"
 Start vADC521_01
   + vThunder login:
     + username=admin, password=a10
