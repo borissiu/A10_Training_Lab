@@ -17,6 +17,10 @@
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
 ## IP Addresses
+Run VMWare Workstation
+  + Click Edit > Virtual Network Editor
+  + Check IP subnet of VMNet1 and VMNet2
+  
 |  | vADC521_01 | vADC521_02 | vADC521_03 | 客户端_1 | 客户端_2 | 服务器_1 | 服务器_2 |
 |---|---|---|---|---|---|---|---|
 | Mgmt | 192.168.247.11 | 192.168.247.12 | 192.168.247.13 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 |
