@@ -1,7 +1,8 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## A10 Lab. Setup
-1. 安装 VMWare Workstation ver16 - https://www.vmware.com/go/getplayer-win (ver16 do NOT support Win7.  Search Workstation ver12 for Win7)
+1. 安装 VMWare Workstation ver16 - https://www.vmware.com/go/getplayer-win
+    + (ver16 do NOT support Win7.  Search Workstation ver12 for Win7)
 2. 安装 (i) A10 vADC - https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 最少 4 vCPU (建议 4+ vCPU)
     + 必须 2 网卡 (或更多)
