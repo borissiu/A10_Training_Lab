@@ -1,9 +1,10 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## A10 Lab. Setup
-1. 安装 VMWare Workstation Version 16
-    + 下载 https://www.vmware.com/go/getplayer-win
-    + (Version 16 do NOT supports Win7.  Search Workstation Version 12 for Win7)
+1. 安装 VMWare Workstation Version
+    + 下载v16版本 https://www.vmware.com/go/getplayer-win
+      + v16版本, 不支持Win7
+      + v12版本, 支持Win7
 2. 安装 (i) 2至3台 A10 vADC 
     + 下载 https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 每台最少 4 vCPU (建议 4+ vCPU)
@@ -162,9 +163,57 @@ sudo vi /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 ```
 
-
 ## 基本测试
 + vADC, 客户端和服务器, 都能 ping 通 114.114.114.114 
 + vADC 能 ping 通客户端和服务器
 + SSH 和 GUI 能登录 vADC (用户名=admin, 密码=a10)
 + SSH 能登录客户端和服务器
+
+## 配置第 2 和第 3 台 A10 vADC 
+Shutdown vADC521_01
+```
+write memory
+shutdown
+```
+
+Clone 2台 vADC
+```
+Select vADC521_01
+  + Click VM > Manage > Clone > Select "Current State" > Select "Create a FULL clone" > Change Virtual Name to vADC521_02
+Select vADC521_01
+  + Click VM > Manage > Clone > Select "Current State" > Select "Create a FULL clone" > Change Virtual Name to vADC521_03
+```
+
+修改第2台 vADC 配置
+```
+configure terminal
+!
+hostname vADC521_02
+!
+interface management
+  ip add 192.168.247.12 /24
+interface ve 10
+  ip address 192.168.226.12 /24
+interface ve 20
+  ip address 10.10.10.12 /24
+!
+end
+write memory
+```
+
+修改第3台 vADC 配置
+```
+configure terminal
+!
+hostname vADC521_03
+!
+interface management
+  ip add 192.168.247.13 /24
+interface ve 10
+  ip address 192.168.226.13 /24
+interface ve 20
+  ip address 10.10.10.13 /24
+!
+end
+write memory
+```
