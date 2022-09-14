@@ -228,8 +228,8 @@ write memory
 interface management
   ip add 192.168.247.12 /24
 !
-! Connection Lost after changing mgmt IP
-!
+!!! Connection Lost after changing mgmt IP
+!!! Reconnect via NEW mgmt IP and then "Write Memory"
 ```
 
 #### 修改第3台 vADC 配置
@@ -250,8 +250,8 @@ write memory
 interface management
   ip add 192.168.247.13 /24
 !
-! Connection Lost after changing mgmt IP
-!
+!!! Connection Lost after changing mgmt IP
+!!! Reconnect via NEW mgmt IP and then "Write Memory"
 ```
 
 ## 基本测试
