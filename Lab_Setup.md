@@ -1,46 +1,47 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## A10 Lab. Setup
-1. 安装 VMWare Workstation - https://www.vmware.com/go/getplayer-win (For Win8 or above)
-2. 安装 (i) A10 vADC - https://a10networks.sharefile.com/d-s7cf6644f59004178b57aa135e5f7d531
+1. 安装 VMWare Workstation - https://www.vmware.com/go/getplayer-win (For Win8 or above. Search Workstation ver12 for Win7)
+2. 安装 (i) A10 vADC - https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 最少 4 vCPU (建议 4+ vCPU)
     + 必须 2 网卡 (或更多)
     + 最少 4GB 内存
     + 最少 16G 磁盘
-3. 安装 (ii)一个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
-    + 可考虑用3个IP address(es), 把(ii)和(iii)配置在同一台服务器上
+3. 安装 (ii)两个客户端 和 (iii)两个服务器 - https://ubuntu.com/download/server
+    + 可考虑用4个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
 ## 安装 (i) A10 vADC
 ```
 Run VMWare Workstation
 Create a NEW Virtual Machine - Typical
-Installer disc image file (iso) - ACOS_vThunder_5_2_1-p5_114.iso (Linux, Ubuntu 64-bit)
+Installer disc image file (ISO) - ACOS_vThunder_5_2_1-p5_114.ISO (Linux, Ubuntu 64-bit)
+  + Record the installation "drive:/directory/"
 Virtual machine name - vADC521_01 (20G disk, Store virtual disk into multiple files)
 Customize Hardware
   + 4+ GB Memory
   + 4+ vCPU
   + Network Adapter = Custom VMnet1
   + Add Network Adapter 2 = Custom VMNet8
+  + Add Network Adapter 3 = Custom VMNet9
 Power on the NEW Virtual Machine
   + localhost login:
     + username=install, password=password
     + continue=YesS
-
-Start vADC (It may takes 7 mins)
+Logon vADC and shutdown it (vThunder(LOADING)> mean vADC NOT yet bootup)
   + vThunder login:
     + username=admin, password=a10
-
-Remove ISO after install vADC
-
-Edit .vmx file
-  + change E1000 to vmx3net
-
-Start vADC (It may takes 7 mins)
+    + enable
+    + shutdown
+Edit vADC521_01.vmx file (driver:/directory/)
+  + keep ethernet0.virtualDev setting remain unchange
+  + change ethernet1.virtualDev from e1000 to vmx3net
+  + change ethernet2.virtualDev from e1000 to vmx3net
+Start vADC521_01
   + vThunder login:
     + username=admin, password=a10
-
-
+    + enable
+    + show interface brief (you should see 3 NICs)
 ```
 
 
