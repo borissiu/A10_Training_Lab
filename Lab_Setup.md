@@ -13,7 +13,7 @@
     + 每台最少 16G 磁盘
 3. 安装 (ii)两个客户端 和 (iii)两个服务器
     + 下载 https://ubuntu.com/download/server
-    + 可考虑用4个IP address(es), 把(ii)和(iii)配置在同一台服务器上
+    + 可考虑用多个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 4. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
 ## 安装第一台 (i) A10 vADC
@@ -37,7 +37,7 @@ Power on the NEW Virtual Machine
   + 等待 localhost login:
     + username=install, password=password
     + continue=YesS
-Logon vADC and Shutdown it
+Logon vADC and then Shutdown it
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
     + username=admin, password=a10
     + enable
@@ -192,10 +192,13 @@ hostname vADC521_02
 !
 interface management
   ip add 192.168.247.12 /24
+  no ip add 192.168.247.11 /24
 interface ve 10
   ip address 192.168.226.12 /24
+  no ip address 192.168.226.11 /24
 interface ve 20
   ip address 10.10.10.12 /24
+  no ip address 10.10.10.11 /24
 !
 end
 write memory
@@ -209,10 +212,13 @@ hostname vADC521_03
 !
 interface management
   ip add 192.168.247.13 /24
+  no ip add 192.168.247.11 /24
 interface ve 10
   ip address 192.168.226.13 /24
+  no ip address 192.168.226.11 /24
 interface ve 20
   ip address 10.10.10.13 /24
+  no ip address 10.10.10.11 /24
 !
 end
 write memory
