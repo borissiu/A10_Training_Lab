@@ -177,7 +177,7 @@ sudo vi /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 ```
 
-#### 基本测试
+## 基本测试
 + vADC, 客户端和服务器, 都能 ping 通 114.114.114.114 
 + vADC 能 ping 通客户端和服务器
 + SSH 和 GUI 能登录 vADC (用户名=admin, 密码=a10)
