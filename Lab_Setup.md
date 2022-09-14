@@ -196,7 +196,7 @@ sudo netplan apply
 + SSH 能登录客户端和服务器
 
 ## 配置第 2 和第 3 台 A10 vADC 
-#### Shutdown vADC521_01
+#### Shutdown vADC521_01 before Clone
 ```
 write memory
 shutdown
@@ -227,7 +227,9 @@ write memory
 !
 interface management
   ip add 192.168.247.12 /24
-
+!
+! Connection Lost after changing mgmt IP
+!
 ```
 
 #### 修改第3台 vADC 配置
@@ -247,7 +249,9 @@ write memory
 !
 interface management
   ip add 192.168.247.13 /24
-
+!
+! Connection Lost after changing mgmt IP
+!
 ```
 
 ## 基本测试
