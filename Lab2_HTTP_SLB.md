@@ -24,6 +24,8 @@ slb virtual-server vs54 192.168.226.54
 !
 end
 write memory
+!
+clear slb all
 
 ```
 
