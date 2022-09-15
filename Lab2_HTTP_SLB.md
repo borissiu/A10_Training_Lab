@@ -75,7 +75,7 @@ slb server  web24 192.168.226.24
 !
 slb service-group sg-http-tcp80 tcp
   member web23 80
-  member web23 80
+  member web24 80
 
 slb virtual-server vs80 192.168.226.80
   port 80 http
