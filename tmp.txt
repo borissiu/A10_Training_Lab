@@ -1,0 +1,6 @@
+no slb server dns1 114.114.114.114
+no slb server dns5 223.5.5.5
+no slb server dns6 223.6.6.6
+no slb service-group sg-dns-tcp53 tcp
+no slb service-group sg-dns-udp53 udp
+no slb virtual-server vs53 192.168.226.53
