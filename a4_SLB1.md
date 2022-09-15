@@ -31,3 +31,10 @@ end
 write memory
 !
 ```
+
+#### 将以下配置复制并粘贴到 vADC521_01
+```
+show slb server
+show slb service-group
+show slb virtual-server
+```
