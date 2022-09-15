@@ -32,10 +32,12 @@ write memory
 !
 ```
 
-#### 将以下配置复制并粘贴到 vADC521_01
+#### 粘贴以下命令，并检查相应的输出：
 ```
 show slb server
+!
 show slb service-group
+!
 show slb virtual-server
 !
 ```
