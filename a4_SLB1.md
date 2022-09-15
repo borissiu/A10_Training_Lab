@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## SLB 配置1
+## SLB Lab. #1
  + UDP Load Balancing
  + TCP Load Balancing
 
