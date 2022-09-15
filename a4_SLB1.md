@@ -59,35 +59,35 @@ for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
   + 默认 健康检查是什么？
  
 #### 使用 GUI 界面
-  + 禁用 dns1
-  + 点击 ADC > SLB > Service Groups
-    + 有什么变化吗？
-  + 点击 ADC > SLB > Virtual Servers
-    + 有什么变化吗？
++ 禁用 dns1
++ 点击 ADC > SLB > Service Groups
+  + 有什么变化吗？
++ 点击 ADC > SLB > Virtual Servers
+  + 有什么变化吗？
 
 #### 使用 GUI 界面
-  + 替 dns5 添加 TCP 53 端口
-  + 替 dns6 添加 TCP 53 端口
-  + 创建 Service Group
-    + 名称: sg-dns-tcp53
-    + 负载均衡算: Least Connection
-    + Member: 添加 dns5, dns6
++ 替 dns5 添加 TCP 53 端口
++ 替 dns6 添加 TCP 53 端口
++ 创建 Service Group
+  + 名称: sg-dns-tcp53
+  + 负载均衡算: Least Connection
+  + Member: 添加 dns5, dns6
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
-  + 有多少 dns 响应？
++ 有多少 dns 响应？
 ```
 for i in {1..10}; do dig +short +tcp @192.168.226.53 www.utstar.com; done
 
 ```
 
 #### 使用 GUI 界面
- + 点击 ADC > SLB > Virtual Servers
++ 点击 ADC > SLB > Virtual Servers
   + 有多少 Total Connection？
   + 有多少 TCP Connection？
   + 有多少 UDP Connection？
- + 点击 ADC > SLB > Service Groups
++ 点击 ADC > SLB > Service Groups
   + 有多少个 Service Group？
- + 点击 ADC > SLB > Server
++ 点击 ADC > SLB > Server
   + dns5 有多少 Total Connection？
   + dns5 有多少 TCP Connection？
 
