@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. #1 - Basic SLB
+## Lab. 1 - Basic SLB
  + UDP Load Balancing
  + TCP Load Balancing
 
