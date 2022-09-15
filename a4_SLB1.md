@@ -72,6 +72,11 @@ for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
   + 名称: sg-dns-tcp53
   + 负载均衡算: Least Connection
   + Member: 添加 dns5, dns6
++ 替 vs53 添加 Virtual Port
+  + Protocol: TCP
+  + Port: 53
+  + Source NAT Auto: Enable
+  + Service Group: sg-dns-tcp53
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
