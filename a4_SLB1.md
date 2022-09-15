@@ -31,6 +31,13 @@ write memory
 
 ```
 
+#### 粘贴以下命令到 客户端，并检查相应的输出
++ 有多少 dns 响应？
+```
+for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
+
+```
+
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 show slb server
@@ -38,13 +45,6 @@ show slb server
 show slb service-group
 !
 show slb virtual-server
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ 有多少 dns 响应？
-```
-for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
 
 ```
 
