@@ -23,8 +23,8 @@ slb service-group sg-dns-udp53 udp
 !
 slb virtual-server vs53 192.168.226.53
   port 53 udp
-  source-nat auto
-  service-group sg-dns-udp53
+    source-nat auto
+    service-group sg-dns-udp53
 !
 end
 write memory

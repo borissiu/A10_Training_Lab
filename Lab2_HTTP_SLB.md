@@ -16,11 +16,11 @@ ip nat pool snat200 192.168.226.200 192.168.226.209 netmask /24
 !
 slb virtual-server vs54 192.168.226.54
   port 53 dns-tcp
-  source-nat pool snat200
-  service-group sg-dns-tcp53
+    source-nat pool snat200
+    service-group sg-dns-tcp53
   port 53 dns-udp
-  source-nat pool snat200
-  service-group sg-dns-udp53
+    source-nat pool snat200
+    service-group sg-dns-udp53
 !
 end
 write memory
@@ -30,7 +30,7 @@ write memory
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
+for i in {1..6}; do dig +short @192.168.226.54 www.a10networks.com; done
 
 ```
 
