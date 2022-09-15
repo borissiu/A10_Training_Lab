@@ -61,6 +61,42 @@ show ip nat ?
 
 ```
 
+## HTTP Load Balancing
+#### 将以下配置粘贴到 vADC521_01
+```
+configure terminal
+!
+ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
+!
+slb server web23 192.168.226.23
+  port 80 tcp
+slb server  web24 192.168.226.24
+  port 80 tcp
+!
+slb service-group sg-http-tcp80 udp
+  member web23 80
+  member web23 80
+
+slb virtual-server vs80 192.168.226.80
+  port 80 http
+    source-nat pool snat200
+    service-group sg-http-tcp80
+!
+end
+write memory
+!
+clear slb all
+
+```
+
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+for i in {1..6}; do curl http://192.168.226.80; done
+
+```
+
+
+
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 由于没有 License，GUI 速度会有点慢
 + 点击 ADC > SLB > Virtual Servers
