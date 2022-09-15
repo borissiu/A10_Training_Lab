@@ -107,3 +107,26 @@ show run slb
 
 ```
 
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+show run slb server
+!
+show slb server
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+show run slb service-group
+!
+show slb service-group
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+show run slb virtual-server
+!
+show slb virtual-server
+
+```
