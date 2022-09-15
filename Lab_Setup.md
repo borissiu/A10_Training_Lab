@@ -74,7 +74,7 @@ Start vADC521_01
     + enable
 ```
 
-#### 将以下配置复制并粘贴到vADC
+#### 将以下配置复制并粘贴到 vADC
 ```
 configure terminal
 !
@@ -126,6 +126,7 @@ enable-management service snmp
   ve 10
 end
 write memory
+
 ```
 
 ## 安装 (ii) 客户端和 (iii)服务器
