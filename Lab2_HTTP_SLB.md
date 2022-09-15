@@ -12,9 +12,9 @@
 ```
 configure terminal
 !
-ip nat pool snat200 192.168.226.200 192.168.226.209 netmask /24
+ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
 !
-slb virtual-server vs54 192.168.226.54
+slb virtual-server vs80 192.168.226.80
   port 53 dns-tcp
     source-nat pool snat200
     service-group sg-dns-tcp53
@@ -32,12 +32,15 @@ clear slb all
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..6}; do dig +short @192.168.226.54 www.a10networks.com; done
+for i in {1..6}; do dig +short @192.168.226.80 www.a10networks.com; done
 
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
+!
+show ip nat pool statistics
+!
 show slb server
 !
 show slb service-group
