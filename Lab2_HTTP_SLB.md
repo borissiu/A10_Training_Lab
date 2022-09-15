@@ -70,7 +70,7 @@ ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
 !
 slb server web23 192.168.226.23
   port 80 tcp
-slb server  web24 192.168.226.24
+slb server web24 192.168.226.24
   port 80 tcp
 !
 slb service-group sg-http-tcp80 tcp
