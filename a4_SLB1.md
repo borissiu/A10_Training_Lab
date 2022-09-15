@@ -20,7 +20,7 @@ slb server dns6 223.6.6.6
 slb service-group sg-dns-udp53 udp
   member dns1 53
   member dns5 53
-  member dns6 56
+  member dns6 53
 !
 slb virtual-server vs53 192.168.226.53
   port 53 udp
@@ -43,7 +43,11 @@ show slb virtual-server
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出：
+#### 有多少dns响应？
 ```
 for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
 
 ```
+
+
+
