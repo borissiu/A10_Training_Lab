@@ -53,7 +53,8 @@ show slb virtual-server
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ 有任何命令可以查 source-nat auto？
++ 有任何命令可以排查 source-nat auto？
+  + 建议使用 ip nat pool
 ```
 !
 show ip nat ?
