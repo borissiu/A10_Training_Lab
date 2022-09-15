@@ -37,6 +37,9 @@ for i in {1..6}; do dig +short @192.168.226.80 www.a10networks.com; done
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
++ snat200 有多少 Total Used？
++ snat200 有多少 Total Freed？
++ snat200 有多少 Total Failed？
 ```
 !
 show ip nat pool statistics
@@ -46,6 +49,14 @@ show slb server
 show slb service-group
 !
 show slb virtual-server
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
++ 有任何命令可以查 source-nat auto？
+```
+!
+show ip nat ?
 
 ```
 
