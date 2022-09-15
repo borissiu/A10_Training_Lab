@@ -1,11 +1,11 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## SLB配置1
+## SLB 配置1
  + UDP Load Balancing
  + TCP Load Balancing
 
 ## UDP Load Balancing
-#### 将以下配置复制并粘贴到 vADC521_01
+#### 将以下配置粘贴到 vADC521_01
 ```
 configure terminal
 !
@@ -42,20 +42,20 @@ show slb virtual-server
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
-  + 有多少 dns 响应？
++ 有多少 dns 响应？
 ```
 for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
 
 ```
 
 #### 连接到 vADC521_01 GUI 界面
- + 由于没有 License，GUI 速度会有点慢
- + 点击 ADC > SLB > Virtual Servers
++ 由于没有 License，GUI 速度会有点慢
++ 点击 ADC > SLB > Virtual Servers
   + 有多少 Total Connection？
   + 有多少 Current Connection？
- + 点击 ADC > SLB > Service Groups
++ 点击 ADC > SLB > Service Groups
   + 默认 负载均衡算法是什么？
- + 点击 ADC > SLB > Server
++ 点击 ADC > SLB > Server
   + 默认 健康检查是什么？
  
 #### 使用 GUI 界面
