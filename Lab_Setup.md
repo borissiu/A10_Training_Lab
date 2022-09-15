@@ -126,7 +126,7 @@ enable-management service snmp
   ve 10
 end
 write memory
-
+!
 ```
 
 ## 安装 (ii) 客户端和 (iii)服务器
