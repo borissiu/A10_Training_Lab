@@ -43,7 +43,7 @@ show slb virtual-server
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出：
-#### 有多少dns响应？
+  + 有多少dns响应？
 ```
 for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
 
