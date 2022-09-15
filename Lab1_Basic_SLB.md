@@ -80,6 +80,8 @@ show slb virtual-server
   + Port: 53
   + Source NAT Auto: Enable
   + Service Group: sg-dns-tcp53
++ 点击 Dashboard > Services Map
+  + 替 vs53 打上钩 
 + 保存配置
   + 点击 "Save"  
 
