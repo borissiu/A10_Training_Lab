@@ -71,7 +71,9 @@ show slb virtual-server
 + 创建 Service Group
   + 名称: sg-dns-tcp53
   + 负载均衡算: Least Connection
-  + Member: 添加 dns5, dns6
+  + Member:
+    + 添加 dns5, port 53
+    + 添加 dns6, port 53
 + 替 vs53 添加 Virtual Port
   + Protocol: TCP
   + Port: 53
