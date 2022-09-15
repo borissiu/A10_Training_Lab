@@ -8,13 +8,16 @@
 网络层配置
  - 创建 VLAN
  - 创建 Virtual Ethernet IP
- - 创建路由
+ - 创建 路由
 SLB配置1
- - DNS Load Balance
- - HTTP Load Balance
+ - UDP Load Balancing
+ - TCP Load Balancing
 SLB配置2
- - HTTPs Load Balance (SSL卸载)
+ - DNS Load Balancing
+ - HTTP Load Balancing
+ - HTTPs Load Balancing (SSL卸载)
  - HTTP Header 源地址插入
+ - URL Switching
 负载均衡算法
  - Round Robin
  - Lease Connection
@@ -31,11 +34,12 @@ SLB配置2
 会话保持
  - IP based 会话保持
  - Cookie based 会话保持
-aFlex
 Active/Standby配置
 aVCS
+aFlex
 GSLB配置1
  - 
+ - Geo Location DB
 AxDebug
  - Packet Capture
  - Packet Capture Filter
