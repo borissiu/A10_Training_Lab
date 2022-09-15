@@ -65,6 +65,7 @@ show slb virtual-server
 + 点击 ADC > SLB > Virtual Servers
   + 有什么变化吗？
 
+## TCP Load Balancing
 #### 使用 GUI 界面
 + 替 dns5 添加 TCP 53 端口
 + 替 dns6 添加 TCP 53 端口
