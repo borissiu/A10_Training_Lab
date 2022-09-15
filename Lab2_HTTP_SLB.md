@@ -73,7 +73,7 @@ slb server web23 192.168.226.23
 slb server  web24 192.168.226.24
   port 80 tcp
 !
-slb service-group sg-http-tcp80 udp
+slb service-group sg-http-tcp80 tcp
   member web23 80
   member web23 80
 
