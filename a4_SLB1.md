@@ -48,7 +48,7 @@ for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 由于没有 License，GUI 速度会有点慢
 + 点击 ADC > SLB > Virtual Servers
   + 有多少 Total Connection？
