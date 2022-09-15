@@ -79,6 +79,8 @@ show slb virtual-server
   + Port: 53
   + Source NAT Auto: Enable
   + Service Group: sg-dns-tcp53
++ 保存配置
+  + 点击 "Save"  
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
