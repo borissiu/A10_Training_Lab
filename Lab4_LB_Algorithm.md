@@ -34,6 +34,7 @@ repeat 1 show slb server | include Service\|web
 
 ```
 
+## Algorithm: Round Robin
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 修改 Service Group: sg-http-tcp80
   + Algorithm: Round Robin
@@ -45,6 +46,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
+## Algorithm: Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 修改 Service Group: sg-http-tcp80
   + Algorithm: Least Connection
@@ -59,11 +61,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 #### 打开另一个 SSH 客户端连接
 #### 粘贴以下命令到 客户端
 ```
-curl 192.168.226.80 80 <<EOF
-GET / HTTP/1.1
-Host: 192.168.226.80
-
-EOF
+ssh 192.168.226.80
 
 ```
 
@@ -75,6 +73,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
+## Algorithm: Service Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 修改 Service Group: sg-dns-tcp53
   + Algorithm: Service Least Connection
@@ -82,14 +81,14 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 打开另一个 SSH 连接
-#### 粘贴以下命令到 客户端，并检查相应的输出
+#### 打开另一个 SSH 客户端连接
+#### 粘贴以下命令到 客户端
 ```
-telnet 192.168.226.80 80
+ssh 192.168.226.80
 
 ```
 
@@ -97,9 +96,14 @@ telnet 192.168.226.80 80
 + 并检查 vADC521_01 相应的输出
 + 为什么结果不一样?
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
+
+
+
+
+
 
 
 
