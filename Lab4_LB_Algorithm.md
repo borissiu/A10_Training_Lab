@@ -30,7 +30,7 @@ end
 !
 clear slb all
 !
-repeat 1 show slb server | include Service\|web
+repeat 2 show slb server | include Service\|web
 
 ```
 
