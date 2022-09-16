@@ -46,6 +46,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
+
 ## Algorithm: Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
   + 修改 Service Group: sg-http-tcp80
@@ -78,6 +79,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
+
 ## Algorithm: Service Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
   + 修改 Service Group: sg-http-tcp80
@@ -109,6 +111,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
   + 客户端: "Ctrl+C" 取消 ssh 192.168.226.80 连接
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
+
 
 ## Algorithm: Weighted Round Robin
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
@@ -151,7 +154,29 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
 
+## Algorithm: Weighted Least Connection
+  + 如感兴趣，可以自己试试
+    + Service Weighted Round Robin
+    + Service Weighted Least Connection
 
+
+## Priority
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+  + 修改 Server: web23
+    + Advanced Fields
+      + Weight: 3
+  + 修改 Service Group: sg-http-tcp80
+    + Algorithm: Round Robin
+    + Member: web24
+      + priority: 10
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+  + 为什 {web23, weight=3} and {web24, weight=2}, 但所有连接接到 web24?
+```
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
+
+```
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
