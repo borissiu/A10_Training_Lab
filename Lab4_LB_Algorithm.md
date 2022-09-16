@@ -17,25 +17,29 @@
 !
 clear slb all
 !
-repeat 1 show slb server | include Service\|tcp
-
-```
-
-#### 粘贴以下命令到 客户端
-+ 并检查 vADC521_01 相应的输出
-```
-for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+repeat 1 show slb server | include Service\|web
 
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 修改 Service Group: sg-dns-tcp53
++ 修改 Service Group: sg-http-tcp80
+  + Algorithm: Round Robin
+
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
+```
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
+
+```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 修改 Service Group: sg-http-tcp80
   + Algorithm: Least Connection
     
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
@@ -54,7 +58,7 @@ EOF
 + 并检查 vADC521_01 相应的输出
 + 为什么结果不一样?
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
