@@ -42,7 +42,7 @@ for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 
 #### 打开另一个 SSH 客户端连接
 #### 粘贴以下命令到 客户端
 ```
-curl telnet 192.168.226.80 80 <<EOF
+curl 192.168.226.80 80 <<EOF
 GET / HTTP/1.1
 Host: 192.168.226.80
 
