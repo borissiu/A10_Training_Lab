@@ -15,10 +15,10 @@ Lab. 1 - Basic SLB
 Lab. 2 - DNS & HTTP SLB
  - DNS Load Balancing
  - HTTP Load Balancing
+Lab. 3 - HTTPs SLB
  - HTTPs Load Balancing (SSL卸载)
  - HTTP Header 源地址插入
- - URL Switching
-Lab. 3 - 负载均衡算法
+Lab. 4 - 负载均衡算法
  - Round Robin
  - Lease Connection
  - Service Least Connection
