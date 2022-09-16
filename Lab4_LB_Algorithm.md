@@ -47,6 +47,8 @@ GET / HTTP/1.1
 Host: 192.168.226.80
 EOF
 
+{ echo "GET / HTTP/1.1"; sleep 0.5; echo "Host: 192.168.226.80"; sleep 0.5; } | telnet 192.168.226.80 80
+
 ```
 
 #### 粘贴以下命令到 客户端
