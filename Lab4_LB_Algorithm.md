@@ -74,7 +74,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 执行以下命令到
+#### 执行以下命令
   + 客户端: "Ctrl+C" 取消 ssh 192.168.226.80 连接
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
@@ -107,7 +107,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 执行以下命令到
+#### 执行以下命令
   + 客户端: "Ctrl+C" 取消 ssh 192.168.226.80 连接
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
@@ -128,7 +128,7 @@ for i in {1..9}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 执行以下命令到
+#### 执行以下命令
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
@@ -149,13 +149,13 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 执行以下命令到
+#### 执行以下命令
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
 
-## Algorithm: Weighted Least Connection
-  + 如感兴趣，可以自己试试
+## 如感兴趣，可以自己试试
+  + Algorithm:
     + Service Weighted Round Robin
     + Service Weighted Least Connection
 
