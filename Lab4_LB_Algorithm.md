@@ -12,57 +12,53 @@
  - Priority
 
 ## Load Balancing Algorithm
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
-+ 启用dns1、dns5、dns6
-
 #### 将以下配置粘贴到 vADC521_01
 ```
 !
 clear slb all
 !
-repeat 1 show slb server | include udp
+repeat 1 show slb server | include Service\|53/\tcp
 
 ```
 
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ 
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
 ```
-for i in {1..30}; do dig @192.168.2.53 www.a10networks.com; done
+for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
 
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
-+ 创建或导入ssl证书
-  + 点击 ADC > SSL Management
-  + 点击 Create
-    + File Name: cert-www.a10.com
-    + Common Name: www.a10.com
-    + Country: China
-    + Key Size: 2048
-+ 创建 Client SSL Template
-  + 点击 ADC > Template > SSL
-  + 点击 Create Client SSL
-    + Name: www.a10.com
-    + Certificate List: cert-www.a10.com
-    + Version: TLSv1.3
-    + Downgradable Version: TLSv1.2
-    + Reject Client Requests for SSLv3: 打上钩
-+ 绑定 Client SSL Template 到 vs80:443
-  + 点击 ADC > Virtual Servers
-    + 修改 vs80, port 443
-    + 添加 Template Client SSL
-      + 选择 www.a10.com
-+ 保存配置
-  + 点击 "Save"  
++ 修改 Service Group: sg-dns-udp53
+  + Algorithm: Least Connection
     
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ HTTPs 响应？
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
 ```
-for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.226.80; done
+for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
 
 ```
+
+#### 打开另一个 SSH 连接
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+telnet 192.168.226.53 53
+
+```
+
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
+```
+for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
+
+```
+
+
+
+
+
+
+
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
