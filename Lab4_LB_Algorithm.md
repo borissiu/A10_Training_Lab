@@ -73,6 +73,11 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
+#### 执行以下命令到
++ 客户端: "Ctrl+C" 取消 ssh 192.168.226.80 连接
++ vADC521_01: clear slb all
++ vADC521_01: repeat 2 show slb server | include Service\|web
+
 ## Algorithm: Service Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 修改 Service Group: sg-dns-tcp53
