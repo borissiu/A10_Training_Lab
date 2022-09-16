@@ -28,6 +28,8 @@ IP Addresses 示例
 | Mgmt | 192.168.247.11 | 192.168.247.12 | 192.168.247.13 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 |
 | Data | 192.168.226.11 | 192.168.226.12 | 192.168.226.13 | 192.168.226.21 | 192.168.226.22 | 192.168.226.23 | 192.168.226.24 |
 | H.A. | 10.10.10.11 | 10.10.10.12 | 10.10.10.13 |  |  |  |  |
+| Data | 192.168.226.11 | 192.168.226.12 | 192.168.226.13 |  |  |  |  |
+| H.A. | 10.10.10.11 | 10.10.10.12 | 10.10.10.13 |  |  |  |  |
 
 ## 安装第一台 (i) A10 vADC
 ```
@@ -46,6 +48,8 @@ Customize Hardware
   + 选择 Network Adapter = Custom VMnet1
   + 必须 Add Network Adapter 2 = Custom VMNet8
   + 必须 Add Network Adapter 3 = Custom VMNet9
+  + 必须 Add Network Adapter 4 = Custom VMNet10
+  + 必须 Add Network Adapter 5 = Custom VMNet11
 Power on the NEW Virtual Machine
   + 等待 localhost login:
     + username=install, password=password
@@ -59,6 +63,8 @@ Edit vADC521_01.vmx file (driver:/directory/)
   + 保持不变 ethernet0.virtualDev = "e1000"
   + 必须修改 ethernet1.virtualDev = "vmx3net"
   + 必须修改 ethernet2.virtualDev = "vmx3net"
+  + 必须修改 ethernet3.virtualDev = "vmx3net"
+  + 必须修改 ethernet4.virtualDev = "vmx3net"
 Start vADC521_01
   + vThunder login:
     + username=admin, password=a10
