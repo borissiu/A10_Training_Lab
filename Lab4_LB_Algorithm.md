@@ -17,42 +17,68 @@
 !
 clear slb all
 !
-repeat 1 show slb server | include Service\|53/\tcp
+repeat 1 show slb server | include Service\|tcp
 
 ```
 
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
+for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
 
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 修改 Service Group: sg-dns-udp53
++ 修改 Service Group: sg-dns-tcp53
   + Algorithm: Least Connection
     
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
+for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+
+```
+
+#### 打开另一个 SSH 客户端连接
+#### 粘贴以下命令到 客户端
+```
+telnet 192.168.226.80 53
+
+```
+
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
++ 为什么结果不一样?
+```
+for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
+
+```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 修改 Service Group: sg-dns-tcp53
+  + Algorithm: Service Least Connection
+    
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
+```
+for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
 
 ```
 
 #### 打开另一个 SSH 连接
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-telnet 192.168.226.53 53
+telnet 192.168.226.80 80
 
 ```
 
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 相应的输出
++ 为什么结果不一样?
 ```
-for i in {1..10}; do dig +tcp +short @192.168.226.53 www.a10networks.com; sleep 1; done
+for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 1; done
 
 ```
-
 
 
 
