@@ -172,7 +172,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
-  + 为什 {web23, weight=3} and {web24, weight=2}, 但所有连接接到 web24?
+  + {web23, weight=3} and {web24, weight=2}, 为什么所有连接接到 web24?
 ```
 for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
