@@ -3,9 +3,6 @@
 ## Lab. 2 - DNS & HTTP SLB
  + DNS Load Balancing
  + HTTP Load Balancing
- + HTTPs Load Balancing (SSL卸载)
- + HTTP Header 源地址插入
- + URL Switching
 
 ## DNS Load Balancing
 #### 将以下配置粘贴到 vADC521_01
