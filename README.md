@@ -19,13 +19,14 @@ Lab. 3 - HTTPs SLB
  - HTTPs Load Balancing (SSL卸载)
  - HTTP Header 源地址插入
 Lab. 4 - 负载均衡算法
- - Round Robin
- - Lease Connection
- - Service Least Connection
+ - Round Robin (Round Robin on SERVER level)
+ - Lease Connection (Lease Connection on SERVER level)
+ - Service Least Connection (Lease Connection SERVICE PORT level)
  - Weighted Round Robin
  - Weighted Lease Connection
- - Service Weighted Least Connection
  - Service Weighted Round Robin
+ - Service Weighted Least Connection
+ - Priority
 Lab. 4 - 健康检查
  - 三层健康检查
  - 四层健康检查
