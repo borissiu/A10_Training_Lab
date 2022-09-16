@@ -40,6 +40,8 @@ for i in {1..1000}; do dig +short @192.168.226.80 www.a10networks.com; done
 + 正在使用什么 IP NAT Pool 地址?
 ```
 !
+show ip nat pool statistics
+!
 show session
 
 ```
