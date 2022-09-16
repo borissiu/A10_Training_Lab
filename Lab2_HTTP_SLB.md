@@ -32,7 +32,7 @@ clear slb all
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有 dns 响应？
 ```
-for i in {1..1000}; do dig +short @192.168.226.80 www.a10networks.com; done
+for i in {1..100000}; do dig +short @192.168.226.80 www.a10networks.com; done
 
 ```
 
