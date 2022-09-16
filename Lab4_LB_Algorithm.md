@@ -80,7 +80,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ## Algorithm: Service Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 修改 Service Group: sg-dns-tcp53
++ 修改 Service Group: sg-http-tcp80
   + Algorithm: Service Least Connection
     
 #### 粘贴以下命令到 客户端
@@ -105,55 +105,53 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
+#### 执行以下命令到
++ 客户端: "Ctrl+C" 取消 ssh 192.168.226.80 连接
++ vADC521_01: clear slb all
++ vADC521_01: repeat 2 show slb server | include Service\|web
 
-
-
-
-
-
-
-
-
-
-
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
-```
-!
-show slb ssl-counters
-!
-show sessions
-
-```
-
-## HTTP Header 源地址插入
+## Algorithm: Weighted Round Robin
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
-+ 创建 HTTP Template
-  + 点击 ADC > Templates > L7 Protocols > 
-  + 点击 Create HTTP
-    + Client IP Header Insert: 打上钩
-    + Header Name: X-Forwarded-For
-+ 绑定 HTTP Template 到 vs80:80
-  + 点击 ADC > Virtual Servers
-    + 修改 vs80, port 80
-    + 添加 Template HTTP
-      + 选择 http
-+ 保存配置
-  + 点击 "Save"  
-    
-#### 粘贴以下命令到 客户端，并检查相应的输出
++ 修改 Service Group: sg-http-tcp80
+  + Algorithm: Weighted Round Robin
++ 修改 Server: web24
+  + Advanced Fields
+    + Weight: 2
+
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
 ```
-sudo tcpdump -i $(ip addr | egrep -i "192.168.226.21" | awk '{print $NF}') -nn -A port 80 | egrep -i "X-Forwarded-For"
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
 
-#### 打开另一个 SSH 连接
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-for i in {1..3}; do curl --interface 192.168.226.21 http://192.168.226.80; done
+#### 执行以下命令到
++ vADC521_01: clear slb all
++ vADC521_01: repeat 2 show slb server | include Service\|web
 
-for i in {1..3}; do curl --interface 192.168.226.22 http://192.168.226.80; done
+
+## Algorithm: Weighted Least Connection
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 修改 Service Group: sg-http-tcp80
+  + Algorithm: Weighted Least Connection
++ 修改 Server: web24
+  + Advanced Fields
+    + Weight: 2
+
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 相应的输出
 ```
+for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
+
+```
+
+#### 执行以下命令到
++ vADC521_01: clear slb all
++ vADC521_01: repeat 2 show slb server | include Service\|web
+
+
+
+
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
