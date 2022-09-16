@@ -44,8 +44,7 @@ for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 
 ```
 telnet 192.168.226.80 80 << EOF
 GET / HTTP/1.1
-Host: 192.168.2.80
-
+Host: 192.168.226.80
 EOF
 
 ```
