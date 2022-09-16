@@ -87,7 +87,7 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
     
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
-```
+```bash
 for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
 
 ```
