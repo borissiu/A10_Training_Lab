@@ -30,25 +30,53 @@ clear slb all
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
-+ 有多少 dns 响应？
++ HTTP 响应 404 Not Found？
 ```
-for i in {1..6}; do dig +short @192.168.226.80 www.a10networks.com; done
+for i in {1..100000}; do dig +short @192.168.226.80/xxx www.a10networks.com; done
 
 ```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 由于没有 License，GUI 速度会有点慢
++ 点击 Dashboard > ADC
+  + Total Throughput 有多少?
+  + Global System Throughput 有多少?
+  + L4 Conn/sec 有多少?
+  + L7 Conn/sec 有多少?
+  + SSL Conn/sec 有多少?
+  + Total New Conns/sec 有多少?
+  + 点击右上角 "?"
+    + 查看 Total Throughput 是什么?
+    + 查看 Global System Throughput 是什么?
++ 点击 ADC > Statistics > System
+    + 查看 L4 Bandwidth (Byte/sec)?
+    + 查看 L7 Bandwidth (Byte/sec)?
+    + 查看 Total Throughput (Bit/sec)?
++ 点击 ADC > Statistics > L4
+  + 查看 (a) TCP SYN per sec?
+  + 查看 (b) TCP SYN received?
+  + 查看 (c) L4 TCP Established?
+  + 为什么 c = b x 2？
++ 点击 ADC > Statistics > L7 > HTTP Proxy
+  + 选择
+    + Virtual Server: vs80
+    + HTTP Ports: 80
+  + 查看 Request GET (Req GET)?
+  + 查看 Response Status Code 404?
+  + 查看 Response Time (Req xxx)?
+  + 查看 Response Size (Rsp Sz xxx)?
+
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ snat200 有多少 Total Used？
-+ snat200 有多少 Total Freed？
-+ snat200 有多少 Total Failed？
 ```
 !
-show ip nat pool statistics
+show slb performance
 !
-show slb server
+show slb http-proxy
 !
-show slb service-group
+show cpu
 !
-show slb virtual-server
+show cpu history
 
 ```
 
