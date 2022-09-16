@@ -15,6 +15,8 @@
 #### 将以下配置粘贴到 vADC521_01
 ```
 !
+configure terminal
+!
 slb service-group sg-ssh-tcp22 tcp
   member web23 22
   member web24 22
@@ -23,6 +25,8 @@ slb virtual-server vs80 192.168.226.80
   port 22 tcp
     source-nat pool snat200
     service-group sg-ssh-tcp22
+!
+end
 !
 clear slb all
 !
