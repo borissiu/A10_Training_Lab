@@ -43,6 +43,7 @@ for i in {1..10}; do dig +tcp +short @192.168.226.80 www.a10networks.com; sleep 
 #### 粘贴以下命令到 客户端
 ```
 telnet 192.168.226.80 80
+
 GET / HTTP/1.1
 Host: 192.168.2.80
 
