@@ -80,6 +80,9 @@ configure terminal
 !
 system shared-poll-mode enable
 !
+slb common
+  ssl-module software-tls13
+!
 hostname vADC521_01
 timezone Asia/Shanghai
 ip dns primary 114.114.114.114

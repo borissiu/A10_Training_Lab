@@ -4,7 +4,6 @@
  + HTTPs Load Balancing (SSL卸载)
   + 创建或导入ssl证书
   + HTTP Header 源地址插入
-  + URL Switching
 
 ## HTTPs Load Balancing
 #### 将以下配置粘贴到 vADC521_01
@@ -32,106 +31,75 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
 
 ```
 
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ 正在使用什么 IP NAT Pool 地址?
-```
-!
-show ip nat pool statistics
-!
-show session
-
-```
-
-+ 有任何命令可以排查 source-nat auto？
-  + 建议使用 ip nat pool
-```
-!
-show ip nat ?
-
-```
-
-
-## HTTP Load Balancing
-#### 将以下配置粘贴到 vADC521_01
-```
-configure terminal
-!
-ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
-!
-slb server web23 192.168.226.23
-  port 80 tcp
-slb server web24 192.168.226.24
-  port 80 tcp
-!
-slb service-group sg-http-tcp80 tcp
-  member web23 80
-  member web24 80
-
-slb virtual-server vs80 192.168.226.80
-  port 80 http
-    source-nat pool snat200
-    service-group sg-http-tcp80
-!
-end
-write memory
-!
-clear slb all
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ HTTP 响应 404 Not Found？
-```
-for i in {1..100000}; do curl http://192.168.226.80/xxx; done
-
-```
-
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 由于没有 License，GUI 速度会有点慢
-+ 点击 Dashboard > ADC
-  + Total Throughput 有多少?
-  + Global System Throughput 有多少?
-  + L4 Conn/sec 有多少?
-  + L7 Conn/sec 有多少?
-  + SSL Conn/sec 有多少?
-  + Total New Conns/sec 有多少?
-  + 点击右上角 "?"
-    + 查看 Total Throughput 是什么?
-    + 查看 Global System Throughput 是什么?
-+ 点击 ADC > Statistics > System
-    + 查看 L4 Bandwidth (Byte/sec)?
-    + 查看 L7 Bandwidth (Byte/sec)?
-    + 查看 Total Throughput (Bit/sec)?
-+ 点击 ADC > Statistics > L4
-  + 查看 (a) TCP SYN per sec?
-  + 查看 (b) TCP SYN received?
-  + 查看 (c) L4 TCP Established?
-  + 为什么 c = b x 2？
-+ 点击 ADC > Statistics > L7 > HTTP Proxy
-  + 选择
-    + Virtual Server: vs80
-    + HTTP Ports: 80
-  + 查看 Request GET (Req GET)?
-  + 查看 Response Status Code 404?
-  + 查看 Response Time (Req xxx)?
-  + 查看 Response Size (Rsp Sz xxx)?
++ 创建或导入ssl证书
+  + 点击 ADC > SSL Management
+  + 点击 Create
+    + File Name: cert-www.a10.com
+    + Common Name: www.a10.com
+    + Country: China
+    + Key Size: 2048
++ 创建 Client SSL Template
+  + 点击 ADC > Template > SSL
+  + 点击 Create Client SSL
+    + Name: www.a10.com
+    + Certificate List: cert-www.a10.com
+    + Version: TLSv1.3
+    + Downgradable Version: TLSv1.2
+    + Reject Client Requests for SSLv3: 打上钩
++ 绑定 Client SSL Template 到 vs80:443
+  + 点击 ADC > Virtual Servers
+    + 修改 vs80, port 443
+    + 添加 Template Client SSL
+      + 选择 www.a10.com
++ 保存配置
+  + 点击 "Save"  
+    
+#### 粘贴以下命令到 客户端，并检查相应的输出
++ HTTPs 响应？
+```
+for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.226.80; done
 
+```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-show cpu
+show slb ssl-counters
 !
-show cpu history
+show sessions
 
 ```
 
+## HTTP Header 源地址插入
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 由于没有 License，GUI 速度会有点慢
++ 创建 HTTP Template
+  + 点击 ADC > Templates > L7 Protocols > 
+  + 点击 Create HTTP
+    + Client IP Header Insert: 打上钩
+    + Header Name: X-Forwarded-For
++ 绑定 HTTP Template 到 vs80:80
+  + 点击 ADC > Virtual Servers
+    + 修改 vs80, port 80
+    + 添加 Template HTTP
+      + 选择 http
++ 保存配置
+  + 点击 "Save"  
+    
+#### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-!
-show slb performance
-!
-show slb http-proxy
+sudo tcpdump -i $(ip addr | egrep -i "192.168.226.21" | awk '{print $NF}') -nn -A port 80 | egrep -i "X-Forwarded-For"
 
+```
+
+#### 打开另一个 SSH 连接
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+for i in {1..3}; do curl --interface 192.168.226.21 http://192.168.226.80; done
+
+for i in {1..3}; do curl --interface 192.168.226.22 http://192.168.226.80; done
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
