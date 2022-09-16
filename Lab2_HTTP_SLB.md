@@ -30,9 +30,61 @@ clear slb all
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
++ 有 dns 响应？
+```
+for i in {1..1000}; do dig +short @192.168.226.80 www.a10networks.com; done
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
++ 正在使用什么 IP NAT Pool 地址?
+```
+!
+show session
+
+```
+
++ 有任何命令可以排查 source-nat auto？
+  + 建议使用 ip nat pool
+```
+!
+show ip nat ?
+
+```
+
+
+## HTTP Load Balancing
+#### 将以下配置粘贴到 vADC521_01
+```
+configure terminal
+!
+ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
+!
+slb server web23 192.168.226.23
+  port 80 tcp
+slb server web24 192.168.226.24
+  port 80 tcp
+!
+slb service-group sg-http-tcp80 tcp
+  member web23 80
+  member web24 80
+
+slb virtual-server vs80 192.168.226.80
+  port 80 http
+    source-nat pool snat200
+    service-group sg-http-tcp80
+!
+end
+write memory
+!
+clear slb all
+
+```
+
+#### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTP 响应 404 Not Found？
 ```
-for i in {1..100000}; do dig +short @192.168.226.80/xxx www.a10networks.com; done
+for i in {1..100000}; do curl http://192.168.226.80/xxx; done
 
 ```
 
@@ -81,49 +133,6 @@ show cpu history
 show slb performance
 !
 show slb http-proxy
-
-```
-
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ 有任何命令可以排查 source-nat auto？
-  + 建议使用 ip nat pool
-```
-!
-show ip nat ?
-
-```
-
-## HTTP Load Balancing
-#### 将以下配置粘贴到 vADC521_01
-```
-configure terminal
-!
-ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
-!
-slb server web23 192.168.226.23
-  port 80 tcp
-slb server web24 192.168.226.24
-  port 80 tcp
-!
-slb service-group sg-http-tcp80 tcp
-  member web23 80
-  member web24 80
-
-slb virtual-server vs80 192.168.226.80
-  port 80 http
-    source-nat pool snat200
-    service-group sg-http-tcp80
-!
-end
-write memory
-!
-clear slb all
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-for i in {1..6}; do curl http://192.168.226.80; done
 
 ```
 
