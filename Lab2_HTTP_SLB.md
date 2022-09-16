@@ -70,13 +70,17 @@ for i in {1..100000}; do dig +short @192.168.226.80/xxx www.a10networks.com; don
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-show slb performance
-!
-show slb http-proxy
-!
 show cpu
 !
 show cpu history
+
+```
+
+```
+!
+show slb performance
+!
+show slb http-proxy
 
 ```
 
