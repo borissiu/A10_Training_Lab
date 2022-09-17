@@ -87,7 +87,7 @@ show session persist
   + 检查 相应的输出
     + Cookie Name ?
     + Cookie Value ?
-    + Expries ?
+    + Expries = 600 seconds?
     + Secure ?
     + HTTPOnly ?
 ```
