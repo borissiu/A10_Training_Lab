@@ -57,7 +57,17 @@ for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
 ```
 
 #### 将以下配置粘贴到 vADC521_01
+  + Source IP Persist 默认时间是多少?
 ```
+!
+show session persist
+
+```
+
+#### 将以下配置粘贴到 vADC521_01
+```
+!
+clear session persist
 !
 show session persist
 
