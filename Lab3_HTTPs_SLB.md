@@ -144,16 +144,15 @@ for i in {1..10}; do curl -k https://192.168.226.80/ip; sleep 1; done
     
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-sudo tcpdump -i $(ip addr | egrep -i "192.168.226.21" | awk '{print $NF}') -nn -A port 80 | egrep -i "X-Forwarded-For"
+for i in {1..10}; do curl -k https://192.168.226.80/ip; sleep 1; done
 
 ```
 
-#### 打开另一个 SSH 连接
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-for i in {1..3}; do curl --interface 192.168.226.21 http://192.168.226.80; done
+for i in {1..3}; do curl --interface 192.168.226.21 http://192.168.226.80/ip; done
 
-for i in {1..3}; do curl --interface 192.168.226.22 http://192.168.226.80; done
+for i in {1..3}; do curl --interface 192.168.226.22 http://192.168.226.80/ip; done
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
