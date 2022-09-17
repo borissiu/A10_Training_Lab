@@ -40,12 +40,12 @@ for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
   + 创建 Persistence Template
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Source IP"
-        + Name: SourceIP
+        + Name: source_ip_test
   + 绑定 Persistence Template 到 vs80:443
     + 点击 ADC > Virtual Servers
       + 修改 vs80, port 443
       + Persist Type: Source IP 打上钩
-        + Template Persist Source IP: 选择 SourceIP
+        + Template Persist Source IP: 选择 source_ip_test
   + 保存配置
     + 点击 "Save"  
 
@@ -65,8 +65,35 @@ show session persist
 
 
 ## Cookie Persist
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+  + 创建 Persistence Template
+    + 点击 ADC > Templates > Persistence
+      + 点击 Create "Persist Cookie"
+        + Name: cookie_test
+        + Expiration (Seconds): 600
+        + Cookie Name: cookie_test
+        + Enable HTTP Only Attribute: 打上钩
+        + Enable Secure Attribute: 打上钩
+        + Encrypt Level: 0
+  + 绑定 Persistence Template 到 vs80:443
+    + 点击 ADC > Virtual Servers
+      + 修改 vs80, port 443
+      + Persist Type: Cookie 打上钩
+        + Template Persist Cookie: 选择 cookie_test
+  + 保存配置
+    + 点击 "Save"  
 
+#### 粘贴以下命令到 客户端
+  + 检查 相应的输出
+    + Cookie Name ?
+    + Cookie Value ?
+    + Expries ?
+    + Secure ?
+    + HTTPOnly ?
+```
+curl -I -k https://192.168.226.80
 
+```
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
@@ -77,4 +104,3 @@ write memory
 show run slb
 
 ```
-.
