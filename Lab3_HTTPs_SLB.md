@@ -119,14 +119,14 @@ repeat 2 show slb service-group | include 80
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.226.80; done
+for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
 
 ```
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.226.80/ip; done
+for i in {1..10}; do curl -k https://192.168.226.80/ip; sleep 1; done
 
 ```
 
@@ -134,16 +134,11 @@ for i in {1..10}; do curl -k https://192.168.226.80/ip; done
 ## HTTP Header 源地址插入
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
 + 由于没有 License，GUI 速度会有点慢
-+ 创建 HTTP Template
++ 修改 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
-  + 点击 Create HTTP
+  + 添加 Template HTTP "http_test"
     + Client IP Header Insert: 打上钩
     + Header Name: X-Forwarded-For
-+ 绑定 HTTP Template 到 vs80:80
-  + 点击 ADC > Virtual Servers
-    + 修改 vs80, port 80
-    + 添加 Template HTTP
-      + 选择 http
 + 保存配置
   + 点击 "Save"  
     
