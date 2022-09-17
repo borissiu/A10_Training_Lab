@@ -9,8 +9,6 @@
 + Service Weighted Round Robin
 + Service Weighted Least Connection
 
-+ Priority
-
 ## Load Balancing Algorithm
 #### 将以下配置粘贴到 vADC521_01
 ```
@@ -158,25 +156,6 @@ for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
   + Algorithm:
     + Service Weighted Round Robin
     + Service Weighted Least Connection
-
-
-## Priority
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-  + 修改 Server: web23
-    + Advanced Fields
-      + Weight: 3
-  + 修改 Service Group: sg-http-tcp80
-    + Algorithm: Round Robin
-    + Member: web24
-      + priority: 10
-
-#### 粘贴以下命令到 客户端
-  + 并检查 vADC521_01 相应的输出
-  + {web23, weight=3} and {web24, weight=2}, 为什么所有连接接到 web24?
-```
-for i in {1..10}; do curl http://192.168.226.80; sleep 1; done
-
-```
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
