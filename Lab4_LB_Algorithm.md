@@ -166,4 +166,3 @@ write memory
 show run slb
 
 ```
-.
