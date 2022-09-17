@@ -3,6 +3,7 @@
 ## Lab. 3 - HTTPs SLB
  + HTTPs Load Balancing (SSL卸载)
   + 创建或导入ssl证书
+  + URL Switching
   + HTTP Header 源地址插入
 
 ## HTTPs Load Balancing
@@ -71,6 +72,64 @@ show slb ssl-counters
 show sessions
 
 ```
+
+
+## URL Switching
+#### 将以下配置粘贴到 vADC521_01
+```
+configure terminal
+!
+slb server httpbin httpbin.org
+  health-check-disable
+  port 80 tcp
+!
+slb service-group sg-httpbin-tcp80 tcp
+  member httpbin 80
+!
+end
+write memory
+!
+clear slb all
+!
+repeat 2 show slb service-group | include 80
+
+```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 由于没有 License，GUI 速度会有点慢
++ 创建 HTTP Template
+  + 点击 ADC > Templates > L7 Protocols > 
+  + 点击 Create HTTP
+    + Name: http_test
+    + URL Switching: 打上钩
+    + 添加:
+      + Switching Type: starts-with
+      + Match String: /ip
+      + Matching Group: sg-httpbin-tcp80
+      + Action: 点击 "Save"
++ 绑定 HTTP Template "http_test" 到 vs80:443
+  + 点击 ADC > Virtual Servers
+    + 修改 vs80
+    + 修改 port 443
+      + 添加 Template HTTP
+        + 选择 http_test
++ 保存配置
+  + 点击 "Save"  
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+for i in {1..10}; do curl -k https://192.168.226.80; done
+
+```
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+for i in {1..10}; do curl -k https://192.168.226.80/ip; done
+
+```
+
 
 ## HTTP Header 源地址插入
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
