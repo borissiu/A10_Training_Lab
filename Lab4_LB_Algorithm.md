@@ -9,7 +9,7 @@
 + Service Weighted Round Robin
 + Service Weighted Least Connection
 
- - Priority
++ Priority
 
 ## Load Balancing Algorithm
 #### 将以下配置粘贴到 vADC521_01
