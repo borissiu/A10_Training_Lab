@@ -1,6 +1,36 @@
-no slb server dns1 114.114.114.114
-no slb server dns5 223.5.5.5
-no slb server dns6 223.6.6.6
-no slb service-group sg-dns-tcp53 tcp
-no slb service-group sg-dns-udp53 udp
-no slb virtual-server vs53 192.168.226.53
+sudo apt install net-tools
+
+/etc/nginx/nginx.conf
+
+http {
+    keepalive_timeout  30;
+    keepalive_requests 10000;
+}
+
+sudo systemctl restart nginx
+
+watch 'netstat -n | egrep -i "23:|24:"'
+
+repeat 1 show session | inc 23:\|24:
+
+
+
+
+
+
+
+
+
+
+curl -sH 'Accept-encoding: gzip' http://192.168.226.80 | gunzip
+
+show slb compression vs80 80
+
+
+
+
+slb template cache cache_test
+min-content-size 0
+
+show slb cache entries vs80 80
+repeat 1 show cache stats vs80 80
