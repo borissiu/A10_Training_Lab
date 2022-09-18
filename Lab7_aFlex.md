@@ -68,6 +68,9 @@ curl --interface 192.168.226.24 -k https://192.168.226.80
 ```
 
 #### 将以下配置粘贴到 vADC521_01
+  + 并检查 
+    + Event
+    + execute, failures and aborts
 ```
 !
 show aflex log_curl_agent
@@ -122,6 +125,7 @@ curl --interface 192.168.226.24 -k https://192.168.226.80
 ```
 
 #### 将以下配置粘贴到 vADC521_01
+  + aFlex 配置的顺序是什么?
 ```
 !
 show aflex log_curl_agent
@@ -129,6 +133,8 @@ show aflex log_curl_agent
 show aflex reject_ip21_ip23
 !
 show log
+!
+show run slb virtual-server
 
 ```
 
