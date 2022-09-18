@@ -12,7 +12,7 @@
     + keepalive requests from 100 to 1000
   + 修改 /etc/nginx/nginx.conf
     + 在 http { } 中间添加
-      + keepalive_timeout 30;
+      + keepalive_timeout 2400;
       + keepalive_requests 10000;
 
   + 修改 /etc/nginx/nginx.conf
