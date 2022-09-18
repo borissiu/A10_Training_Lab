@@ -23,7 +23,7 @@ sudo vi /etc/nginx/nginx.conf
 
 ```
 
-  + 修改 nginx 配置之后
+  + 修改 nginx 配置后
 ```
 sudo systemctl restart nginx
 
@@ -66,8 +66,9 @@ for i in {1..10000}; do curl -k https://192.168.226.80; done
     + 点击 "Save"  
 
 #### 粘贴以下命令到 客户端
-  + 并检查 客户端 相应的输出
-  + 并检查 vADC521_01 相应的输出
+  + 并检查
+    + 客户端 相应的输出
+    + vADC521_01 相应的输出
   + web服务器忙于建立新连接?
 ```
 for i in {1..10000}; do curl -k https://192.168.226.80; done
