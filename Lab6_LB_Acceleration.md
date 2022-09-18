@@ -4,24 +4,26 @@
   + Connection Reuse
   + HTTP Ram Cache
   + HTTP Compression
-  + Connection Reuse
 
 ## Connection Reuse
 #### 粘贴以下命令到 客户端
-  + 修改 nginx 配置文档 /etc/nginx/nginx.conf
-    + keepalive timeout from 75 to 300
-    + keepalive requests from 100 to 10000
+  + 修改 nginx 配置
+    + keepalive timeout from 75 to 2400
+    + keepalive requests from 100 to 1000
   + 修改 /etc/nginx/nginx.conf
     + 在 http { } 中间添加
-      + keepalive_timeout  30;
+      + keepalive_timeout 30;
       + keepalive_requests 10000;
+
+  + 修改 /etc/nginx/nginx.conf
 ```
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 sudo vi /etc/nginx/nginx.conf
 
 ```
-  + 修改 /etc/nginx/nginx.conf
+
+  + 修改 nginx 配置之后
 ```
 sudo systemctl restart nginx
 
@@ -145,6 +147,12 @@ repeat 2 show slb compression vs80 443
 curl -sH 'Accept-encoding: gzip' -k https://192.168.226.80 | gunzip
 
 ```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+  + 点击 ADC > Statistics > Applications
+    + 检查 Connection Re-use
+    + 检查 RAM Caching
+    + 检查 Compression
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
