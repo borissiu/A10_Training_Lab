@@ -57,13 +57,13 @@ when CLIENT_ACCEPTED {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 192.168.226.21 -k https://192.168.226.80
+curl --interface 192.168.226.21 -k https://192.168.226.80/ip
 
-curl --interface 192.168.226.22 -k https://192.168.226.80
+curl --interface 192.168.226.22 -k https://192.168.226.80/ip
 
-curl --interface 192.168.226.23 -k https://192.168.226.80
+curl --interface 192.168.226.23 -k https://192.168.226.80/ip
 
-curl --interface 192.168.226.24 -k https://192.168.226.80
+curl --interface 192.168.226.24 -k https://192.168.226.80/ip
 
 ```
 
