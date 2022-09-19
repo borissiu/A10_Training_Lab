@@ -50,12 +50,9 @@
  - 七层健康检查
  - 脚本健康检查
 
-[Lab. 9 - GSLB]
+[Lab. 9 - GSLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab10_AxDebug.md)
  - GSLB 配置
  - Geo Location DB
- - DNS FW
- - DNS Recursive Lookup
- - DNS RPZ
 
 [Lab. 10 - 抓包 (AxDebug)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab10_AxDebug.md)
  - Packet Capture Filter
