@@ -14,18 +14,69 @@ axdebug
 !
 filter 1
 ip 192.168.2.21 /32
+dst port 80
 exit
 !
 filter 2
-ip 192.168.2.23 /32
+ip 192.168.2.22 /32
+dst port 443
 exit
 !
 show axdebug filter
 
 ```
 
-#### Packet Capture Save
+#### Start Packet Capture
 ```
+!
+capture brief
+
+```
+
+#### 粘贴以下命令到 客户端，并检查相应的输出
+  + Entries within a filter == AND ?
+  + Entries between filters == OR ?
+  + Support upto 5 filters?
+  + Capture 3000 packets by default?
+  + Capture 5 mins by default?
+```
+curl --interface 192.168.226.21 http://192.168.226.80
+curl --interface 192.168.226.21 -k https://192.168.226.80
+
+curl --interface 192.168.226.22 http://192.168.226.80
+curl --interface 192.168.226.22 -k https://192.168.226.80
+
+```
+
+#### Packet Capture Save
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+!
+axdebug
+!
+capture detail save axdebug_1
+!
+
+```
+
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+curl --interface 192.168.226.21 http://192.168.226.80
+curl --interface 192.168.226.22 -k https://192.168.226.80
+
+```
+
+#### 粘贴以下命令到 客户端，并检查相应的输出
+```
+!
+axdebug
+!
+show axdebug file
+!
+exit
+!
+export axdebug axdebug_1 ?
+!
 
 ```
 
