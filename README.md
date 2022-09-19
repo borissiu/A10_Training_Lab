@@ -1,7 +1,7 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
 
-# A10 TrainingLab
+# A10 Training Lab
 Lab. 1 - Basic SLB
  - UDP Load Balancing
  - TCP Load Balancing
@@ -47,9 +47,12 @@ Lab. 8 - 健康检查
  - 七层健康检查
  - 脚本健康检查
 
-Lab. 9 - GSLB配置1
- - 
+Lab. 9 - GSLB
+ - GSLB 配置
  - Geo Location DB
+ - DNS FW
+ - DNS Recursive Lookup
+ - DNS RPZ
 
 Lab. 10 - 抓包 (AxDebug) 
  - Packet Capture Filter
@@ -58,7 +61,7 @@ Lab. 10 - 抓包 (AxDebug)
 Lab. 11 - 高可用性
  - Active/Standby
  - Active/Active
- - N+M
+ - N+M (Active/Standby/Standby)
  - 配置同步
 
 Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
@@ -72,16 +75,7 @@ Lab. 13 - 常见问题
  - 收集 show techsupport
  - 收集 backup logs
 
-#### Working in progress
-```
-安装前准备
-设备初始化
-网络层配置
+Lab. 14 - 网络层配置
  - 创建 VLAN
  - 创建 Virtual Ethernet IP
  - 创建 路由
-```
-
-#### For details, please refer to A10_4.1.4-GR1-P5_DMG.pdf
-[link:cheat-sheet](https://www.interviewbit.com/markdown-cheat-sheet/#text-styles)
-[link:cheat-sheet](https://www.markdownguide.org/cheat-sheet/)
