@@ -78,7 +78,7 @@
  - 收集 show techsupport
  - 收集 backup logs
 
-]Lab. 14 - 网络层配置]
+[Lab. 14 - 网络层配置]
  - 创建 VLAN
  - 创建 Virtual Ethernet IP
  - 创建 路由
