@@ -102,6 +102,7 @@ show slb service-group
   + Python Script
 
 Shell Script Sample
++ ping_src.sh
 ```bash
 #!/bin/sh
 
@@ -122,6 +123,10 @@ else
 fi
 ```
 
+```
+health monitor hm-llb-gw
+  method external program ping_src arguments "ve2983 120.238.38.97"
+```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
