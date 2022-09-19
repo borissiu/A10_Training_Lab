@@ -83,5 +83,6 @@ export axdebug axdebug_1 ?
 #### 收集 AxDebug Files
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
   + 点击 Systems > Diagnostics > Show AxDebug Files
+  + 尝试使用 WireShark 打开 merge.* 文件
 
 [返回 A10 Training Lab. 主页](https://github.com/borissiu/A10_Training_Lab)
