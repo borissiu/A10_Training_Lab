@@ -31,7 +31,43 @@ IP Addresses 示例
 | Eth3 | 192.168.226.11 | 192.168.226.12 | 192.168.226.13 |  |  |  |  |
 | Eth4 | 10.10.10.11 | 10.10.10.12 | 10.10.10.13 |  |  |  |  |
 
-## 安装第一台 (i) A10 vADC
+## ESXi
++ 安装第一台 (i) A10 vADC
+```
+Run VMWare ESXi
+Create a NEW Virtual Machine
+  + Name: vADC521_01
+  + Guest OS family: Linux
+  + Guest OS version: Ubuntu Linux (64-bit)
+  + Standard storage
+Virtual Hardware
+  + 选择 4+ vCPU
+  + 选择 4+ GB Memory
+  + 选择 20GB disk
+  + 必须 Network Adapter 1
+  + 必须 Network Adapter 2
+  + 可选 Network Adapter 3
+  + 可选 Network Adapter 4
+  + 可选 Network Adapter 5
+  + CD/DVD Drive: Data Store ISO file (选择 ACOS_vThunder_5_2_1-p5_114.ISO)
+Power on the NEW Virtual Machine
+  + 等待 localhost login:
+    + username=install, password=password
+    + continue=YesS
+Logon vADC and then Shutdown it
+  + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
+    + username=admin, password=a10
+    + enable
+    + shutdown
+Start vADC521_01
+  + vThunder login:
+    + username=admin, password=a10
+    + enable
+    + show interface brief (you should see 5 NICs)
+```
+
+## VMWare Workstation
++ 安装第一台 (i) A10 vADC
 ```
 Run VMWare Workstation
 Create a NEW Virtual Machine
@@ -69,10 +105,10 @@ Start vADC521_01
   + vThunder login:
     + username=admin, password=a10
     + enable
-    + show interface brief (you should see 3 NICs)
+    + show interface brief (you should see 5 NICs)
 ```
 
-## 配置第一台 vADC (通过 VMWare Workstation 控制台) 
+## 配置第一台 vADC (通过 VMWare 控制台) 
 #### Start vADC521_01
 ```
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
@@ -110,6 +146,7 @@ interface ethernet 2
 vlan 10
   untag ethernet 1
   route ve 10
+!
 interface ve 10
   ip address 192.168.226.11 /24
   enable
@@ -118,6 +155,7 @@ interface ve 10
 vlan 20
   untag ethernet 2
   route ve 20
+!
 interface ve 20
   ip address 10.10.10.11 /24
   enable
