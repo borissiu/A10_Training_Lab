@@ -8,26 +8,29 @@
 
 #### 三层健康检查
 + 默认设置
-  + Method: Ping (icmp)
-  + Inteval: 5 seconds, Timeout: 5
-  + Retry: 3, Up-Retry: 1
-  + Server Level "ON"
   + Service Group Level "OFF"  
+  + Server Level "ON"
+    + Method: Ping (icmp)
+    + Inteval: 5 seconds, Timeout: 5
+    + Retry: 3, Up-Retry: 1
 
 #### 四层健康检查
 + 默认设置
-  + Server Level "ON"
   + Service Group Level "OFF"
+  + Server Level "ON"
+    + Method: tcp syn/udp xxx
+    + Inteval: 5 seconds, Timeout: 5
+    + Retry: 3, Up-Retry: 1
 
 #### 七层健康检查
 + 默认设置
-  + Server Level "OFF"
   + Service Group Level "OFF"
+  + Server Level "OFF"
 
 #### 脚本健康检查
 + 默认设置
-  + Server Level "OFF"
   + Service Group Level "OFF"
+  + Server Level "OFF"
 
 
 
