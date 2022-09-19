@@ -32,21 +32,21 @@ gslb service-ip 4.2.3.4 4.2.3.4
   health-check-disable
 !
 gslb service-ip vs80 192.168.226.80
-  external-ip 111.111.111.80
 !
 exit
 !
-gslb site primary
+gslb site pri
   ip-server 1.2.3.4
   ip-server 2.2.3.4
-  slb-dev 127.0.0.1 127.0.0.1
+  slb-dev vADC521_01 127.0.0.1
     vip-server vs80
 !
-gslb site secondary
+gslb site sec
   ip-server 3.2.3.4
   ip-server 4.2.3.4
 !
 gslb policy lab
+  dns active-only
   dns server
 !
 gslb zone a10.com
@@ -56,7 +56,7 @@ gslb zone a10.com
     dns-a-record 3.2.3.4 static
   service 0 ftp
     dns-a-record 2.2.3.4 static
-  service 0 www
+  service 80 www
     dns-a-record vs80 static
 exit
 exit
@@ -76,8 +76,10 @@ for i in {1..4}; do dig +short @192.168.226.80 vpn.a10.com; sleep 1; done
 
 for i in {1..4}; do dig +short @192.168.226.80 ftp.a10.com; sleep 1; done
 
-dig +short @192.168.226.80 www.a10.com
+for i in {1..10000}; do dig +short @192.168.226.80 www.a10.com; sleep 1; done
+
 ```
+
 #### 将以下配置粘贴到 vADC521_01
 ```
 !
@@ -85,11 +87,21 @@ show run gslb
 !
 show gslb service-ip
 !
+show gslb service-port
+!
 show log
 !
 ```
 
-
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ disable web23
++ disable web24
+  + 等待30秒
+  + 检查 客户端 相应的输出
++ enable web23
++ enable web24
+  + 等待30秒
+  + 检查 客户端 相应的输出
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
