@@ -2,24 +2,24 @@
 ---
 
 # A10 Training Lab
-[Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab_Setup.md)
+[Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab_Setup.md)
  - (i)vADC, (ii)客户端和 (iii)服务器 必须能够上网
 
-[Lab. 1 - Basic SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab1_Basic_SLB.md)
+[Lab. 1 - Basic SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab01_Basic_SLB.md)
  - UDP Load Balancing
  - TCP Load Balancing
 
-[Lab. 2 - DNS & HTTP SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab2_DNS_HTTP_SLB.md)
+[Lab. 2 - DNS & HTTP SLB](https://github.com/borissiu/A10_Training_Lab/blob/Labs/Lab02_DNS_HTTP_SLB.md)
  - DNS Load Balancing
  - HTTP Load Balancing
 
-[Lab. 3 - HTTPs SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab3_HTTPs_SLB.md)
+[Lab. 3 - HTTPs SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab03_HTTPs_SLB.md)
  - HTTPs Load Balancing (SSL卸载)
  - 创建或导入ssl证书
  - URL Switching
  - HTTP Header 源地址插入
 
-[Lab. 4 - 负载均衡算法](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab4_LB_Algorithm.md)
+[Lab. 4 - 负载均衡算法](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab04_LB_Algorithm.md)
  - Round Robin (Round Robin on SERVER level)
  - Lease Connection (Lease Connection on SERVER level)
  - Service Least Connection (Lease Connection SERVICE PORT level)
@@ -28,17 +28,17 @@
  - Service Weighted Round Robin
  - Service Weighted Least Connection
 
-[Lab. 5 - 优先权 和 会话保持](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab5_LB_Persistence.md)
+[Lab. 5 - 优先权 和 会话保持](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab05_LB_Persistence.md)
  - Priority 优先权
  - IP based 会话保持
  - Cookie based 会话保持
 
-[Lab. 6 - 应用加速](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab6_LB_Acceleration.md)
+[Lab. 6 - 应用加速](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab06_LB_Acceleration.md)
  - 连接复用 (Connection Reuse)
  - HTTP 缓存 (RAM Cache)
  - HTTP 压缩 (HTTP Compression)
 
-[Lab. 7 - aFlex (Tcl 脚本)](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab7_aFlex.md)
+[Lab. 7 - aFlex (Tcl 脚本)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab07_aFlex.md)
  - aFlex Syntex
  - aFlex Example 1 (应用层)
  - aFlex Example 2 (网络层)
