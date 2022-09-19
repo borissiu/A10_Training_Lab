@@ -7,43 +7,49 @@
  - 脚本健康检查
 
 #### 默认设置
-  + 背一下
++ 背一下
 
 | 健康检查| 三层| 四层| 七层| 脚本|
 | --- | --- | --- | --- | --- |
 | Server | ON| ON| OFF| OFF|
 | Service Group| OFF| OFF| OFF| OFF|
 
-  + 默认设置
-    + Method: Ping (icmp)
-    + 背一下
-      + Inteval: 5 seconds, Timeout: 5
-      + Retry: 3, Up-Retry: 1
-
-#### 三层健康检查
 + 默认设置
-    + Method: Ping (icmp)
+  + Method: Ping (icmp)
+  + 背一下
     + Inteval: 5 seconds, Timeout: 5
     + Retry: 3, Up-Retry: 1
+  + 健康检查失败时间
+    + 5 + 5 x3 (Retry) = 20 秒
+  + 健康检查成功时间
+    + 5 x1 (Up-Retry) = 5 秒
+    
+#### 三层健康检查
++ Method: Ping (icmp)
 
 #### 四层健康检查
-+ 默认设置
-    + Method: tcp syn/udp xxx
-    + Inteval: 5 seconds, Timeout: 5
-    + Retry: 3, Up-Retry: 1
++ Method: Tcp port / Udp port
 
 #### 七层健康检查
-+ 默认设置
-  + Service Group Level "OFF"
-  + Server Level "OFF"
++  Method: 
+
 
 #### 脚本健康检查
-+ 默认设置
-  + Service Group Level "OFF"
-  + Server Level "OFF"
++ 脚本
+  + Shell Script
+  + Tcl Script
+  + Perl Script
+  + Python Script
 
+Shell Script Sample
+```
 
+```
 
+Python Script Sample
+```
+
+```
 
 
 
