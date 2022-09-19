@@ -1,7 +1,7 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
 
-# A10_Training_Lab
+# A10 TrainingLab
 Lab. 1 - Basic SLB
  - UDP Load Balancing
  - TCP Load Balancing
@@ -37,8 +37,8 @@ Lab. 6 - 应用加速
 
 Lab. 7 - aFlex (Tcl 脚本)
  - aFlex Syntex
- - aFlex Example 1
- - aFlex Example 2
+ - aFlex Example 1 (应用层)
+ - aFlex Example 2 (网络层)
  - aFlex Statistics
 
 Lab. 8 - 健康检查
@@ -51,7 +51,7 @@ Lab. 9 - GSLB配置1
  - 
  - Geo Location DB
 
-Lab. 10 - AxDebug
+Lab. 10 - 抓包 (AxDebug) 
  - Packet Capture Filter
  - Packet Capture Save
 
