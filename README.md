@@ -72,7 +72,7 @@
  - L3V Partition
  - aVCS
 
-[Lab. 13 - 常见问题]
+[Lab. 13 - 常见问题 (FAQ)]
  - 备份和恢复
  - 软件升级
  - 收集 show techsupport
