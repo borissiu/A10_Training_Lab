@@ -6,6 +6,10 @@
  - 七层健康检查
  - 脚本健康检查
 
+| 健康检查| 三层| 四层| 七层| 脚本|
+| Server | ON| ON| OFF| OFF|
+| Service Group| OFF| OFF| OFF| OFF|
+
 #### 三层健康检查
 + 默认设置
   + Service Group Level "OFF"  
