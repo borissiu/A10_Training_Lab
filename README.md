@@ -2,6 +2,9 @@
 ---
 
 # A10 Training Lab
+[Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab_Setup.md)
+ - (i)vADC, (ii)客户端和 (iii)服务器 必须能够上网
+
 [Lab. 1 - Basic SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab1_Basic_SLB.md)
  - UDP Load Balancing
  - TCP Load Balancing
@@ -54,28 +57,28 @@
  - DNS Recursive Lookup
  - DNS RPZ
 
-Lab. 10 - 抓包 (AxDebug) 
+[Lab. 10 - 抓包 (AxDebug)]
  - Packet Capture Filter
  - Packet Capture Save
 
-Lab. 11 - 高可用性
+[Lab. 11 - 高可用性]
  - Active/Standby
  - Active/Active
  - N+M (Active/Standby/Standby)
  - 配置同步
 
-Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
+[Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)]
  - Shared Partition
  - L3V Partition
  - aVCS
 
-Lab. 13 - 常见问题
+[Lab. 13 - 常见问题]
  - 备份和恢复
  - 软件升级
  - 收集 show techsupport
  - 收集 backup logs
 
-Lab. 14 - 网络层配置
+]Lab. 14 - 网络层配置]
  - 创建 VLAN
  - 创建 Virtual Ethernet IP
  - 创建 路由
