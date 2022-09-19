@@ -24,17 +24,77 @@
   + 健康检查成功时间
     + 5 x1 (Up-Retry) = 5 秒
     
-#### 三层健康检查
-+ Method: Ping (icmp)
+#### 三层健康检查 (Ping)
++ 将以下配置粘贴到 vADC521_01
+  + 为什么需要 health-check-disable?
+  + httpbin 服务器有启用其他健康检查?
+```
+!
+show run slb server httpbin
 
-#### 四层健康检查
-+ Method: Tcp port / Udp port
+```
+
+
+#### 四层健康检查 (Tcp port / Udp port)
++ 将以下配置粘贴到 vADC521_01
+  + 哪些端口启用了第4层健康检查?
+```
+!
+show run slb server web24
+!
+axdebug
+!
+filter 1
+ip 192.168.226.24 /32
+exit
+!
+capture brief
+
+```
+
+```
+!
+ctrl+c
+!
+exit
+
+```
+
 
 #### 七层健康检查
-+  Method: 
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
++ 创建 Health Monitors
+  + 点击 ADC > Health Monitors > Create
+    + Name: hm-http-nginx
+    + Method Type: HTTP
+      + 背一下其他健康检查
+      + Compound 是什么?
+    + HTTP Expect: HTTP Text
+    + HTTP Text: NgInX
+    + 点击 Create
++ 绑定 hm-http-nginx 到 sg-http-tcp80
+  + 点击 ADC > Service Gorups
+    + 修改 sg-http-tcp80
+      + Health Monitor : hm-http-nginx
+      + 点击 Update
++ 保存配置
+  + 点击 "Save"
+
+####
++ 将以下配置粘贴到 vADC521_01
+  + web23, web24 server 健康?
+  + service-group sg-http-tcp80 健康? 
+```
+!
+show slb server
+!
+show slb service-group
+
+```
 
 
 #### 脚本健康检查
+背一下
 + 脚本
   + Shell Script
   + Tcl Script
@@ -42,148 +102,24 @@
   + Python Script
 
 Shell Script Sample
-```
+```bash
+#!/bin/sh
 
-```
+src_ip=$1
+dest_ip=$2
+echo -n "ping $ip ...."
 
-Python Script Sample
-```
+#test server IP, if fail return 1
+ping $dest_ip -I $src_ip  -c 1  > /dev/null
+ret=$?
 
-```
-
-
-
-
-
-
-
-## aFlex Syntex
-  + Event: HTTP_REQUEST
-  + Operator: ends_with
-  + Commands: pool
-```
-when HTTP_REQUEST {
-  if { [HTTP::uri] ends_with ".html" } {
-    pool static_service_group
-  } elseif { [HTTP::uri] ends_with ".asp" } {
-    pool dynamic_service_group
-  }
-}
-
-```
-
-## aFlex example 1
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-  + 创建 aFlex
-    + 点击 Create
-      + Name: log_curl_agent
-      + Definition: 复制并粘贴以下 aflex
-  + 绑定 reject_curl_agent 到 vs80:443
-    + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
-      + 点击 Advanced Fields
-        + aFlex Scripts: log_curl_agent 打上钩
-        + 点击 Update
-      + 点击 Update
-  + 保存配置
-    + 点击 "Save"  
-
-#### aFlex example 1
-  + Event used: HTTP_REQUEST
-  + Operator used: contains
-  + Commands used: [IP::client_addr]. [HTTP::header], pool
-```
-when HTTP_REQUEST {
-  if { [HTTP::header User-Agent] contains "curl" } {
-    log "Client info. : [IP::client_addr] [HTTP::header User-Agent]"
-    pool sg-http-tcp80
-  }
-}
-
-```
-
-#### 粘贴以下命令到 客户端
-  + 并检查 客户端 相应的输出
-```
-curl --interface 192.168.226.21 -k https://192.168.226.80
-
-curl --interface 192.168.226.22 -k https://192.168.226.80
-
-curl --interface 192.168.226.23 -k https://192.168.226.80
-
-curl --interface 192.168.226.24 -k https://192.168.226.80
-
-```
-
-#### 将以下配置粘贴到 vADC521_01
-  + 并检查 
-    + Event
-    + execute, failures and aborts
-```
-!
-show aflex log_curl_agent
-!
-show log
-
-```
-
-
-## aFlex example 2
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-  + 创建 aFlex
-    + 点击 Create
-      + Name: reject_ip21_ip23
-      + Definition: 复制并粘贴以下 aflex
-  + 绑定 reject_ip21_ip23 到 vs80:443
-    + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
-      + 点击 Advanced Fields
-        + aFlex Scripts: reject_ip21_ip23 打上钩
-          + 保持 log_curl_agent 打上钩
-        + 点击 Update
-      + 点击 Update
-  + 保存配置
-    + 点击 "Save"  
-
-#### aFlex example 1
-  + Event used: CLIENT_ACCEPTED
-  + Operator used: equals, or
-  + Commands used: [IP::addr], [IP::client_addr], log, reject
-```
-when CLIENT_ACCEPTED {
-  if { ([IP::addr [IP::client_addr] equals 192.168.226.21]) or ([IP::addr [IP::client_addr] equals 192.168.226.23]) } {
-    log "Reject connection from [IP::client_addr]"
-    reject
-  }
-}
-
-```
-
-#### 粘贴以下命令到 客户端
-  + 并检查 客户端 相应的输出
-```
-curl --interface 192.168.226.21 -k https://192.168.226.80
-
-curl --interface 192.168.226.22 -k https://192.168.226.80
-
-curl --interface 192.168.226.23 -k https://192.168.226.80
-
-curl --interface 192.168.226.24 -k https://192.168.226.80
-
-```
-
-#### 将以下配置粘贴到 vADC521_01
-  + aFlex 配置的顺序是什么?
-```
-!
-show aflex log_curl_agent
-!
-show aflex reject_ip21_ip23
-!
-show log
-!
-show run slb virtual-server
-
+if test $ret == 0 ; then
+  echo "OK"
+  exit 0
+else
+  echo "Fail"
+  exit 1
+fi
 ```
 
 
