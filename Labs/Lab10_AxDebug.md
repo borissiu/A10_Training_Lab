@@ -14,9 +14,11 @@ axdebug
 !
 filter 1
 ip 192.168.2.21 /32
+exit
 !
 filter 2
 ip 192.168.2.23 /32
+exit
 !
 show axdebug filter
 
