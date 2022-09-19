@@ -57,7 +57,7 @@
  - DNS Recursive Lookup
  - DNS RPZ
 
-[Lab. 10 - 抓包 (AxDebug)]
+[Lab. 10 - 抓包 (AxDebug)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab10_AxDebug.md)
  - Packet Capture Filter
  - Packet Capture Save
 
