@@ -44,7 +44,7 @@
  - aFlex Example 2 (网络层)
  - aFlex Statistics
 
-[Lab. 8 - 健康检查]
+[Lab. 8 - 健康检查](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab09_HealthMonitor.md)
  - 三层健康检查
  - 四层健康检查
  - 七层健康检查
