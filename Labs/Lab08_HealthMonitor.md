@@ -7,7 +7,7 @@
  - 脚本健康检查
 
 | 健康检查| 三层| 四层| 七层| 脚本|
-| -| -| -| -| -|
+| --- | --- | --- | --- | --- |
 | Server | ON| ON| OFF| OFF|
 | Service Group| OFF| OFF| OFF| OFF|
 
