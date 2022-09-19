@@ -72,7 +72,7 @@
  - L3V Partition
  - aVCS
 
-[Lab. 13 - 常见问题 (FAQ)]
+[Lab. 13 - 常见问题 (FAQ)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab13_FAQ.md)
  - 备份和恢复
  - 软件升级
  - 收集 show techsupport
