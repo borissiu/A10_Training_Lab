@@ -16,7 +16,7 @@
 
 + 默认设置
   + Method: Ping (icmp)
-  + **背一下**
+  + 背一下
     + Inteval: 5 seconds, Timeout: 5
     + Retry: 3, Up-Retry: 1
   + 健康检查失败时间
