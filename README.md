@@ -2,7 +2,7 @@
 ---
 
 # A10 Training Lab
-Lab. 1 - Basic SLB
+[Lab. 1 - Basic SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab1_Basic_SLB.md)
  - UDP Load Balancing
  - TCP Load Balancing
 
