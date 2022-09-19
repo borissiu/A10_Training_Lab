@@ -274,3 +274,5 @@ interface management
 + vADC521_02 和 vADC521_03, 都能 ping 通 114.114.114.114 
 + vADC521_02 和 vADC521_03, 都能 ping 通客户端和服务器
 + SSH 和 GUI 能登录 vADC521_02 和 vADC521_03 (用户名=admin, 密码=a10)
+
+[返回 A10 Training Lab. 主页](https://github.com/borissiu/A10_Training_Lab)
