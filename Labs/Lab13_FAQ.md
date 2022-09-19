@@ -7,9 +7,13 @@
  - 收集 backup logs
 
 #### 备份和恢复
+
 #### 软件升级
+
 #### 收集 show techsupport
-![show techsupport](Images/ShowTech.png)
+![收集 show techsupport](/Images/ShowTech.png)
+
 #### 收集 backup logs
+![收集 backup logs](/Images/BackupLog.png)
 
 [返回 A10 Training Lab. 主页](https://github.com/borissiu/A10_Training_Lab)
