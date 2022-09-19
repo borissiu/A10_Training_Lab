@@ -25,17 +25,17 @@ Lab. 4 - 负载均衡算法
  - Service Weighted Round Robin
  - Service Weighted Least Connection
 
-Lab. 5 - 会话保持
- - Priority
+Lab. 5 - 优先权 和 会话保持
+ - Priority 优先权
  - IP based 会话保持
  - Cookie based 会话保持
 
-Lab. 6 - 会话保持
+Lab. 6 - 应用加速
  - 连接复用 (Connection Reuse)
  - HTTP 缓存 (RAM Cache)
  - HTTP 压缩 (HTTP Compression)
 
-Lab. 7 - aFlex
+Lab. 7 - aFlex (Tcl 脚本)
  - aFlex Syntex
  - aFlex Example 1
  - aFlex Example 2
@@ -52,16 +52,25 @@ Lab. 9 - GSLB配置1
  - Geo Location DB
 
 Lab. 10 - AxDebug
- - Packet Capture
  - Packet Capture Filter
  - Packet Capture Save
 
-Lab. 11 - Active/Standby配置
+Lab. 11 - 高可用性
+ - Active/Standby
+ - Active/Active
+ - N+M
+ - 配置同步
 
-Lab. 12 - aVCS
+Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
+ - Shared Partition
+ - L3V Partition
+ - aVCS
 
-Lab. 13 - 常见问题及处理
-
+Lab. 13 - 常见问题
+ - 备份和恢复
+ - 软件升级
+ - 收集 show techsupport
+ - 收集 backup logs
 
 #### Working in progress
 ```
