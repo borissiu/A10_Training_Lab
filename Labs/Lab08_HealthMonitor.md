@@ -16,7 +16,7 @@
 
 + 默认设置
   + Method: Ping (icmp)
-  + <mark>背一下</mark>
+  + <font color="red">背一下</font>
     + Inteval: 5 seconds, Timeout: 5
     + Retry: 3, Up-Retry: 1
   + 健康检查失败时间
