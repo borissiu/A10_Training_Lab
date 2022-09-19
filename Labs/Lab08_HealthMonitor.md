@@ -128,6 +128,7 @@ else
 fi
 ```
 
++ Passing 2 arguments to Shell Script
 ```
 health monitor hm-llb-gw
   method external program ping_src arguments "ve2983 120.238.38.97"
