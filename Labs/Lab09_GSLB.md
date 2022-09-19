@@ -2,7 +2,6 @@
 
 ## Lab. 9 - GSLB
 - GSLB 配置
-- Geo Location DB
 
 #### 将以下配置粘贴到 vADC521_01
 ```

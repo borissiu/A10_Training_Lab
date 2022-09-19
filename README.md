@@ -52,7 +52,6 @@
 
 [Lab. 9 - GSLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab10_AxDebug.md)
  - GSLB 配置
- - Geo Location DB
 
 [Lab. 10 - 抓包 (AxDebug)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab10_AxDebug.md)
  - Packet Capture Filter
