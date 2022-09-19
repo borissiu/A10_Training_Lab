@@ -7,10 +7,17 @@
  - 脚本健康检查
 
 #### 默认设置
+  + 背一下
 | 健康检查| 三层| 四层| 七层| 脚本|
 | --- | --- | --- | --- | --- |
 | Server | ON| ON| OFF| OFF|
 | Service Group| OFF| OFF| OFF| OFF|
+
+  + 默认设置
+    + Method: Ping (icmp)
+    + 背一下
+      + Inteval: 5 seconds, Timeout: 5
+      + Retry: 3, Up-Retry: 1
 
 #### 三层健康检查
 + 默认设置
