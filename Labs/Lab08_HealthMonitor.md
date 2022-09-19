@@ -94,8 +94,7 @@ show slb service-group
 
 
 #### 脚本健康检查
-背一下
-+ 脚本
++ 脚本 (背一下)
   + Shell Script
   + Tcl Script
   + Perl Script
