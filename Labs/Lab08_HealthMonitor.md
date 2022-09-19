@@ -80,10 +80,9 @@ exit
 + 保存配置
   + 点击 "Save"
 
-####
-+ 将以下配置粘贴到 vADC521_01
-  + web23, web24 server 健康?
-  + service-group sg-http-tcp80 健康? 
+#### 将以下配置粘贴到 vADC521_01
++ web23, web24 server 健康?
++ service-group sg-http-tcp80 健康? 
 ```
 !
 show slb server
@@ -91,6 +90,13 @@ show slb server
 show slb service-group
 
 ```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 修改 hm-http-nginx Health Monitors
++ HTTP Text: nginx
+  + 点击 Update
++ 保存配置
+  + 点击 "Save"
 
 
 #### 脚本健康检查
