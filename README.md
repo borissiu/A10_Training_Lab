@@ -78,7 +78,7 @@
  - 收集 show techsupport
  - 收集 backup logs
 
-[Lab. 14 - 网络层配置]
+[Lab. 14 - 网络层配置](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab14_L23_Setup.md)
  - 创建 VLAN
  - 创建 Virtual Ethernet IP
  - 创建 路由
