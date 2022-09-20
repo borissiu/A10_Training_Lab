@@ -76,6 +76,8 @@ show run vlan
 !
 show run interface
 !
+show run enable-management
+
 ```
 
 #### Server Status Check (slb, gslb)
@@ -129,7 +131,19 @@ show version
 !
 show interface brief
 !
+show interface ethernet
+!
+show interface ve
+!
+show interface trunk
+!
+show interface media
+!
+show interface statistics
+!
 show vlan
+!
+show vlan counters
 !
 show mac
 !
@@ -159,6 +173,53 @@ show environment
 show hardware
 
 ```
+
+#### 显示 SSH/GUI/AxAPI 信息
+```
+show admin session
+clear admin session all
+```
+
+#### 显示 bootimage & startup-config 信息
+```
+show bootimage
+show startup-config all
+show startup-config
+show startup-config all-partition
+```
+
+#### 显示 snmp 信息
+```
+show snmp stats
+```
+
+## Check Connectivity
+```
+show run ip dns
+ping 114.114.114.114
+ping 114.114.114.114 use-mgmt-port
+ping www.baidu.com
+```
+
+## Check Mgmt setting
+```
+show run enable-management
+```
+
+## Check Access Control List
+```
+show run access-list
+show access-list
+```
+
+## Check Clock
+```
+show run ntp
+show ntp status
+show clock
+show timezone
+```
+
 
 #### 收集 show techsupport
 ![收集 show techsupport](/Images/ShowTech.png)
