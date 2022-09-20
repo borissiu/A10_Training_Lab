@@ -27,7 +27,6 @@ slb virtual-server vip 192.168.2.31
     service-group sg-dns-udp53
 !
 end
-write memory
 
 ```
 
@@ -130,6 +129,16 @@ show slb service-group
 show run slb virtual-server
 !
 show slb virtual-server
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+!
+write memory lab01
+y
+!
+show run slb
 
 ```
 
