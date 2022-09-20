@@ -124,6 +124,8 @@ Start vADC521_01
 
 #### 配置第一台 vADC (通过 VMWare 控制台) 
 ```
+enable
+!
 configure terminal
 !
 interface ethernet 1
