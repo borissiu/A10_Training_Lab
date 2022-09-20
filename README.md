@@ -2,7 +2,7 @@
 ---
 
 # A10 Training Lab
-[Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Lab_Setup.md)
+[Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab00_Setup.md)
  - (i)vADC, (ii)客户端和 (iii)服务器 必须能够上网
 
 [Lab. 1 - Basic SLB](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab01_Basic_SLB.md)
