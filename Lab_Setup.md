@@ -44,11 +44,11 @@ Virtual Hardware
   + 选择 4+ vCPU
   + 选择 4+ GB Memory
   + 选择 20GB disk
-  + 必须 Network Adapter 1
-  + 必须 Network Adapter 2
-  + 可选 Network Adapter 3
-  + 可选 Network Adapter 4
-  + 可选 Network Adapter 5
+  + 必须 Network Adapter 1 (内网)
+  + 必须 Network Adapter 2 (能够上网)
+  + 可选 Network Adapter 3 (内网)
+  + 可选 Network Adapter 4 (内网)
+  + 可选 Network Adapter 5 (内网)
   + CD/DVD Drive: Data Store ISO file (选择 ACOS_vThunder_5_2_1-p5_114.ISO)
 Power on the NEW Virtual Machine
   + 等待 localhost login:
@@ -57,12 +57,18 @@ Power on the NEW Virtual Machine
 Logon vADC and then Shutdown it
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
     + username=admin, password=a10
-    + enable
+    + enable (no enable password, just press "Enter")
     + shutdown
+Check vADC521_01 Virtual Machine Network Adapter 顺序
+    + Network Adapter 1 (内网)
+    + Network Adapter 2 (能够上网)
+    + Network Adapter 3 (内网)
+    + Network Adapter 4 (内网)
+    + Network Adapter 5 (内网)
 Start vADC521_01
   + vThunder login:
     + username=admin, password=a10
-    + enable
+    + enable (no enable password, just press "Enter")
     + show interface brief (you should see 5 NICs)
 ```
 
@@ -116,8 +122,36 @@ Start vADC521_01
     + enable
 ```
 
+#### 配置第一台 vADC (通过 VMWare 控制台) 
+```
+configure terminal
+!
+interface ethernet 1
+  enable
+!
+vlan 10
+  untag ethernet 1
+  route ve 10
+!
+interface ve 10
+  ip address 192.168.2.151 /24
+!
+ip route 0.0.0.0 /0 192.168.2.1
+!
+enable-management service ssh
+  ve 10
+end
+!
+ping 8.8.8.8
+
+```
+
+#### 通过 SSH 添加配置 
 #### 将以下配置复制并粘贴到 vADC
 ```
+!
+enable
+!
 configure terminal
 !
 system shared-poll-mode enable
@@ -136,32 +170,20 @@ terminal idle-timeout 0
 web-service gui-timeout-policy idle 0
 !
 interface management
-  ip add 192.168.247.11 /24
+  ip add 192.168.1.151 /24
+  ip default-gateway 192.168.1.1
 !
-interface ethernet 1
-  enable
 interface ethernet 2
   enable
-!
-vlan 10
-  untag ethernet 1
-  route ve 10
-!
-interface ve 10
-  ip address 192.168.226.11 /24
-  enable
-  name Data
 !
 vlan 20
   untag ethernet 2
   route ve 20
 !
 interface ve 20
-  ip address 10.10.10.11 /24
+  ip address 10.10.10.151 /24
   enable
   name Heartbeat
-!
-ip route 0.0.0.0 /0 192.168.226.2
 !
 enable-management service ssh
   ve 10
@@ -172,7 +194,7 @@ enable-management service https
 enable-management service snmp
   ve 10
 end
-write memory
+write memory lab00
 !
 ```
 
