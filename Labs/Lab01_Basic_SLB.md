@@ -21,7 +21,7 @@ slb service-group sg-dns-udp53 udp
   member dns5 53
   member dns6 53
 !
-slb virtual-server vs53 192.168.226.53
+slb virtual-server vip 192.168.226.31
   port 53 udp
     source-nat auto
     service-group sg-dns-udp53
@@ -34,7 +34,7 @@ write memory
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..9}; do dig +short @192.168.226.53 www.a10networks.com; done
+for i in {1..9}; do dig +short @192.168.226.31 www.a10networks.com; done
 
 ```
 
@@ -75,20 +75,20 @@ show slb virtual-server
   + Member:
     + 添加 dns5, port 53
     + 添加 dns6, port 53
-+ 替 vs53 添加 Virtual Port
++ 替 vip 添加 Virtual Port
   + Protocol: TCP
   + Port: 53
   + Source NAT Auto: Enable
   + Service Group: sg-dns-tcp53
 + 点击 Dashboard > Services Map
-  + 替 vs53 打上钩 
+  + 替 vip 打上钩 
 + 保存配置
   + 点击 "Save"  
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..10}; do dig +short +tcp @192.168.226.53 www.utstar.com; done
+for i in {1..10}; do dig +short +tcp @192.168.226.31 www.utstar.com; done
 
 ```
 
