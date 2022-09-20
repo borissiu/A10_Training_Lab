@@ -32,7 +32,7 @@ IP Addresses 示例
 | vADC521_10 | 10.10.10.30 | | 10.240.70.30 | .70.40 | .70.50 | 10.1.1.30 | | 10.240.70.21 | 10.2.2.30 |
 
 ## ESXi
-+ 安装第一台 (i) A10 vADC
+## 安装第一台 (i) A10 vADC
 ```
 Run VMWare ESXi
 Create a NEW Virtual Machine
@@ -106,7 +106,7 @@ ping 8.8.8.8
 
 ```
 
-#### 通过 SSH 添加配置 
+#### 通过 SSH 添加配置 (e.g. SSH admin@192.168.2.151 )
 #### 将以下配置复制并粘贴到 vADC
 ```
 !
