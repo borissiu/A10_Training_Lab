@@ -50,7 +50,13 @@ Virtual Hardware
   + 可选 Network Adapter 4 (内网)
   + 可选 Network Adapter 5 (内网)
   + CD/DVD Drive: Data Store ISO file (选择 ACOS_vThunder_5_2_1-p5_114.ISO)
-Power on the NEW Virtual Machine
+Check Virtual Machine Network Adapter 顺序
+    + Network Adapter 1 (内网)
+    + Network Adapter 2 (能够上网)
+    + Network Adapter 3 (内网)
+    + Network Adapter 4 (内网)
+    + Network Adapter 5 (内网)
+Power on the NEW Virtual Machine (Check NICs before Power On)
   + 等待 localhost login:
     + username=install, password=password
     + continue=YesS
@@ -58,18 +64,8 @@ Logon vADC and then Shutdown it
   + 等待 vThunder login: (vThunder(LOADING)> mean vADC NOT yet bootup)
     + username=admin, password=a10
     + enable (no enable password, just press "Enter")
-    + shutdown
-Check vADC521_01 Virtual Machine Network Adapter 顺序
-    + Network Adapter 1 (内网)
-    + Network Adapter 2 (能够上网)
-    + Network Adapter 3 (内网)
-    + Network Adapter 4 (内网)
-    + Network Adapter 5 (内网)
-Start vADC521_01
-  + vThunder login:
-    + username=admin, password=a10
-    + enable (no enable password, just press "Enter")
     + show interface brief (you should see 5 NICs)
+
 ```
 
 ## 配置第一台 vADC (通过 VMWare 控制台) 
