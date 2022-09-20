@@ -199,7 +199,7 @@ end
 write memory lab00
 y
 !
-show start all
+show startup-config all
 
 ```
 
@@ -221,13 +221,16 @@ Customize Hardware
 Power on the NEW Virtual Machine
   + Install Ubuntu
   + 必须修改 NIC-1
-      ip address 192.168.247.21/24 (Not DHCP)
+      ip address 192.168.1.155/24 (Not DHCP)
   + 必须修改 NIC-2
-      ip address 192.168.226.21/24 (Not DHCP)
-      gateway 192.168.226.2
+      ip address 192.168.2.155/24 (Not DHCP)
+      gateway 192.168.2.1
       dns 114.114.114.114
   + 必须添加安装
       Open SSH Server
+Reboot after installing Ubuntu Server
+  + Remove the ISO
+
 ```
 
 ## 配置客户端和服务器 
@@ -236,6 +239,9 @@ Power on the NEW Virtual Machine
 # 配置 NTP 
 sudo timedatectl set-timezone Asia/Shanghai
 sudo systemctl restart systemd-timesyncd.service
+
+# 配置 net-tools 
+sudo apt -y install net-tools
 
 # 配置 WebServer 
 sudo apt-get -y install nginx
@@ -253,10 +259,10 @@ network:
   ethernets:
     ens33:
       addresses:
-      - 192.168.247.21/24
+      - 192.168.1.155/24
     ens34:
-      addresses: [192.168.226.21/24, 192.168.226.22/24, 192.168.226.23/24, 192.168.226.24/24]
-      gateway4: 192.168.226.2
+      addresses: [192.168.2.155/24, 192.168.2.156/24, 192.168.2.157/24, 192.168.2.158/24]
+      gateway4: 192.168.2.1
       nameservers:
         addresses: [114.114.114.114]
         search: []
