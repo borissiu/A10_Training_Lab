@@ -5,7 +5,7 @@
     + 下载 https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 每台 vADC 最少 4 vCPU (建议 4+ vCPU)
     + 每台 vADC 必须 2 网卡 (或更多)
-    + 每台 vADC 最少 4GB 内存
+    + 每台 vADC 最少 6GB 内存
     + 每台 vADC 最少 16G 磁盘
 2. 安装 (ii)两个客户端 和 (iii)两个服务器
     + 下载 https://ubuntu.com/download/server
@@ -156,6 +156,9 @@ end
 write memory lab00
 y
 !
+reboot
+!
+yes
 
 ```
 
@@ -163,7 +166,7 @@ y
 ```
 Create a NEW Virtual Machine
 Virtual machine name
-  + ubuntu_01
+  + ubuntu_101
   + 选择 20G disk, Store virtual disk into multiple files
   + 选择 Ubuntu-22.04.1-live-server-amd64.ISO, Linux, Ubuntu 64-bit
 Customize Hardware
@@ -187,7 +190,7 @@ Reboot after installing Ubuntu Server
 ```
 
 ## 配置客户端和服务器 
-将以下配置复制并粘贴到 Ubuntu01
+将以下配置复制并粘贴到 Ubuntu101
 ```
 # 配置 NTP 
 sudo timedatectl set-timezone Asia/Shanghai
