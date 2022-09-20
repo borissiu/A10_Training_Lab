@@ -141,7 +141,7 @@ vlan 20
   route ve 20
 !
 interface ve 20
-  ip address 10.10.10.151 /24
+  ip address 10.1.1.151 /24
   enable
   name Heartbeat
 !
@@ -266,8 +266,8 @@ interface ve 10
   no ip address 192.168.2.151 /24
 !
 interface ve 20
-  ip address 10.10.10.152 /24
-  no ip address 10.10.10.151 /24
+  ip address 10.1.1.152 /24
+  no ip address 10.1.1.151 /24
 !
 write memory
 
@@ -287,8 +287,8 @@ interface ve 10
   no ip address 192.168.2.151 /24
 !
 interface ve 20
-  ip address 10.10.10.153 /24
-  no ip address 10.10.10.151 /24
+  ip address 10.1.1.153 /24
+  no ip address 10.1.1.151 /24
 !
 write memory
 
