@@ -42,7 +42,7 @@ Create a NEW Virtual Machine
   + Standard storage
 Virtual Hardware
   + 选择 4+ vCPU
-  + 选择 4+ GB Memory
+  + 选择 6+ GB Memory
   + 选择 20GB disk
   + 必须 Network Adapter 1 (内网)
   + 必须 Network Adapter 2 (能够上网)
