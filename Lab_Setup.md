@@ -23,7 +23,7 @@ Run VMWare Workstation
     + Check IP subnet of VMNet8 (Type : NAT)
 
 IP Addresses 示例
-| Device | Mgmt | Eth1 | VS | NAT | Eth2 | Eth3 | Eth4 |
+| Device | Mgmt | Eth1 | Virtual Server | Source NAT | Eth2 | Eth3 | Eth4 |
 |---|---|---|---|---|---|---|---|
 | 客户端_1 | 10.10.10.51 | 10.240.70.51 | | | | | |
 | 客户端_2 | 10.10.10.52 | 10.240.70.52 | | | | | |
