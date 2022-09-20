@@ -21,7 +21,7 @@ slb service-group sg-dns-udp53 udp
   member dns5 53
   member dns6 53
 !
-slb virtual-server vip 192.168.226.31
+slb virtual-server vip 192.168.2.31
   port 53 udp
     source-nat auto
     service-group sg-dns-udp53
@@ -34,7 +34,7 @@ write memory
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..9}; do dig +short @192.168.226.31 www.a10networks.com; done
+for i in {1..9}; do dig +short @192.168.2.31 www.a10networks.com; done
 
 ```
 
@@ -88,7 +88,7 @@ show slb virtual-server
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..10}; do dig +short +tcp @192.168.226.31 www.utstar.com; done
+for i in {1..10}; do dig +short +tcp @192.168.2.31 www.utstar.com; done
 
 ```
 
