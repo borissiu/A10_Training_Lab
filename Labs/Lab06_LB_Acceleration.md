@@ -119,6 +119,22 @@ show cache stats vs80 443
 
 ```
 
+#### 了解清楚, 再背三下
++ (1) 默认缓存, 除非 web 服务器响应拒绝缓存
++ (2) 以下 HTTP Response Status code 将被缓存
+  + 200 OK
+  + 203 Non-Authoritative response
+  + 300 Multiple Choices
+  + 301 Moved Permanently
+  + 302 Found (only if Expires header is also present)
+  + 410 Gone
++ (3) 以下 HTTP Response Header 将不被缓存
+  + Does not support client HTTP range requests (they are sent to the servers)
+  + Does not cache server responses with "Vary" header (except "Vary: Accept-Encoding")
+  + Does not cache server responses with "Warning" header
+  + Does not cache server responses if requests had an "Authorization" header (even if the server specifies "Cache-Control: public”)
+  + Does not cache incomplete (partial) responses
+
 
 ## HTTP Compression
 #### 将以下配置粘贴到 vADC521_01
@@ -149,6 +165,12 @@ repeat 2 show slb compression vs80 443
 curl -sH 'Accept-encoding: gzip' -k https://192.168.226.80 | gunzip
 
 ```
+
+#### 默认情况下，以下对象将被压缩
++ 背一下
+  + Text, e.g. html/css/js
+  + App, e.g. doc/xls/ppt/pdf
+
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
   + 点击 ADC > Statistics > Applications

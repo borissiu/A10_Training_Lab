@@ -6,6 +6,7 @@
  - 七层健康检查
  - 脚本健康检查
 
+
 #### 默认设置
 + 背一下
 
@@ -83,11 +84,16 @@ exit
 #### 将以下配置粘贴到 vADC521_01
 + web23, web24 server 健康?
 + service-group sg-http-tcp80 健康? 
++ 背一下
 ```
 !
 show slb server
 !
 show slb service-group
+!
+show health monitor
+!
+show health stat
 
 ```
 
