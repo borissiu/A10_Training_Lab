@@ -98,11 +98,13 @@ enable-management service ssh
   ve 10
 end
 !
+!
+!
 ping 8.8.8.8
 
 ```
 
-#### 通过 SSH 添加配置 (e.g. SSH admin@10.240.70.151 )
+#### 通过 SSH 添加配置 (e.g. SSH admin@10.240.70.21 )
 #### 将以下配置复制并粘贴到 vADC
 ```
 !
@@ -151,7 +153,9 @@ enable-management service snmp
   ve 10
 end
 !
-show startup-config all
+write memory lab00
+y
+!
 
 ```
 
@@ -232,11 +236,10 @@ sudo netplan apply
 + SSH 和 GUI 能登录 vADC (用户名=admin, 密码=a10)
 + SSH 能登录客户端和服务器
 
+
 ## 配置第 2 和第 3 台 A10 vADC 
 #### Shutdown vADC521_01 before Clone
 ```
-write memory lab00
-y
 !
 shutdown
 ```
