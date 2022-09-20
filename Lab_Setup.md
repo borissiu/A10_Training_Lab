@@ -22,7 +22,24 @@ Run VMWare Workstation
     + Check IP subnet of VMNet1 (Type : Host-Only)
     + Check IP subnet of VMNet8 (Type : NAT)
 
-IP Addresses 示例 
+IP Addresses 示例
+| Device | Mgmt | Eth1 | VS | NAT | Eth2 | Eth3 | Eth4 |
+|---|---|---|---|---|---|---|---|
+| 客户端_1 | 10.10.10.x | 10.240.70.x | | | | | |
+| 客户端_2 | 10.10.10.x | 10.240.70.x | | | | | |
+| 服务器_1 | 10.10.10.x | 10.240.70.x | | | | | |
+| 服务器_2 | 10.10.10.x | 10.240.70.x | | | | | |
+| vADC521_01 | 10.10.10.21 | 10.240.70.21 | .70.31 | .70.41 | 10.1.1.31 | 10.240.70.21 | 10.2.2.31 |
+| vADC521_02 | 10.10.10.22 | 10.240.70.22 | .70.32 | .70.42 | 10.1.1.32 | 10.240.70.21 | 10.2.2.32 |
+| vADC521_03 | 10.10.10.23 | 10.240.70.23 | .70.33 | .70.43 | 10.1.1.33 | 10.240.70.21 | 10.2.2.33 |
+| vADC521_04 | 10.10.10.24 | 10.240.70.24 | .70.34 | .70.44 | 10.1.1.34 | 10.240.70.21 | 10.2.2.34 |
+| vADC521_05 | 10.10.10.25 | 10.240.70.25 | .70.35 | .70.45 | 10.1.1.35 | 10.240.70.21 | 10.2.2.35 |
+| vADC521_06 | 10.10.10.26 | 10.240.70.26 | .70.36 | .70.46 | 10.1.1.36 | 10.240.70.21 | 10.2.2.36 |
+| vADC521_07 | 10.10.10.27 | 10.240.70.27 | .70.37 | .70.47 | 10.1.1.37 | 10.240.70.21 | 10.2.2.37 |
+| vADC521_08 | 10.10.10.28 | 10.240.70.28 | .70.38 | .70.48 | 10.1.1.38 | 10.240.70.21 | 10.2.2.38 |
+| vADC521_09 | 10.10.10.29 | 10.240.70.29 | .70.39 | .70.49 | 10.1.1.39 | 10.240.70.21 | 10.2.2.39 |
+| vADC521_10 | 10.10.10.30 | 10.240.70.30 | .70.40 | .70.50 | 10.1.1.40 | 10.240.70.21 | 10.2.2.40 |
+
 |  | vADC521_01 | vADC521_02 | vADC521_03 | 客户端_1 | 客户端_2 | 服务器_1 | 服务器_2 |
 |---|---|---|---|---|---|---|---|
 | Mgmt | 192.168.247.11 | 192.168.247.12 | 192.168.247.13 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 | 192.168.247.21 |
@@ -196,8 +213,6 @@ enable-management service https
 enable-management service snmp
   ve 10
 end
-write memory lab00
-y
 !
 show startup-config all
 
@@ -285,7 +300,9 @@ sudo netplan apply
 ## 配置第 2 和第 3 台 A10 vADC 
 #### Shutdown vADC521_01 before Clone
 ```
-write memory
+write memory lab00
+y
+!
 shutdown
 ```
 
@@ -297,48 +314,46 @@ Select vADC521_01
   + Click VM > Manage > Clone > Select "Current State" > Select "Create a FULL clone" > Change Virtual Name to vADC521_03
 ```
 
-#### 修改第2台 vADC 配置
+#### 修改第2台 vADC 配置 (通过 VMWare 控制台)
 ```
 configure terminal
 !
 hostname vADC521_02
 !
+interface management
+  ip add 192.168.1.152 /24
+!
 interface ve 10
-  ip address 192.168.226.12 /24
-  no ip address 192.168.226.11 /24
+  ip address 192.168.2.152 /24
+  no ip address 192.168.2.151 /24
+!
 interface ve 20
-  ip address 10.10.10.12 /24
-  no ip address 10.10.10.11 /24
+  ip address 10.10.10.152 /24
+  no ip address 10.10.10.151 /24
 !
 write memory
-!
-interface management
-  ip add 192.168.247.12 /24
-!
-!!! Connection Lost after changing mgmt IP
-!!! Reconnect via NEW mgmt IP and then "Write Memory"
+
 ```
 
-#### 修改第3台 vADC 配置
+#### 修改第3台 vADC 配置 (通过 VMWare 控制台)
 ```
 configure terminal
 !
 hostname vADC521_03
 !
+interface management
+  ip add 192.168.1.153 /24
+!
 interface ve 10
-  ip address 192.168.226.13 /24
-  no ip address 192.168.226.11 /24
+  ip address 192.168.2.153 /24
+  no ip address 192.168.2.151 /24
+!
 interface ve 20
-  ip address 10.10.10.13 /24
-  no ip address 10.10.10.11 /24
+  ip address 10.10.10.153 /24
+  no ip address 10.10.10.151 /24
 !
 write memory
-!
-interface management
-  ip add 192.168.247.13 /24
-!
-!!! Connection Lost after changing mgmt IP
-!!! Reconnect via NEW mgmt IP and then "Write Memory"
+
 ```
 
 ## 基本测试
