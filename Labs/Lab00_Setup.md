@@ -5,8 +5,8 @@
     + 下载 https://a10networks.sharefile.com/d-s50d9c08c840b49b68f50db1647596692
     + 每台 vADC 最少 4 vCPU (建议 4+ vCPU)
     + 每台 vADC 必须 2 网卡 (或更多)
-    + 每台 vADC 最少 6GB 内存
-    + 每台 vADC 最少 16G 磁盘
+    + 每台 vADC 最少 6 GB 内存
+    + 每台 vADC 最少 16 GB 磁盘
 2. 安装 (ii)两个客户端 和 (iii)两个服务器
     + 下载 https://ubuntu.com/download/server
     + 可考虑用多个IP address(es), 把(ii)和(iii)配置在同一台服务器上
