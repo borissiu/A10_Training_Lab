@@ -16,10 +16,10 @@
 IP Addresses 示例
 | Device | Mgmt | | Eth1 | Virtual Server | Source NAT | Eth2 | | Eth3 | Eth4 |
 |---|---|---|---|---|---|---|---|---|---|
-| 客户端_1    | 10.10.10.xx | | 10.240.70.dhcp | | | | | | |
-| 客户端_2    | 10.10.10.xx | | 10.240.70.dhcp | | | | | | |
-| 服务器_1    | 10.10.10.101| | 10.240.70.101| | | | | | |
-| 服务器_2    | 10.10.10.102| | 10.240.70.102| | | | | | |
+| 客户端_1    | 10.10.10.99 | | 10.240.70.xx | | | | | | |
+| 客户端_2    |             | | 10.240.70.yy | | | | | | |
+| 服务器_1    |             | | 10.240.70.101| | | | | | |
+| 服务器_2    |             | | 10.240.70.102| | | | | | |
 | vADC521_01 | 10.10.10.21 | | 10.240.70.21 | .70.31 | .70.161| 10.1.1.21 | | 10.240.70.21 | 10.2.2.21 |
 | vADC521_02 | 10.10.10.22 | | 10.240.70.22 | .70.32 | .70.162| 10.1.1.22 | | 10.240.70.21 | 10.2.2.22 |
 | vADC521_03 | 10.10.10.23 | | 10.240.70.23 | .70.33 | .70.43 | 10.1.1.23 | | 10.240.70.21 | 10.2.2.23 |
@@ -94,9 +94,9 @@ vlan 10
   route ve 10
 !
 interface ve 10
-  ip address 192.168.2.151 /24
+  ip address 10.240.70.21 /24
 !
-ip route 0.0.0.0 /0 192.168.2.1
+ip route 0.0.0.0 /0 10.240.70.1
 !
 enable-management service ssh
   ve 10
@@ -106,7 +106,7 @@ ping 8.8.8.8
 
 ```
 
-#### 通过 SSH 添加配置 (e.g. SSH admin@192.168.2.151 )
+#### 通过 SSH 添加配置 (e.g. SSH admin@10.240.70.151 )
 #### 将以下配置复制并粘贴到 vADC
 ```
 !
@@ -130,8 +130,8 @@ terminal idle-timeout 0
 web-service gui-timeout-policy idle 0
 !
 interface management
-  ip add 192.168.1.151 /24
-  ip default-gateway 192.168.1.1
+  ip add 10.10.10.21 /24
+  ip default-gateway 10.10.10.1
 !
 interface ethernet 2
   enable
@@ -141,7 +141,7 @@ vlan 20
   route ve 20
 !
 interface ve 20
-  ip address 10.1.1.151 /24
+  ip address 10.1.1.21 /24
   enable
   name Heartbeat
 !
@@ -174,10 +174,10 @@ Customize Hardware
 Power on the NEW Virtual Machine
   + Install Ubuntu
   + 必须修改 NIC-1
-      ip address 192.168.1.155/24 (Not DHCP)
+      ip address 10.10.10.99/24 (Not DHCP)
   + 必须修改 NIC-2
-      ip address 192.168.2.155/24 (Not DHCP)
-      gateway 192.168.2.1
+      ip address 10.240.70.101/24 (Not DHCP)
+      gateway 10.240.70.1
       dns 114.114.114.114
   + 必须添加安装
       Open SSH Server
@@ -203,7 +203,8 @@ sudo apt-get -y install nginx
 sudo cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
 ```
 
-#### 配置示例 - 添加额外的ip地址 
+#### 配置示例 - 添加额外的ip地址
++ Change xx & yy to IP not yet use
 ```
 # boris@ubuntu100:~$ more /etc/netplan/00-installer-config.yaml
 
@@ -212,10 +213,10 @@ network:
   ethernets:
     ens33:
       addresses:
-      - 192.168.1.155/24
+      - 10.10.10.99/24
     ens34:
-      addresses: [192.168.2.155/24, 192.168.2.156/24, 192.168.2.157/24, 192.168.2.158/24]
-      gateway4: 192.168.2.1
+      addresses: [10.240.70.xx/24, 10.240.70.yy/24, 10.240.70.101/24, 10.240.70.102/24]
+      gateway4: 10.240.70.1
       nameservers:
         addresses: [114.114.114.114]
         search: []
@@ -259,15 +260,15 @@ configure terminal
 hostname vADC521_02
 !
 interface management
-  ip add 192.168.1.152 /24
+  ip add 10.10.10.22 /24
 !
 interface ve 10
-  ip address 192.168.2.152 /24
-  no ip address 192.168.2.151 /24
+  ip address 10.240.70.22 /24
+  no ip address 10.240.70.21 /24
 !
 interface ve 20
-  ip address 10.1.1.152 /24
-  no ip address 10.1.1.151 /24
+  ip address 10.1.1.22 /24
+  no ip address 10.1.1.21 /24
 !
 write memory
 
@@ -280,15 +281,15 @@ configure terminal
 hostname vADC521_03
 !
 interface management
-  ip add 192.168.1.153 /24
+  ip add 10.10.10.23 /24
 !
 interface ve 10
-  ip address 192.168.2.153 /24
-  no ip address 192.168.2.151 /24
+  ip address 10.240.70.23 /24
+  no ip address 10.240.70.21 /24
 !
 interface ve 20
-  ip address 10.1.1.153 /24
-  no ip address 10.1.1.151 /24
+  ip address 10.1.1.23 /24
+  no ip address 10.1.1.21 /24
 !
 write memory
 
