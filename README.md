@@ -71,6 +71,14 @@
 [Lab. 13 - 常见问题 (FAQ)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab13_FAQ.md)
  - 备份和恢复
  - 软件升级
+ - System log
+ - Audit log
+ - Config Check
+ - Server Status Check
+ - HTTP Check
+ - HTTPs Check
+ - General Check
+ - Hardware Check
  - 收集 show techsupport
  - 收集 backup logs
 
