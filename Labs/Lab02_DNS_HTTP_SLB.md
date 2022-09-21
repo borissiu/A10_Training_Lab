@@ -13,6 +13,8 @@ ip nat pool snat 192.168.2.161 192.168.2.161 netmask /24
 !
 ip nat pool demo 172.16.0.11 172.16.0.15 netmask /24
 !
+no slb virtual-server vip
+!
 slb virtual-server vip 192.168.2.31
   port 53 dns-tcp
     source-nat pool snat200
@@ -23,7 +25,6 @@ slb virtual-server vip 192.168.2.31
 !
 end
 !
-clear slb all
 
 ```
 
