@@ -15,7 +15,7 @@ repeat 2 show slb server | include Service\|web
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 修改 Server: web23
     + Advanced Fields
       + Weight: 3
@@ -31,12 +31,12 @@ repeat 2 show slb server | include Service\|web
   + 并检查 vADC521_01 相应的输出
   + {web23, weight=3} and {web24, weight=2}, 为什么所有连接接到 web24?
 ```
-for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
+for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 
 ```
 
 ## Source IP Persist
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 创建 Persistence Template
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Source IP"
@@ -52,7 +52,7 @@ for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
+for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 
 ```
 
@@ -75,7 +75,7 @@ show session persist
 
 
 ## Cookie Persist
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 创建 Persistence Template
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Cookie"
@@ -101,7 +101,7 @@ show session persist
     + Secure ?
     + HTTPOnly ?
 ```
-curl -I -k https://192.168.226.80
+curl -I -k https://192.168.2.31
 
 ```
 
@@ -109,9 +109,10 @@ curl -I -k https://192.168.226.80
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory
+write memory lab05
+y
 !
-show run slb
+show startup-config all
 
 ```
 
