@@ -67,6 +67,8 @@ for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.2.31; done
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
++ TLS version?
++ Key Exchange Methods?
 ```
 !
 show slb ssl-counters
