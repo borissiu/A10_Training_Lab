@@ -31,7 +31,7 @@ end
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有 dns 响应？
 ```
-for i in {1..100000}; do dig +short @192.168.2.31 www.a10networks.com; done
+for i in {1..8000}; do dig +short @192.168.2.31 www.a10networks.com; done
 
 ```
 
@@ -59,6 +59,9 @@ show session | include Udp
 configure terminal
 !
 slb virtual-server vip 192.168.2.31
+  port 53 dns-tcp
+    source-nat auto
+    service-group sg-dns-tcp53
   port 53 dns-udp
     source-nat auto
     service-group sg-dns-udp53
@@ -116,6 +119,7 @@ slb virtual-server vip 192.168.2.31
 !
 end
 !
+show run slb virtual-server
 
 ```
 
@@ -126,16 +130,16 @@ for i in {1..100000}; do curl http://192.168.2.31/xxx; done
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 点击 Dashboard > ADC
   + Total Throughput 有多少?
   + Global System Throughput 有多少?
   + L4 Conn/sec 有多少?
   + L7 Conn/sec 有多少?
   + SSL Conn/sec 有多少?
+  + Total Current Conns 有多少?
   + Total New Conns/sec 有多少?
-  + 点击右上角 "?"
+  + 点击右上角 "?" (记一下)
     + 查看 Total Throughput 是什么?
     + 查看 Global System Throughput 是什么?
 + 点击 ADC > Statistics > System
@@ -149,13 +153,13 @@ for i in {1..100000}; do curl http://192.168.2.31/xxx; done
   + 为什么 c = b x 2？
 + 点击 ADC > Statistics > L7 > HTTP Proxy
   + 选择
-    + Virtual Server: vs80
+    + Virtual Server: vip
     + HTTP Ports: 80
   + 查看 Request GET (Req GET)?
   + 查看 Response Status Code 404?
   + 查看 Response Time (Req xxx)?
   + 查看 Response Size (Rsp Sz xxx)?
-
+  + 点击右上角 "?"
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
@@ -174,10 +178,11 @@ show slb http-proxy
 
 ```
 
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+#### 粘贴以下命令到 vADC521_01
 ```
 !
-write memory
+write memory lab03
+y
 !
 show run slb
 
