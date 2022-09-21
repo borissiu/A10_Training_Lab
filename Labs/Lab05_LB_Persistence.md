@@ -41,9 +41,9 @@ for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Source IP"
         + Name: source_ip_test
-  + 绑定 Persistence Template 到 vs80:443
+  + 绑定 Persistence Template 到 vip:443
     + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
+      + 修改 vip, port 443
       + Persist Type: Source IP 打上钩
         + Template Persist Source IP: 选择 source_ip_test
   + 保存配置
@@ -85,9 +85,9 @@ show session persist
         + Enable HTTP Only Attribute: 打上钩
         + Enable Secure Attribute: 打上钩
         + Encrypt Level: 0
-  + 绑定 Persistence Template 到 vs80:443
+  + 绑定 Persistence Template 到 vip:443
     + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
+      + 修改 vip, port 443
       + Persist Type: Cookie 打上钩
         + Template Persist Cookie: 选择 cookie_test
   + 保存配置
