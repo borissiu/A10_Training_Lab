@@ -192,7 +192,7 @@ show slb http-proxy
 write memory lab03
 y
 !
-show run slb
+show startup-config all
 
 ```
 
