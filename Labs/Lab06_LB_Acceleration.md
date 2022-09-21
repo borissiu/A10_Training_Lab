@@ -119,7 +119,7 @@ show cache stats vs80 443
 
 ```
 
-#### 了解清楚, 再背三下
+#### 了解清楚, 再记三下
 + (1) 默认缓存, 除非 web 服务器响应拒绝缓存
 + (2) 以下 HTTP Response Status code 将被缓存
   + 200 OK
@@ -167,7 +167,7 @@ curl -sH 'Accept-encoding: gzip' -k https://192.168.226.80 | gunzip
 ```
 
 #### 默认情况下，以下对象将被压缩
-+ 背一下
++ 记一下
   + Text, e.g. html/css/js
   + App, e.g. doc/xls/ppt/pdf
 

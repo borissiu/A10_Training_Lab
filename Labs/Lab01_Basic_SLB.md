@@ -110,12 +110,6 @@ for i in {1..10}; do dig +short +tcp @192.168.2.31 www.utstar.com; done
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
-show run slb
-
-```
-
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
-```
 show run slb server
 !
 show slb server
@@ -140,9 +134,25 @@ show slb virtual-server
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
+show run slb
+
+```
+
+记一下
+```
+show slb server
+show slb service-group
+show slb virtual-server
+
+```
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
 !
 write memory lab01
 y
+!
+show startup-config all
 
 ```
 
