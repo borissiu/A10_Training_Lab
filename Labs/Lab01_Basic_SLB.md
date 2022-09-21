@@ -27,6 +27,9 @@ slb virtual-server vip 192.168.2.31
     service-group sg-dns-udp53
 !
 end
+!
+write memory lab01
+y
 
 ```
 
