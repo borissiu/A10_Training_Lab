@@ -227,4 +227,15 @@ show timezone
 #### 收集 backup logs
 ![收集 backup logs](/Images/BackupLog.png)
 
+
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+!
+write memory lab13
+y
+!
+show startup-config
+
+```
+
 [返回 A10 Training Lab. 主页](https://github.com/borissiu/A10_Training_Lab)
