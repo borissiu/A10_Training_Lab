@@ -23,7 +23,7 @@ repeat 2 show slb server | include Service\|web
     + Advanced Fields
       + Weight: 2
   + 修改 Service Group: sg-http-tcp80
-    + Algorithm: Round Robin
+    + Algorithm: Weighted Round Robin
     + Member: web102
       + priority: 10
 
@@ -37,22 +37,33 @@ for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 
 ## Source IP Persist
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+  + 修改 Server: web101
+    + Advanced Fields
+      + Weight: 1
+  + 修改 Server: web102
+    + Advanced Fields
+      + Weight: 1
+  + 修改 Service Group: sg-http-tcp80
+    + Member: web101
+      + priority: 10
   + 创建 Persistence Template
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Source IP"
         + Name: source_ip_test
   + 绑定 Persistence Template 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + Persist Type: Source IP 打上钩
         + Template Persist Source IP: 选择 source_ip_test
+        + 点击 "Update"
+      + 点击 "Update"  
   + 保存配置
     + 点击 "Save"  
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
 
 ```
 
@@ -73,6 +84,20 @@ show session persist
 
 ```
 
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+
+```
+
+#### 将以下配置粘贴到 vADC521_01
++ 注意到什么变化?
+```
+!
+show session persist
+
+```
 
 ## Cookie Persist
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
