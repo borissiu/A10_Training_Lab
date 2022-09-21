@@ -25,14 +25,14 @@ when HTTP_REQUEST {
 ```
 
 ## aFlex example 1
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 创建 aFlex
     + 点击 Create
       + Name: log_curl_agent
       + Definition: 复制并粘贴以下 aflex
-  + 绑定 reject_curl_agent 到 vs80:443
+  + 绑定 reject_curl_agent 到 vip:443
     + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
+      + 修改 vip, port 443
       + 点击 Advanced Fields
         + aFlex Scripts: log_curl_agent 打上钩
         + 点击 Update
@@ -57,13 +57,13 @@ when HTTP_REQUEST {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 192.168.226.21 -k https://192.168.226.80
+curl --interface 192.168.2.99 -k https://192.168.2.31
 
-curl --interface 192.168.226.22 -k https://192.168.226.80
+curl --interface 192.168.2.100 -k https://192.168.2.31
 
-curl --interface 192.168.226.23 -k https://192.168.226.80
+curl --interface 192.168.2.101 -k https://192.168.2.31
 
-curl --interface 192.168.226.24 -k https://192.168.226.80
+curl --interface 192.168.2.102 -k https://192.168.2.31
 
 ```
 
@@ -81,14 +81,14 @@ show log
 
 
 ## aFlex example 2
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 创建 aFlex
     + 点击 Create
       + Name: reject_ip21_ip23
       + Definition: 复制并粘贴以下 aflex
-  + 绑定 reject_ip21_ip23 到 vs80:443
+  + 绑定 reject_ip21_ip23 到 vip:443
     + 点击 ADC > Virtual Servers
-      + 修改 vs80, port 443
+      + 修改 vip, port 443
       + 点击 Advanced Fields
         + aFlex Scripts: reject_ip21_ip23 打上钩
           + 保持 log_curl_agent 打上钩
@@ -103,7 +103,7 @@ show log
   + Commands used: [IP::addr], [IP::client_addr], log, reject
 ```
 when CLIENT_ACCEPTED {
-  if { ([IP::addr [IP::client_addr] equals 192.168.226.21]) or ([IP::addr [IP::client_addr] equals 192.168.226.23]) } {
+  if { ([IP::addr [IP::client_addr] equals 192.168.2.99]) or ([IP::addr [IP::client_addr] equals 192.168.2.101]) } {
     log "Reject connection from [IP::client_addr]"
     reject
   }
@@ -114,13 +114,13 @@ when CLIENT_ACCEPTED {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 192.168.226.21 -k https://192.168.226.80
+curl --interface 192.168.2.99 -k https://192.168.2.31
 
-curl --interface 192.168.226.22 -k https://192.168.226.80
+curl --interface 192.168.2.100 -k https://192.168.2.31
 
-curl --interface 192.168.226.23 -k https://192.168.226.80
+curl --interface 192.168.2.101 -k https://192.168.2.31
 
-curl --interface 192.168.226.24 -k https://192.168.226.80
+curl --interface 192.168.2.102 -k https://192.168.2.31
 
 ```
 
@@ -142,9 +142,10 @@ show run slb virtual-server
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory
+write memory lab07
+y
 !
-show run slb
+show startup-config all
 
 ```
 
