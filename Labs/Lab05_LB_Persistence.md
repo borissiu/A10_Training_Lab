@@ -111,10 +111,11 @@ show session persist
         + Enable Secure Attribute: 打上钩
         + Encrypt Level: 0
   + 绑定 Persistence Template 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + Persist Type: Cookie 打上钩
         + Template Persist Cookie: 选择 cookie_test
+        + 点击 "Update"
   + 保存配置
     + 点击 "Save"  
 
