@@ -50,15 +50,15 @@ show slb virtual-server
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 由于没有 License，GUI 速度会有点慢
 + 点击 ADC > SLB > Virtual Servers
   + 有多少 Total Connection？
   + 有多少 Current Connection？
 + 点击 ADC > SLB > Service Groups
-  + 默认 负载均衡算法是什么？
+  + 默认 负载均衡算法是什么？ (背一下)
 + 点击 ADC > SLB > Server
-  + 默认 健康检查是什么？
+  + 默认 健康检查是什么？ (背一下, Default = Ping)
  
 #### 使用 GUI 界面
 + 禁用 dns1
