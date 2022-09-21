@@ -9,17 +9,17 @@
 ```
 configure terminal
 !
-slb server dns1 114.114.114.114
-  port 53 udp
 slb server dns5 223.5.5.5
   port 53 udp
 slb server dns6 223.6.6.6
   port 53 udp
+slb server dns8 8.8.8.8
+  port 53 udp
 !
 slb service-group sg-dns-udp53 udp
-  member dns1 53
   member dns5 53
   member dns6 53
+  member dns8 53
 !
 slb virtual-server vip 192.168.2.31
   port 53 udp
@@ -61,7 +61,7 @@ show slb virtual-server
   + 默认 健康检查是什么？ (背一下, Default = Ping)
  
 #### 使用 GUI 界面
-+ 禁用 dns1
++ 禁用 dns8
 + 点击 ADC > SLB > Service Groups
   + 有什么变化吗？
 + 点击 ADC > SLB > Virtual Servers
@@ -71,21 +71,24 @@ show slb virtual-server
 #### 使用 GUI 界面
 + 替 dns5 添加 TCP 53 端口
 + 替 dns6 添加 TCP 53 端口
-+ 创建 Service Group
-  + 名称: sg-dns-tcp53
-  + 负载均衡算: Least Connection
-  + Member:
-    + 添加 dns5, port 53
-    + 添加 dns6, port 53
-+ 替 vip 添加 Virtual Port
-  + Protocol: TCP
-  + Port: 53
-  + Source NAT Auto: Enable
-  + Service Group: sg-dns-tcp53
-+ 点击 Dashboard > Services Map
-  + 替 vip 打上钩 
-+ 保存配置
-  + 点击 "Save"  
+  + 创建 Service Group
+    + 名称: sg-dns-tcp53
+    + 负载均衡算: Least Connection
+    + Member:
+      + 添加 dns5, port 53
+      + 添加 dns6, port 53
+  + 替 Virtual Server "vip" 添加 Virtual Port
+    + Protocol: TCP
+    + Port: 53
+    + Source NAT Auto: Enable
+    + Service Group: sg-dns-tcp53
+    + 点击 "Create"
+    + 点击 "Update"
+  + 点击 Dashboard > Services Map
+    + 替 vip 打上钩 
+  + 保存配置
+    + 看看 "Save" 颜色 (右上角)  
+    + 点击 "Save" 
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
@@ -140,8 +143,6 @@ show slb virtual-server
 !
 write memory lab01
 y
-!
-show run slb
 
 ```
 
