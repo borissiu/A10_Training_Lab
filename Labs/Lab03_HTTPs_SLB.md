@@ -105,19 +105,22 @@ repeat 2 show slb service-group | include 80
 + 创建 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
   + 点击 Create HTTP
-    + Name: http_test
+    + Name: http_template_test
     + URL Switching: 打上钩
     + 添加:
       + Switching Type: starts-with
       + Match String: /ip
       + Matching Group: sg-httpbin-tcp80
       + Action: 点击 "Save"
+    + 点击 "Ok"
 + 绑定 HTTP Template "http_test" 到 vip:443
   + 点击 ADC > Virtual Servers
     + 修改 vip80
     + 修改 port 443
       + 添加 Template HTTP
         + 选择 http_test
+      + 点击 "Update"
+      + 点击 "Update"
 + 保存配置
   + 点击 "Save"  
 
@@ -140,9 +143,10 @@ for i in {1..10}; do curl -k https://192.168.2.31/ip; sleep 1; done
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 修改 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
-  + 添加 Template HTTP "http_test"
+  + 添加 Template HTTP "http_template_test"
     + Client IP Header Insert: 打上钩
     + Header Name: X-Forwarded-For
+  + 点击 "Ok"  
 + 保存配置
   + 点击 "Save"  
 
@@ -150,7 +154,11 @@ for i in {1..10}; do curl -k https://192.168.2.31/ip; sleep 1; done
 ```
 for i in {1..2}; do curl --interface 192.168.2.99 -k https://192.168.2.31/ip; done
 
+```
+
+```
 for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
+
 ```
 
 
