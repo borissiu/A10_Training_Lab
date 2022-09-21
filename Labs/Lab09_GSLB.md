@@ -92,7 +92,7 @@ show log
 !
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + disable web101
 + disable web102
   + 等待30秒

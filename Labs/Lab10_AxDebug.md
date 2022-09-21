@@ -82,7 +82,7 @@ export axdebug axdebug_1 ?
 ```
 
 #### AxDebug via GUI
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 收集 AxDebug Files
     + 点击 Systems > Diagnostics > Show AxDebug Files
     + 尝试使用 WireShark 打开 merge.* 文件

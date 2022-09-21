@@ -82,7 +82,7 @@ exit
   + 点击 "Save"
 
 #### 将以下配置粘贴到 vADC521_01
-+ web23, web24 server 健康?
++ web101, web102 server 健康?
 + service-group sg-http-tcp80 健康? 
 + 背一下
 ```
