@@ -16,8 +16,8 @@
 configure terminal
 !
 slb service-group sg-ssh-tcp22 tcp
-  member web23 22
-  member web24 22
+  member web101 22
+  member web102 22
 !
 slb virtual-server vip 192.168.2.31
   port 22 tcp
@@ -115,7 +115,7 @@ for i in {1..10}; do curl http://192.168.2.31; sleep 1; done
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 修改 Service Group: sg-http-tcp80
     + Algorithm: Weighted Round Robin
-  + 修改 Server: web24
+  + 修改 Server: web102
     + Advanced Fields
       + Weight: 2
       + 
@@ -136,7 +136,7 @@ for i in {1..9}; do curl http://192.168.2.31; sleep 1; done
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 修改 Service Group: sg-http-tcp80
     + Algorithm: Weighted Least Connection
-  + 修改 Server: web24
+  + 修改 Server: web102
     + Advanced Fields
       + Weight: 2
     + 点击 "Update"

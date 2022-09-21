@@ -16,20 +16,20 @@ repeat 2 show slb server | include Service\|web
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
-  + 修改 Server: web23
+  + 修改 Server: web101
     + Advanced Fields
       + Weight: 3
-  + 修改 Server: web24
+  + 修改 Server: web102
     + Advanced Fields
       + Weight: 2
   + 修改 Service Group: sg-http-tcp80
     + Algorithm: Round Robin
-    + Member: web24
+    + Member: web102
       + priority: 10
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
-  + {web23, weight=3} and {web24, weight=2}, 为什么所有连接接到 web24?
+  + {web101, weight=3} and {web102, weight=2}, 为什么所有连接接到 web102?
 ```
 for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 

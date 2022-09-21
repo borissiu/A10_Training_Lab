@@ -103,14 +103,14 @@ show ip nat ?
 ```
 configure terminal
 !!
-slb server web23 192.168.2.101
+slb server web101 192.168.2.101
   port 80 tcp
-slb server web24 192.168.2.102
+slb server web102 192.168.2.102
   port 80 tcp
 !
 slb service-group sg-http-tcp80 tcp
-  member web23 80
-  member web24 80
+  member web101 80
+  member web102 80
 
 slb virtual-server vip 192.168.2.31
   port 80 http
