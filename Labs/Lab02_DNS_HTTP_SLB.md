@@ -165,6 +165,10 @@ for i in {1..100000}; do curl http://192.168.2.31/xxx; done
 ```
 !
 show cpu
+
+```
+
+```
 !
 show cpu history
 
@@ -173,6 +177,10 @@ show cpu history
 ```
 !
 show slb performance
+
+```
+
+```
 !
 show slb http-proxy
 
