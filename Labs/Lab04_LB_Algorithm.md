@@ -118,6 +118,7 @@ for i in {1..10}; do curl http://192.168.2.31; sleep 1; done
   + 修改 Server: web24
     + Advanced Fields
       + Weight: 2
+      + 
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
@@ -138,6 +139,7 @@ for i in {1..9}; do curl http://192.168.2.31; sleep 1; done
   + 修改 Server: web24
     + Advanced Fields
       + Weight: 2
+    + 点击 "Update"
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
@@ -147,16 +149,14 @@ for i in {1..10}; do curl http://192.168.2.31; sleep 1; done
 
 ```
 
-#### 执行以下命令
-  + vADC521_01: clear slb all
-  + vADC521_01: repeat 2 show slb server | include Service\|web
-
-
 ## 如感兴趣，可以自己试试
-  + Algorithm:
-    + Service Weighted Round Robin
-    + Service Weighted Least Connection
++ Algorithm:
+  + Service Weighted Round Robin
+  + Service Weighted Least Connection
 
+#### 记一下
++ 确保清楚理解
++ 多练习
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```

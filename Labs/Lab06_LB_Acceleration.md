@@ -47,7 +47,7 @@ repeat 2 show session | inc 23:\|24:
   + 并检查
     + 客户端 相应的输出
     + vADC521_01 相应的输出
-  + web服务器忙于建立新连接?
+  + web 服务器忙于建立新连接?
 ```
 for i in {1..10000}; do curl -k https://192.168.226.80; done
 ```
