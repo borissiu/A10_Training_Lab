@@ -88,7 +88,7 @@ clear slb cache entries vip 443
 !
 show slb cache entries vip 443
 !
-repeat 2 show cache stats vip 443
+repeat 2 show slb cache stats vip 443
 
 ```
 
@@ -99,10 +99,12 @@ repeat 2 show cache stats vip 443
         + Name: cache_test
         + Min Content Size: 0
   + 绑定 RAM Caching Template 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + Template Cache
         + 选择 cache_test
+        + 点击 "Update"
+      + 点击 "Update"
   + 保存配置
     + 点击 "Save"  
 
@@ -120,7 +122,7 @@ for i in {1..4}; do curl -k https://192.168.2.31/ip; done
 !
 show slb cache entries vip 443
 !
-show cache stats vip 443
+show slb cache stats vip 443
 
 ```
 
