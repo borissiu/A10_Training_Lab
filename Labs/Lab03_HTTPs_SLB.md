@@ -25,11 +25,11 @@ clear slb all
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTPs 响应？
 ```
-for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
+for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.2.31; done
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 创建或导入ssl证书
   + 点击 ADC > SSL Management
   + 点击 Create
@@ -54,6 +54,8 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
     + 修改 vip, port 443
     + 添加 Template Client SSL
       + 选择 www.a10.com
+    + 点击 "Update"
+    + 点击 "Update"
 + 保存配置
   + 点击 "Save"  
     
@@ -68,11 +70,14 @@ for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.2.31; done
 ```
 !
 show slb ssl-counters
-!
-show sessions
 
 ```
 
+```
+!
+show session
+
+```
 
 ## URL Switching
 #### 将以下配置粘贴到 vADC521_01
@@ -87,7 +92,6 @@ slb service-group sg-httpbin-tcp80 tcp
   member httpbin 80
 !
 end
-write memory
 !
 clear slb all
 !
@@ -95,8 +99,7 @@ repeat 2 show slb service-group | include 80
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 创建 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
   + 点击 Create HTTP
@@ -107,9 +110,9 @@ repeat 2 show slb service-group | include 80
       + Match String: /ip
       + Matching Group: sg-httpbin-tcp80
       + Action: 点击 "Save"
-+ 绑定 HTTP Template "http_test" 到 vs80:443
++ 绑定 HTTP Template "http_test" 到 vip:443
   + 点击 ADC > Virtual Servers
-    + 修改 vs80
+    + 修改 vip80
     + 修改 port 443
       + 添加 Template HTTP
         + 选择 http_test
@@ -119,21 +122,20 @@ repeat 2 show slb service-group | include 80
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.226.80; sleep 1; done
+for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 
 ```
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.226.80/ip; sleep 1; done
+for i in {1..10}; do curl -k https://192.168.2.31/ip; sleep 1; done
 
 ```
 
 
 ## HTTP Header 源地址插入
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 修改 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
   + 添加 Template HTTP "http_test"
@@ -144,18 +146,19 @@ for i in {1..10}; do curl -k https://192.168.226.80/ip; sleep 1; done
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-for i in {1..2}; do curl --interface 192.168.226.21 -k https://192.168.226.80/ip; done
+for i in {1..2}; do curl --interface 192.168.2.99 -k https://192.168.2.31/ip; done
 
-for i in {1..2}; do curl --interface 192.168.226.22 -k https://192.168.226.80/ip; done
+for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
 ```
 
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory
+write memory lab03
+y
 !
-show run slb
+show startup-config all
 
 ```
 
