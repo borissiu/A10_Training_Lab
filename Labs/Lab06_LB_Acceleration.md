@@ -87,8 +87,11 @@ for i in {1..10000}; do curl -k https://192.168.2.31; done
 clear slb cache entries vip 443
 !
 show slb cache entries vip 443
-!
-repeat 2 show slb cache stats vip 443
+
+```
+
+```
+show slb cache stats vip 443
 
 ```
 
@@ -121,6 +124,10 @@ for i in {1..4}; do curl -k https://192.168.2.31/ip; done
 ```
 !
 show slb cache entries vip 443
+
+```
+
+```
 !
 show slb cache stats vip 443
 
@@ -156,13 +163,14 @@ repeat 2 show slb compression vip 443
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 修改 Template http_test
     + 点击 ADC > Templates > L7 Protocols
-      + 修改 http_test
+      + 修改 http_template_test
         + 点击: Compression
           + Content Type:
             + 添加 text/html
             + Action 保存
-          + Enable: 0
+          + Enable: 打上钩
           + Level: 5
+          + 点击 "Update"  
   + 保存配置
     + 点击 "Save"  
 
