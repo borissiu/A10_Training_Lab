@@ -47,9 +47,9 @@ show ip nat pool statistics
 !
 show ip nat pool statistics
 !
-show session
+show session | include Udp
 !
-show session
+!
 
 ```
 
