@@ -27,9 +27,12 @@ sudo vi /etc/nginx/nginx.conf
 ```
 sudo systemctl restart nginx
 
+```
+
+```
 sudo apt -y install net-tools
 
-watch 'netstat -n | egrep -i "101:|102:"'
+watch -n 1 'netstat -n | egrep -i "101:|102:"'
 
 ```
 
@@ -58,10 +61,12 @@ for i in {1..10000}; do curl -k https://192.168.2.31; done
       + 点击 Create "Connection Re-use"
         + Name: connection_resue_test
   + 绑定 Connection Reuse Template 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + 点击 Templates
         + Template Connection Reuse: 选择 connection_reuse_test
+        + 点击 "Update" 
+      + 点击 "Update" 
   + 保存配置
     + 点击 "Save"  
 
