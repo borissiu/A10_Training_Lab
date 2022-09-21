@@ -5,8 +5,9 @@
     + Event(s)
     + Operator(s)
     + Commands(s)
-  + aFlex example 1
-  + aFlex example 2
+  + aFlex Example 1 (应用层)
+  + aFlex Example 2 (网络层)
+  + aFlex example 3 (log_tcp)
   + aFlex statistics
 
 ## aFlex Syntex
@@ -42,8 +43,8 @@ when HTTP_REQUEST {
 
 #### aFlex example 1
   + Event used: HTTP_REQUEST
-  + Operator used: contains
-  + Commands used: [IP::client_addr]. [HTTP::header], pool
+    + Operator used: contains
+    + Commands used: [IP::client_addr]. [HTTP::header], pool
 ```
 when HTTP_REQUEST {
   if { [HTTP::header User-Agent] contains "curl" } {
@@ -97,10 +98,10 @@ show log
   + 保存配置
     + 点击 "Save"  
 
-#### aFlex example 1
+#### aFlex example 2
   + Event used: CLIENT_ACCEPTED
-  + Operator used: equals, or
-  + Commands used: [IP::addr], [IP::client_addr], log, reject
+    + Operator used: equals, or
+    + Commands used: [IP::addr], [IP::client_addr], log, reject
 ```
 when CLIENT_ACCEPTED {
   if { ([IP::addr [IP::client_addr] equals 192.168.2.99]) or ([IP::addr [IP::client_addr] equals 192.168.2.101]) } {
@@ -124,6 +125,63 @@ curl --interface 192.168.2.102 -k https://192.168.2.31
 
 ```
 
+## aFlex example 3
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+  + 创建 aFlex
+    + 点击 Create
+      + Name: log_tcp
+      + Definition: 复制并粘贴以下 aflex
+  + 绑定 log_tcp 到 vip:443
+    + 点击 ADC > Virtual Servers
+      + 修改 vip, port 443
+      + 点击 Advanced Fields
+        + aFlex Scripts: log_tcp 打上钩
+          + 保持 log_curl_agent 打上钩
+          + 保持 reject_ip21_ip23 打上钩
+        + 点击 Update
+      + 点击 Update
+  + 保存配置
+    + 点击 "Save"  
+
+#### aFlex example 3
+  + Event used: CLIENT_ACCEPTED
+    + Commands used: [IP::client_addr], [TCP::client_port], [IP::local_addr], [TCP::local_port], [TIME::clock]
+  + Event used: SERVER_CONNECTED
+    + Commands used: [IP::server_addr], [TCP::server_port], [IP::local_addr], [TCP::local_port], log
+```
+when CLIENT_ACCEPTED {
+  set timestamp [TIME::clock seconds]
+  set cip [IP::client_addr]
+  set cport [TCP::client_port]
+  set vip [IP::local_addr]
+  set vport [TCP::local_port]
+}
+
+when SERVER_CONNECTED {
+  set sip [IP::server_addr]
+  set sport [TCP::server_port]
+  set snat_ip [IP::local_addr]
+  set snat_port [TCP::local_port]
+
+  log "\[$timestamp\] $cip:$cport -> $vip:$vport to $snat_ip:$snat_port -> $sip:$sport"
+}
+
+```
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+    + show log
+```
+curl --interface 192.168.2.99 -k https://192.168.2.31
+
+curl --interface 192.168.2.100 -k https://192.168.2.31
+
+curl --interface 192.168.2.101 -k https://192.168.2.31
+
+curl --interface 192.168.2.102 -k https://192.168.2.31
+
+```
+
 #### 将以下配置粘贴到 vADC521_01
   + aFlex 配置的顺序是什么?
 ```
@@ -131,6 +189,8 @@ curl --interface 192.168.2.102 -k https://192.168.2.31
 show aflex log_curl_agent
 !
 show aflex reject_ip21_ip23
+!
+show aflex log_tcp
 !
 show log
 !

@@ -18,6 +18,7 @@
  - 创建或导入ssl证书
  - URL Switching
  - HTTP Header 源地址插入
+ - HTTP Log
 
 [Lab. 4 - 负载均衡算法](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab04_LB_Algorithm.md)
  - Round Robin (Round Robin on SERVER level)
@@ -42,6 +43,7 @@
  - aFlex Syntex
  - aFlex Example 1 (应用层)
  - aFlex Example 2 (网络层)
+ - aFlex Example 3 (TCP Log)
  - aFlex Statistics
 
 [Lab. 8 - 健康检查](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab08_HealthMonitor.md)

@@ -5,6 +5,7 @@
   + 创建或导入ssl证书
   + URL Switching
   + HTTP Header 源地址插入
+  + HTTP Log
 
 ## HTTPs Load Balancing
 #### 将以下配置粘贴到 vADC521_01
@@ -156,6 +157,28 @@ for i in {1..2}; do curl --interface 192.168.2.99 -k https://192.168.2.31/ip; do
 
 ```
 
+```
+for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
+
+```
+
+#### 将以下配置粘贴到 vADC521_01
+```
+configure terminal
+!
+slb template logging http_log
+  local-logging 1
+!
+slb template http http_template_test
+  template logging http_log
+
+```
+
+## HTTP log
+#### 粘贴以下命令到 客户端
++ 并检查 vADC521_01 syslog
+  + show log
+  + 看到 客户端 ip, Time, Url, User-agent, Virtual-Server and Virtual-Server-Port?
 ```
 for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
 
