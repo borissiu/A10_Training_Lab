@@ -17,10 +17,10 @@ no slb virtual-server vip
 !
 slb virtual-server vip 192.168.2.31
   port 53 dns-tcp
-    source-nat pool snat200
+    source-nat pool snat
     service-group sg-dns-tcp53
   port 53 dns-udp
-    source-nat pool snat200
+    source-nat pool snat
     service-group sg-dns-udp53
 !
 end
