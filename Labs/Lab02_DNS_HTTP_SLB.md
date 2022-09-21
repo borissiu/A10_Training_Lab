@@ -186,6 +186,11 @@ show slb http-proxy
 
 ```
 
+#### 记一下
+  + 建议使用 ip nat pool
+  + show slb performance
+  + show slb http-proxy
+
 #### 粘贴以下命令到 vADC521_01
 ```
 !

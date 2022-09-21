@@ -161,6 +161,9 @@ for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; d
 
 ```
 
+#### 记一下
++ Client IP Header insert
+  + X-Forwarded-For
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
