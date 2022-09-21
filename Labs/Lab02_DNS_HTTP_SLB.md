@@ -31,20 +31,61 @@ end
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有 dns 响应？
 ```
-for i in {1..100000}; do dig +short @192.168.226.80 www.a10networks.com; done
+for i in {1..100000}; do dig +short @192.168.2.31 www.a10networks.com; done
 
 ```
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ 正在使用什么 IP NAT Pool 地址?
++ 哪个 ip 发送DNS查询?
++ dns 查询发送到哪个vip?
++ dns 查询发送到哪个服务器？
++ dns 转发使用什么 IP NAT Pool 地址?
++ dns 服务器收到的 dns 查询, 源 IP 是什么?
 ```
 !
 show ip nat pool statistics
+!
+show ip nat pool statistics
+!
+show session
 !
 show session
 
 ```
 
+#### 将以下配置粘贴到 vADC521_01，并检查相应的输出
++ dns 转发使用什么 IP NAT Pool 地址?
+```
+configure terminal
+!
+slb virtual-server vip 192.168.2.31
+  port 53 dns-udp
+    source-nat auto
+    service-group sg-dns-udp53
+!
+end
+!
+show run slb virtual-server
+
+```
+
+#### 将以下配置粘贴到 vADC521_01，并检查相应的输出
++ dns 转发使用什么 IP NAT Pool 地址?
+```
+configure terminal
+!
+slb virtual-server vip 192.168.2.31
+  port 53 dns-udp
+    source-nat auto precedence
+    service-group sg-dns-udp53
+!
+end
+!
+show run slb virtual-server
+
+```
+
+#### 将以下配置粘贴到 vADC521_01，并检查相应的输出
 + 有任何命令可以排查 source-nat auto？
   + 建议使用 ip nat pool
 ```
@@ -59,7 +100,7 @@ show ip nat ?
 ```
 configure terminal
 !
-ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
+ip nat pool snat 192.168.2. 192.168.226.203 netmask /24
 !
 slb server web23 192.168.226.23
   port 80 tcp
