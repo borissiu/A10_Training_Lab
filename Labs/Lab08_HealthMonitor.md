@@ -41,12 +41,12 @@ show run slb server httpbin
   + 哪些端口启用了第4层健康检查?
 ```
 !
-show run slb server web24
+show run slb server web102
 !
 axdebug
 !
 filter 1
-ip 192.168.226.24 /32
+ip 192.168.2.102 /32
 exit
 !
 capture brief
@@ -63,7 +63,7 @@ exit
 
 
 #### 七层健康检查
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + 创建 Health Monitors
   + 点击 ADC > Health Monitors > Create
     + Name: hm-http-nginx
@@ -97,7 +97,7 @@ show health stat
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 #### 修改 hm-http-nginx Health Monitors
 + HTTP Text: nginx
   + 点击 Update
@@ -143,9 +143,10 @@ health monitor hm-llb-gw
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory
+write memory lab08
+y
 !
-show run slb
+show startup-config all
 
 ```
 

@@ -7,14 +7,14 @@
  - 收集 backup logs
 
 #### 备份和恢复
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 备份
     + 点击 Systems > Maintenance > Backup > System
   + 恢复 
     + 点击 Systems > Maintenance > Backup > Restore
 
 #### 软件升级
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 软件升级
     + 点击 Systems > Maintenance > Upgrade
       + Destination: 选择 primary 或 secondary，取决于升级策略

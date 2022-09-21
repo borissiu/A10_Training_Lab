@@ -13,12 +13,12 @@ show axdebug filter
 axdebug
 !
 filter 1
-ip 192.168.2.21 /32
+ip 192.168.2.101 /32
 dst port 80
 exit
 !
 filter 2
-ip 192.168.2.22 /32
+ip 192.168.2.102 /32
 dst port 443
 exit
 !
@@ -41,11 +41,11 @@ capture brief
   + Capture 3000 packets by default?
   + Capture 5 mins by default?
 ```
-curl --interface 192.168.226.21 http://192.168.226.80
-curl --interface 192.168.226.21 -k https://192.168.226.80
+curl --interface 192.168.2.99 http://192.168.2.31
+curl --interface 192.168.2.99 -k https://192.168.2.31
 
-curl --interface 192.168.226.22 http://192.168.226.80
-curl --interface 192.168.226.22 -k https://192.168.226.80
+curl --interface 192.168.2.99 http://192.168.2.31
+curl --interface 192.168.2.99 -k https://192.168.2.31
 
 ```
 
@@ -62,8 +62,8 @@ capture detail save axdebug_1
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-curl --interface 192.168.226.21 http://192.168.226.80
-curl --interface 192.168.226.22 -k https://192.168.226.80
+curl --interface 192.168.2.99 http://192.168.2.31
+curl --interface 192.168.2.99 -k https://192.168.2.31
 
 ```
 
@@ -105,6 +105,14 @@ no filter 2
 
 ```
 
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+```
+!
+write memory lab10
+y
+!
+show startup-config
 
+```
 
 [返回 A10 Training Lab. 主页](https://github.com/borissiu/A10_Training_Lab)

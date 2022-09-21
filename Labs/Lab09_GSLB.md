@@ -30,7 +30,7 @@ gslb service-ip 4.2.3.4 4.2.3.4
   health-check-protocol-disable
   health-check-disable
 !
-gslb service-ip vs80 192.168.226.80
+gslb service-ip vip 192.168.2.31
 !
 exit
 !
@@ -38,7 +38,7 @@ gslb site pri
   ip-server 1.2.3.4
   ip-server 2.2.3.4
   slb-dev vADC521_01 127.0.0.1
-    vip-server vs80
+    vip-server vip
 !
 gslb site sec
   ip-server 3.2.3.4
@@ -56,11 +56,11 @@ gslb zone a10.com
   service 0 ftp
     dns-a-record 2.2.3.4 static
   service 80 www
-    dns-a-record vs80 static
+    dns-a-record vip static
 exit
 exit
 !
-slb virtual vs80
+slb virtual vip
   port 53 dns-udp
     gslb-enable
   port 53 dns-tcp
@@ -71,11 +71,11 @@ end
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-for i in {1..4}; do dig +short @192.168.226.80 vpn.a10.com; sleep 1; done
+for i in {1..4}; do dig +short @192.168.2.31 vpn.a10.com; sleep 1; done
 
-for i in {1..4}; do dig +short @192.168.226.80 ftp.a10.com; sleep 1; done
+for i in {1..4}; do dig +short @192.168.2.31 ftp.a10.com; sleep 1; done
 
-for i in {1..10000}; do dig +short @192.168.226.80 www.a10.com; sleep 1; done
+for i in {1..10000}; do dig +short @192.168.2.31 www.a10.com; sleep 1; done
 
 ```
 
@@ -93,12 +93,12 @@ show log
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ disable web23
-+ disable web24
++ disable web101
++ disable web102
   + 等待30秒
   + 检查 客户端 相应的输出
-+ enable web23
-+ enable web24
++ enable web101
++ enable web102
   + 等待30秒
   + 检查 客户端 相应的输出
 
@@ -106,9 +106,10 @@ show log
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory
+write memory lab09
+y
 !
-show run slb
+show startup-config
 
 ```
 
