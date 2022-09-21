@@ -11,15 +11,12 @@
 ```
 configure terminal
 !
-ip nat pool snat200 192.168.226.200 192.168.226.203 netmask /24
-!
-slb virtual-server vs80 192.168.226.80
+slb virtual-server vip 192.168.2.31
   port 443 https
-    source-nat pool snat200
+    source-nat pool snat
     service-group sg-http-tcp80
 !
 end
-write memory
 !
 clear slb all
 
@@ -33,7 +30,6 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
 ```
 
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.247.11)
-+ 由于没有 License，GUI 速度会有点慢
 + 创建或导入ssl证书
   + 点击 ADC > SSL Management
   + 点击 Create
@@ -45,13 +41,17 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
   + 点击 ADC > Template > SSL
   + 点击 Create Client SSL
     + Name: www.a10.com
-    + Certificate List: cert-www.a10.com
+    + Certificate List
+      + Cert: cert-www.a10.com
+      + Key: cert-www.a10.com
+      + Chain Cert: can be skipped if using self sign cert.
     + Version: TLSv1.3
     + Downgradable Version: TLSv1.2
     + Reject Client Requests for SSLv3: 打上钩
-+ 绑定 Client SSL Template 到 vs80:443
+    + 点击 "Ok"
++ 绑定 Client SSL Template 到 vip:443
   + 点击 ADC > Virtual Servers
-    + 修改 vs80, port 443
+    + 修改 vip, port 443
     + 添加 Template Client SSL
       + 选择 www.a10.com
 + 保存配置
@@ -60,7 +60,7 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.226.80; done
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTPs 响应？
 ```
-for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.226.80; done
+for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.2.31; done
 
 ```
 
