@@ -36,8 +36,8 @@
 
 [Lab. 6 - 应用加速](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab06_LB_Acceleration.md)
  - 连接复用 (Connection Reuse)
- - HTTP 缓存 (RAM Cache)
  - HTTP 压缩 (HTTP Compression)
+ - HTTP 缓存 (RAM Cache)
 
 [Lab. 7 - aFlex (Tcl 脚本)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab07_aFlex.md)
  - aFlex Syntex
