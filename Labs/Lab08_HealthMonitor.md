@@ -74,7 +74,7 @@ exit
     + HTTP Text: NgInX
     + 点击 Create
 + 绑定 hm-http-nginx 到 sg-http-tcp80
-  + 点击 ADC > Service Gorups
+  + 点击 ADC > SLB > Service Gorups
     + 修改 sg-http-tcp80
       + Health Monitor : hm-http-nginx
       + 点击 Update
