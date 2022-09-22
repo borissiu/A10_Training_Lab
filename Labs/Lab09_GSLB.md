@@ -77,7 +77,7 @@ end
 + ftp.a10.com
   + 有多少条记录?
   + gslb service-ip 记录?
-+ 健康检查 "Diabled"?
++ 健康检查 "Disabled"?
 ```
 for i in {1..4}; do dig +short @192.168.2.31 vpn.a10.com; sleep 1; done
 
