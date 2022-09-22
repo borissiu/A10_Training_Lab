@@ -71,6 +71,13 @@ end
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
++ vpn.a10.com
+  + 有多少条记录?
+  + gslb service-ip 记录?
++ ftp.a10.com
+  + 有多少条记录?
+  + gslb service-ip 记录?
++ 健康检查 "Diabled"?
 ```
 for i in {1..4}; do dig +short @192.168.2.31 vpn.a10.com; sleep 1; done
 
@@ -78,6 +85,11 @@ for i in {1..4}; do dig +short @192.168.2.31 ftp.a10.com; sleep 1; done
 
 ```
 
++ ftp.a10.com
+  + 有多少条记录?
+  + gslb service-ip 记录?
+    + IP 健康检查 "Enable"?
+    + Port 健康检查 "Enable"?
 ```
 for i in {1..300}; do dig +short @192.168.2.31 www.a10.com; sleep 1; done
 
@@ -96,16 +108,25 @@ show log
 !
 ```
 
+```
+!
+show gslb slb-device
+
+```
+
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
 + disable web101
 + disable web102
   + 等待30秒
   + 检查 客户端 相应的输出
+  + 有多少条记录?
 + enable web101
 + enable web102
   + 等待30秒
   + 检查 客户端 相应的输出
-
+  + 有多少条记录?
+  + 为什么它与 web101, web102 相关
+    + 是如何连动的
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
