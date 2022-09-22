@@ -5,6 +5,15 @@
   + HTTP Ram Cache
   + HTTP Compression
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab06
+y
+!
+show startup-config all
+
+```
+
 ## Connection Reuse
 #### 粘贴以下命令到 客户端
   + 修改 nginx 配置

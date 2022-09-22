@@ -4,6 +4,18 @@
  + UDP Load Balancing
  + TCP Load Balancing
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab00
+y
+!
+write memory lab01
+y
+!
+show startup-config all
+
+```
+
 ## UDP Load Balancing
 #### 将以下配置粘贴到 vADC521_01
 ```

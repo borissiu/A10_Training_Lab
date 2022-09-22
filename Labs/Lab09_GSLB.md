@@ -3,6 +3,15 @@
 ## Lab. 9 - GSLB
 - GSLB 配置
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab09
+y
+!
+show startup-config all
+
+```
+
 #### 将以下配置粘贴到 vADC521_01
 ```
 !

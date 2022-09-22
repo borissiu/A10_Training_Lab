@@ -6,6 +6,15 @@
  - 收集 show techsupport
  - 收集 backup logs
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab13
+y
+!
+show startup-config all
+
+```
+
 #### 备份和恢复
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 备份

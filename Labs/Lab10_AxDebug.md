@@ -4,6 +4,15 @@
  - Packet Capture Filter
  - Packet Capture Save
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab10
+y
+!
+show startup-config all
+
+```
+
 #### Packet Capture Filter
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```

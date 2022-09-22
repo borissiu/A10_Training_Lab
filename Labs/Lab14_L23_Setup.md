@@ -1,5 +1,14 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab14
+y
+!
+show startup-config all
+
+```
+
 ## Layer 2 & 3 Setup
 ```
 vlan 10
