@@ -4,6 +4,15 @@
  - Packet Capture Filter
  - Packet Capture Save
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab10
+y
+!
+show startup-config all
+
+```
+
 #### Packet Capture Filter
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
@@ -69,12 +78,15 @@ curl --interface 192.168.2.99 -k https://192.168.2.31
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-!
-axdebug
-!
-show axdebug file
+enter <ctrl c> to exit AxDebug
+
+```
+
+```
 !
 exit
+!
+show axdebug file
 !
 export axdebug axdebug_1 ?
 !
@@ -102,6 +114,10 @@ axdebug
 no filter 1
 !
 no filter 2
+!
+exit
+!
+show axdebug filter
 
 ```
 

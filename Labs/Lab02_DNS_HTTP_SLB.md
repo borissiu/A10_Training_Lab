@@ -4,6 +4,15 @@
  + DNS Load Balancing
  + HTTP Load Balancing
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab02
+y
+!
+show startup-config all
+
+```
+
 ## DNS Load Balancing
 #### 将以下配置粘贴到 vADC521_01
 ```

@@ -6,6 +6,14 @@
  - 七层健康检查
  - 脚本健康检查
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab08
+y
+!
+show startup-config all
+
+```
 
 #### 默认设置
 + 背一下

@@ -10,6 +10,15 @@
   + aFlex example 3 (log_tcp)
   + aFlex statistics
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab07
+y
+!
+show startup-config all
+
+```
+
 ## aFlex Syntex
   + Event: HTTP_REQUEST
   + Operator: ends_with

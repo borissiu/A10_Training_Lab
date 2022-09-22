@@ -5,6 +5,15 @@
   + Source IP Persist
   + Cookie Persist
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab05
+y
+!
+show startup-config all
+
+```
+
 ## Priority
 #### 将以下配置粘贴到 vADC521_01
 ```

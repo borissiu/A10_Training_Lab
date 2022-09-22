@@ -7,6 +7,15 @@
   + HTTP Header 源地址插入
   + HTTP Log
 
+#### 粘贴以下命令到 vADC521_01
+```
+write memory lab03
+y
+!
+show startup-config all
+
+```
+
 ## HTTPs Load Balancing
 #### 将以下配置粘贴到 vADC521_01
 ```
