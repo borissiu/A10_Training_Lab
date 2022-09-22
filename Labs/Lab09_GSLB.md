@@ -31,6 +31,7 @@ gslb service-ip 4.2.3.4 4.2.3.4
   health-check-disable
 !
 gslb service-ip vip 192.168.2.31
+  port 80 tcp
 !
 exit
 !
@@ -75,7 +76,10 @@ for i in {1..4}; do dig +short @192.168.2.31 vpn.a10.com; sleep 1; done
 
 for i in {1..4}; do dig +short @192.168.2.31 ftp.a10.com; sleep 1; done
 
-for i in {1..10000}; do dig +short @192.168.2.31 www.a10.com; sleep 1; done
+```
+
+```
+for i in {1..300}; do dig +short @192.168.2.31 www.a10.com; sleep 1; done
 
 ```
 
