@@ -198,8 +198,8 @@ show slb cache stats vip 443
     + 检查 Connection Re-use
     + 检查 RAM Caching
     + 检查 Compression
-  + Disable Compression before moving to next lab.
-  + Disable Cache before moving to next lab.
+  + 记得 Disable Compression before moving to next lab.
+  + 记得 Disable Cache before moving to next lab.
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
