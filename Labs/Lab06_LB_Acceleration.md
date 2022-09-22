@@ -2,8 +2,8 @@
 
 ## Lab. 6 - Load Balancing Acceleration
   + Connection Reuse
-  + HTTP Ram Cache
   + HTTP Compression
+  + HTTP Ram Cache
 
 #### 粘贴以下命令到 vADC521_01
 ```
@@ -88,6 +88,41 @@ for i in {1..10000}; do curl -k https://192.168.2.31; done
 for i in {1..10000}; do curl -k https://192.168.2.31; done
 ```
 
+## HTTP Compression
+#### 将以下配置粘贴到 vADC521_01
+```
+!
+clear slb compression vip 443
+!
+repeat 2 show slb compression vip 443
+
+```
+
+#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+  + 修改 Template http_test
+    + 点击 ADC > Templates > L7 Protocols
+      + 修改 http_template_test
+        + 点击: Compression
+          + Content Type:
+            + 添加 text/html
+            + Action 保存
+          + Enable: 打上钩
+          + Level: 5
+          + 点击 "Update"  
+  + 保存配置
+    + 点击 "Save"  
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+curl -sH 'Accept-encoding: gzip' -k https://192.168.2.31 | gunzip
+
+```
+
+#### 默认情况下，以下对象将被压缩
++ 记一下
+  + Text, e.g. html/css/js
+  + App, e.g. doc/xls/ppt/pdf
 
 ## HTTP RAM Caching
 #### 将以下配置粘贴到 vADC521_01
@@ -158,50 +193,13 @@ show slb cache stats vip 443
   + Does not cache server responses if requests had an "Authorization" header (even if the server specifies "Cache-Control: public”)
   + Does not cache incomplete (partial) responses
 
-
-## HTTP Compression
-#### 将以下配置粘贴到 vADC521_01
-```
-!
-clear slb compression vip 443
-!
-repeat 2 show slb compression vip 443
-
-```
-
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
-  + 修改 Template http_test
-    + 点击 ADC > Templates > L7 Protocols
-      + 修改 http_template_test
-        + 点击: Compression
-          + Content Type:
-            + 添加 text/html
-            + Action 保存
-          + Enable: 打上钩
-          + Level: 5
-          + 点击 "Update"  
-  + 保存配置
-    + 点击 "Save"  
-
-#### 粘贴以下命令到 客户端
-  + 并检查 vADC521_01 相应的输出
-```
-curl -sH 'Accept-encoding: gzip' -k https://192.168.2.31 | gunzip
-
-```
-
-#### 默认情况下，以下对象将被压缩
-+ 记一下
-  + Text, e.g. html/css/js
-  + App, e.g. doc/xls/ppt/pdf
-
-
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 点击 ADC > Statistics > Applications
     + 检查 Connection Re-use
     + 检查 RAM Caching
     + 检查 Compression
-
+  + Disable Compression before moving to next lab.
+  + Disable Cache before moving to next lab.
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
