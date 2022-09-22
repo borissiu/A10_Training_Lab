@@ -30,9 +30,9 @@ when HTTP_REQUEST {
   + 创建 aFlex
     + 点击 Create
       + Name: log_curl_agent
-      + Definition: 复制并粘贴以下 aflex
-  + 绑定 reject_curl_agent 到 vip:443
-    + 点击 ADC > Virtual Servers
+      + Definition: 复制并粘贴以下 aFlex example 1
+  + 绑定 log_curl_agent 到 vip:443
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + 点击 Advanced Fields
         + aFlex Scripts: log_curl_agent 打上钩
@@ -86,9 +86,9 @@ show log
   + 创建 aFlex
     + 点击 Create
       + Name: reject_ip21_ip23
-      + Definition: 复制并粘贴以下 aflex
+      + Definition: 复制并粘贴以下 aFlex example 2
   + 绑定 reject_ip21_ip23 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + 点击 Advanced Fields
         + aFlex Scripts: reject_ip21_ip23 打上钩
@@ -125,14 +125,24 @@ curl --interface 192.168.2.102 -k https://192.168.2.31
 
 ```
 
+#### 将以下配置粘贴到 vADC521_01
+  + 并检查 
+```
+!
+show aflex reject_ip21_ip23
+!
+show log
+
+```
+
 ## aFlex example 3
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 创建 aFlex
     + 点击 Create
       + Name: log_tcp
-      + Definition: 复制并粘贴以下 aflex
+      + Definition: 复制并粘贴以下 aFlex example 3
   + 绑定 log_tcp 到 vip:443
-    + 点击 ADC > Virtual Servers
+    + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + 点击 Advanced Fields
         + aFlex Scripts: log_tcp 打上钩
@@ -163,7 +173,7 @@ when SERVER_CONNECTED {
   set snat_ip [IP::local_addr]
   set snat_port [TCP::local_port]
 
-  log "\[$timestamp\] $cip:$cport -> $vip:$vport to $snat_ip:$snat_port -> $sip:$sport"
+  log "\[$timestamp\] $cip:$cport <-> $vip:$vport AND $snat_ip:$snat_port <-> $sip:$sport"
 }
 
 ```
@@ -186,13 +196,17 @@ curl --interface 192.168.2.102 -k https://192.168.2.31
   + aFlex 配置的顺序是什么?
 ```
 !
-show aflex log_curl_agent
-!
-show aflex reject_ip21_ip23
-!
 show aflex log_tcp
+
+```
+
+```
 !
 show log
+
+```
+
+```
 !
 show run slb virtual-server
 
