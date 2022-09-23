@@ -13,7 +13,7 @@ show startup-config all
 
 ```
 
-#### Shared & L3V Partition
+## Shared & L3V Partition
 + 2人1组
 #### 粘贴以下命令到 vADC521_01
 ```
@@ -116,8 +116,105 @@ active-partition p1
 + 点击 p1
   + 支持相同的功能?
 
+
+## aVCS
++ 2人1组 
+#### 备份
+#### 连接到 vADC521_01 & vADC521_02
+  + 备份
+    + 点击 Systems > Maintenance > Backup > System
+
+#### 粘贴以下命令到 vADC521_01
++ 命令提示符有变化?
++ 检查 show vcs summary
+```
+!
+clear admin session all
+!
+configure terminal
+!
+no ip slb virtual-server vip2
+!
+no ip nat pool snat2
+!
+vcs enable
+!
+vcs floating-ip 192.168.2.32 /24
+!
+vcs device 1
+  interfaces ve 10
+  priority 240
+  enable
+  vcs reload
+!
+yes
+!
+
+```
+
+#### 粘贴以下命令到 vADC521_02
++ 命令提示符有变化?
++ 检查 show vcs summary
+```
+!
+clear admin session all
+!
+configure terminal
+!
+no slb virtual-server vip2
+!
+no ip nat pool snat2
+!
+vcs enable
+!
+vcs floating-ip 192.168.2.32 /24
+!
+vcs device 2
+  interfaces ve 10
+  priority 230
+  enable
+  vcs reload
+!
+yes
+!
+
+```
+
+#### 使用 VCS Floating IP 连接到 GUI 界面 (https://192.168.2.32)
++ 检查 VCS
+  + 鼠标移到右上角 VCS 图标
++ 选择 Device
+  + 鼠标移到右上角 Device 图标
+
+#### 如有需要，使用以下命令删除旧密钥
++ ssh-keygen -R 192.168.2.22
++ ssh-keygen -R 192.168.2.32
+
+#### 使用 VCS Floating IP 连接到 CLI 界面 (SSH:192.168.2.32)
++ 检查 show vcs summary
++ 检查 show run 
++ 创建 partiton p2
+  + 需要配置同步吗?
++ 检查 show vrrp-a all
+  + p2 没有 Standby, 正常吗?
+
+#### 单一 VCS Floating IP 可以控制 2 个设备吗?
++ 尝试禁用 device 1, interface 2
+  + 做到吗?
++ 尝试禁用 device 2, interface 2
+  + 做到吗?
++ 检查 show vrrp-a all
+  + Device 1, Priority 有改变吗?
+  + Device 2, Priority 有改变吗?
+
+
+#### 备份
+  + 备份
+    + 点击 Systems > Maintenance > Backup > System
+
+
 ## 保存配置并休息一下
-#### 粘贴以下命令到 vADC521_01, vADC521_02
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 write memory lab12

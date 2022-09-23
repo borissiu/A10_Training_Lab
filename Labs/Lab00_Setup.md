@@ -204,6 +204,20 @@ sudo apt-get -y install nginx
 
 # 备份 Network setting
 sudo cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
+
+# Add SSH key type
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+echo 'HostkeyAlgorithms ssh-rsa' | sudo tee -a /etc/ssh/sshd_config
+sudo systemctl restart ssh.service
+
+```
+
+## 配置客户端和服务器 
+将以下配置复制并粘贴到 Ubuntu101
+```
+HostkeyAlgorithms ssh-rsa
+
+sudo systemctl restart ssh.service
 ```
 
 #### 配置示例 - 添加额外的ip地址
