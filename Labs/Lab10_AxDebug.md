@@ -14,7 +14,7 @@ show startup-config all
 ```
 
 #### Packet Capture Filter
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 show axdebug filter
@@ -36,6 +36,7 @@ show axdebug filter
 ```
 
 #### Start Packet Capture
+#### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
 capture brief
@@ -69,7 +70,7 @@ capture detail save axdebug_1
 
 ```
 
-#### 粘贴以下命令到 客户端，并检查相应的输出
+#### 粘贴以下命令到 客户端
 ```
 curl --interface 192.168.2.99 http://192.168.2.31
 curl --interface 192.168.2.99 -k https://192.168.2.31

@@ -85,7 +85,7 @@ configure sync all all-partitions auto-authentication 192.168.1.22
 
 ```
 
-#### 粘贴以下命令到 客户端
+#### 粘贴以下命令到 客户端，并检查相应的输出
 + 检查 哪台 vADC 处理用户流量?
 + 检查 会话有否同步?
   + show session
@@ -156,7 +156,7 @@ show vrrp-a all
 
 ```
 
-#### 粘贴以下命令到 客户端
+#### 粘贴以下命令到 客户端，并检查相应的输出
 + 检查 哪台 vADC 处理用户流量?
   + 有什么问题吗?
     + 为什么?

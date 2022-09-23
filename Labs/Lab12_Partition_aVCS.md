@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)]
+## Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
  - Shared & L3V Partition (Layer 3 虚拟分区)
  - aVCS
 
@@ -15,7 +15,7 @@ show startup-config all
 
 #### Shared & L3V Partition
 + 2人1组
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 configure terminal
@@ -49,7 +49,7 @@ end
 
 ```
 
-#### 粘贴以下命令到 vADC521_02，并检查相应的输出
+#### 粘贴以下命令到 vADC521_02
 ```
 !
 configure terminal
