@@ -66,7 +66,7 @@
  - Failover (自动/手动)
  - N+M (Active/Standby/Standby)
 
-[Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab12_Partition_aVCS.md)
+[Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (VCS)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab12_Partition_VCS.md)
  - Shared Partition
  - L3V Partition
  - aVCS

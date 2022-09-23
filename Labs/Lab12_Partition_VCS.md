@@ -2,7 +2,7 @@
 
 ## Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
  - Shared & L3V Partition (Layer 3 虚拟分区)
- - aVCS
+ - VCS (Virtual Chassis System)
 
 #### 粘贴以下命令到 vADC521_01
 ```
