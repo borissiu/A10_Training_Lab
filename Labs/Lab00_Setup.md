@@ -12,7 +12,7 @@
     + 可考虑用多个IP address(es), 把(ii)和(iii)配置在同一台服务器上
 3. 配置 (i)vADC, (ii)客户端和 (iii)服务器 都能够上网
 
-## IP Addresses
+## IP Addresses & Topology
 ![](/Images/Lab.png)
 
 IP Addresses 示例
