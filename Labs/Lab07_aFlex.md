@@ -182,7 +182,7 @@ when SERVER_CONNECTED {
   set snat_ip [IP::local_addr]
   set snat_port [TCP::local_port]
 
-  log "\[$timestamp\] $cip:$cport <-> $vip:$vport AND $snat_ip:$snat_port <-> $sip:$sport"
+  log "\[$timestamp\] $cip:$cport <-> $vip:$vport + $snat_ip:$snat_port <-> $sip:$sport"
 }
 
 ```
