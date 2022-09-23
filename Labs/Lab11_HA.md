@@ -19,7 +19,7 @@ show startup-config all
 #### 高可用性 (H.A.)
 + 2人1组
 
-| | ADC_01 | ADC_02 | ADC_03 | ADC_04 | ADC_05 | ADC_06 | ADC_07 | ADC_08 | ADC_09 | ADC_10 |
+| | ADC01 | ADC02 | ADC03 | ADC04 | ADC05 | ADC06 | ADC07 | ADC08 | ADC09 | ADC10 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | set-id | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 4 | 5 | 5 |
 | device-id | 1 | 2 | 1 | 2 | 1 | 2 | 1 | 2 | 1 | 2 |
