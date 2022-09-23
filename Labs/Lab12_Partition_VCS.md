@@ -114,6 +114,7 @@ show ip route
 
 ```
 
+#### 粘贴以下命令到 vADC521_02，并检查相应的输出
 + 命令提示符有变化?
 + Switch to p1 分区
 + 有独立的 MAC 表, ARP 表, 路由表?
@@ -140,7 +141,9 @@ show ip route
 + 2人1组 
 #### 备份
 #### 连接到 vADC521_01 & vADC521_02
-  + 备份
+  + 先备份 vADC521_01
+    + 点击 Systems > Maintenance > Backup > System
+  + 先备份 vADC521_02
     + 点击 Systems > Maintenance > Backup > System
 
 #### 粘贴以下命令到 vADC521_01
@@ -216,6 +219,7 @@ yes
   + 需要配置同步吗?
 + 检查 show vrrp-a all
   + p2 没有 Standby, 正常吗?
+  + 为什么？
 
 #### 单一 VCS Floating IP 可以控制 2 个设备吗?
 + 尝试禁用 device 1, interface 2
@@ -227,7 +231,7 @@ yes
   + Device 2, Priority 有改变吗?
 
 
-#### 备份
+#### 备份 VCS setting
   + 备份
     + 点击 Systems > Maintenance > Backup > System
 
