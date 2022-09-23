@@ -86,8 +86,8 @@ end
 #### 粘贴以下命令到 vADC521_02，并检查相应的输出
 + Ping Ok?
 + shared partition & p1 partition 支持相同的ip地址?
-  + 不适用于一般情况
-  + 适用于对于多租户 (不同的租户可能使用相同的Private IP)
+  + 不适用于一般企业网络情况
+  + 适用于多租户网络情况 (例如电信提供虚拟 ADC 给租户, 但不同的租户可能使用相同的Private IP)
 ```
 !
 ping 192.168.1.21
@@ -100,13 +100,32 @@ show vrrp-a
 
 #### 粘贴以下命令到 vADC521_02，并检查相应的输出
 + 命令提示符有变化?
-+ Switch back to shared 分区
-+ Switch to p1 分区
++ Switch to shared 分区
++ 有独立的 MAC 表, ARP 表, 路由表?
 ```
 !
 active-partition shared
 !
+show mac
+!
+show arp
+!
+show ip route
+
+```
+
++ 命令提示符有变化?
++ Switch to p1 分区
++ 有独立的 MAC 表, ARP 表, 路由表?
+```
+!
 active-partition p1
+!
+show mac
+!
+show arp
+!
+show ip route
 
 ```
 
@@ -114,7 +133,7 @@ active-partition p1
 + 检查 Partition 状态
   + 鼠标移到右上角 Partition 图标
 + 点击 p1
-  + 支持相同的功能?
+  + 支持相同的 SLB, GSLB 功能吗?
 
 
 ## aVCS
