@@ -18,6 +18,7 @@ show startup-config all
 
 #### 高可用性 (H.A.)
 + 2人1组
+
 | | vADC_01 | vADC_02 | vADC_03 | vADC_04 | vADC_05 | vADC_06 | vADC_07 | vADC_08 | vADC_09 | vADC_10 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | set-id | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 4 | 5 | 5 |
