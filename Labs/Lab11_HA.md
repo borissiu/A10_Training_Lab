@@ -239,6 +239,11 @@ show vrrp-a all
 
 ```
 
+## N+M (Active/Standby/Standby)
+#### VRRP-a supports upto 8 Hardware appliances
+#### VRRP-a supports upto 4 Virtual appliances
+#### 有兴趣, 可以4人1组自己试试
+
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
