@@ -62,8 +62,9 @@
 [Lab. 11 - 高可用性]
  - Active/Standby
  - Active/Active
- - N+M (Active/Standby/Standby)
  - 配置同步
+ - Failover (自动/手动)
+ - N+M (Active/Standby/Standby)
 
 [Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)]
  - Shared Partition

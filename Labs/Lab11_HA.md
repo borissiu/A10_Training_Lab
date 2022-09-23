@@ -4,9 +4,9 @@
 ## Lab. 11 - 高可用性
  - Active/Standby
  - Active/Active
- - N+M (Active/Standby/Standby)
  - 配置同步
  - Failover (自动/手动)
+ - N+M (Active/Standby/Standby)
 
 #### 粘贴以下命令到 vADC521_01
 ```
