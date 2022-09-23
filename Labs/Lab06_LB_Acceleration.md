@@ -15,7 +15,7 @@ show startup-config all
 ```
 
 ## Connection Reuse
-#### 粘贴以下命令到 客户端
+#### 粘贴以下命令到 2台 web 服务器
   + 修改 nginx 配置
     + keepalive timeout from 75 to 2400
     + keepalive requests from 100 to 1000
