@@ -230,11 +230,37 @@ yes
   + Device 1, Priority 有改变吗?
   + Device 2, Priority 有改变吗?
 
-
 #### 备份 VCS setting
   + 备份
     + 点击 Systems > Maintenance > Backup > System
 
+#### VCS Takeover
++ SSH to VCS vBlade
+  + 检查 show vcs summary
+  + 粘贴以下命令到 VCS vblade
+  + 检查 show vcs summary
+```
+!
+vcs vcs-take-over 250
+
+```
+
+#### VCS Reboot
+记一下
+  + Reboot all
+  + Reboot device
+  + Reboot
+```
+vADC521_02-vMaster[1/2](NOLICENSE)#reboot ?
+  all                 Reboot all devices when VCS is enabled, or only this device itself if VCS is not
+                      enabled
+  at                  Reboot at a Specific time/date
+  cancel              Cancel Pending Reboot
+  device              Reboot a specific device when VCS is enabled
+  in                  Reboot after a time interval
+  NAME<length:1-127>  Reason for Reboot
+  <cr>
+```
 
 ## 保存配置并休息一下
 #### 粘贴以下命令到 vADC521_01
