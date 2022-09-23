@@ -67,9 +67,8 @@
  - N+M (Active/Standby/Standby)
 
 [Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (VCS)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab12_Partition_VCS.md)
- - Shared Partition
- - L3V Partition
- - aVCS
+ - Shared & L3V Partition
+ - VCS
 
 [Lab. 13 - 常见问题 (FAQ)](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab13_FAQ.md)
  - 备份和恢复
