@@ -40,99 +40,34 @@ vrrp-a common
 
 ```
 
+#### 连接到 vADC521_02 GUI 界面 (https://192.168.2.22)
++ 检查 VRRP-A 状态
+  + 鼠标移到右上角 VRRP-A 图标
++ 点击 Systems > VRRP-A
+  + VRRP-A Enable: Enable
+  + Device ID: 2
+  + Set ID: 1
+  + 点击 "OK"
++ 检查 VRRP-A 状态
+  + 鼠标移到右上角 VRRP-A 图标
 
-
-
-#### Start Packet Capture
-```
-!
-capture brief
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ 背一下
-  + Entries within a filter == AND ?
-  + Entries between filters == OR ?
-  + Support upto 5 filters?
-  + Capture 3000 packets by default?
-  + Capture 5 mins by default?
-```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
-
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
-
-```
-
-#### Packet Capture Save
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-!
-axdebug
-!
-capture detail save axdebug_1
-!
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-enter <ctrl c> to exit AxDebug
-
-```
-
-```
-!
-exit
-!
-show axdebug file
-!
-export axdebug axdebug_1 ?
-!
-
-```
-
-#### AxDebug via GUI
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
-  + 收集 AxDebug Files
-    + 点击 Systems > Diagnostics > Show AxDebug Files
-    + 尝试使用 WireShark 打开 merge.* 文件
-  + 修改 AxDebug Filter
-    + 点击 Systems > Diagnostics > AxDebug Filter
-  + 修改 AxDebug Capture
-    + 执行 Systems > Diagnostics > AxDebug Capture
-
-#### 去除 AxDebug Filter
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
-```
-!
-show axdebug filter
-!
-axdebug
-!
-no filter 1
-!
-no filter 2
-!
-exit
-!
-show axdebug filter
++ VRRP-A 用所有端口发心跳包?
++ VRRP-A 可以看到 Peer IP?
 
 ```
+!
+show vrrp-a detail
+
+```
+
+
+
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-write memory lab10
+write memory lab11
 y
 !
 show startup-config
