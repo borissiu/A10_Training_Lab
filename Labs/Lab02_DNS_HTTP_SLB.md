@@ -200,6 +200,7 @@ show slb http-proxy
   + show slb performance
   + show slb http-proxy
 
+## 保存配置并休息一下
 #### 粘贴以下命令到 vADC521_01
 ```
 !

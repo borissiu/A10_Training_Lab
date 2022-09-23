@@ -222,7 +222,8 @@ show run slb virtual-server
 ```
 
 
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+## 保存配置并休息一下
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 write memory lab07

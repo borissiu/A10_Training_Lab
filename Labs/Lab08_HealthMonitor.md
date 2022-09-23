@@ -148,7 +148,8 @@ health monitor hm-llb-gw
   method external program ping_src arguments "ve2983 120.238.38.97"
 ```
 
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+## 保存配置并休息一下
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 write memory lab08

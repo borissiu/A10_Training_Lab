@@ -137,7 +137,9 @@ show gslb slb-device
   + 为什么它与 web101, web102 相关
     + 是如何连动的
 
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+
+## 保存配置并休息一下
+#### 粘贴以下命令到 vADC521_01
 ```
 !
 write memory lab09

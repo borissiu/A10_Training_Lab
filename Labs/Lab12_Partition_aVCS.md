@@ -14,6 +14,7 @@ show startup-config all
 ```
 
 #### Shared & L3V Partition
++ 2人1组
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
