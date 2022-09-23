@@ -20,7 +20,13 @@ configure terminal
 !
 ip nat pool snat 192.168.2.161 192.168.2.161 netmask /24
 !
-ip nat pool demo 172.16.0.11 172.16.0.15 netmask /24
+ip nat pool demo1 172.16.1.11 172.16.1.13 netmask /24
+!
+ip nat pool demo2 172.16.2.11 172.16.2.13 netmask /24
+!
+ip nat pool-group demo
+  member demo1
+  member demo2
 !
 no slb virtual-server vip
 !
@@ -94,6 +100,19 @@ slb virtual-server vip 192.168.2.31
 end
 !
 show run slb virtual-server
+
+```
+
+#### 将以下配置粘贴到 vADC521_01，并检查相应的输出
++ 单个 Source NAT IP 不够，可以使用多个 IPs 吗?
++ IPs 不是连续的, 怎么办？
+```
+!
+show ip nat pool statistics
+!
+show ip nat pool-group statistics
+!
+show run ip nat
 
 ```
 
