@@ -1,142 +1,118 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-
-[Lab. 11 - 高可用性]
- - Active/Standby
- - Active/Active
- - N+M (Active/Standby/Standby)
- - 配置同步
-
-[Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)]
- - Shared Partition
- - L3V Partition
+## Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)]
+ - Shared & L3V Partition (Layer 3 虚拟分区)
  - aVCS
-
-## Lab. 10 - 抓包 (AxDebug)
- - Packet Capture Filter
- - Packet Capture Save
 
 #### 粘贴以下命令到 vADC521_01
 ```
-write memory lab10
+write memory lab12
 y
 !
 show startup-config all
 
 ```
 
-#### Packet Capture Filter
+#### Shared & L3V Partition
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
-show axdebug filter
+configure terminal
 !
-axdebug
+partition p1 id 1 application-type adc
 !
-filter 1
-ip 192.168.2.101 /32
-dst port 80
-exit
+active p1
 !
-filter 2
-ip 192.168.2.102 /32
-dst port 443
-exit
+vlan 30
+  untagged ethernet 3
+  router-interface ve 30
 !
-show axdebug filter
+vlan 40
+  untagged ethernet 4
+  router-interface ve 40
+!
+interface ethernet 3
+  enable
+!
+interface ethernet 4
+  enable
+!
+interface ve 30
+  ip address 192.168.2.21 255.255.255.0
+!
+interface ve 40
+  name Heartbeat
+  ip address 192.168.1.21 255.255.255.0
+!
+end
 
 ```
 
-#### Start Packet Capture
+#### 粘贴以下命令到 vADC521_02，并检查相应的输出
 ```
 !
-capture brief
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-+ 背一下
-  + Entries within a filter == AND ?
-  + Entries between filters == OR ?
-  + Support upto 5 filters?
-  + Capture 3000 packets by default?
-  + Capture 5 mins by default?
-```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
-
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
-
-```
-
-#### Packet Capture Save
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
+configure terminal
 !
-axdebug
+partition p1 id 1 application-type adc
 !
-capture detail save axdebug_1
+active p1
 !
-
-```
-
-#### 粘贴以下命令到 客户端，并检查相应的输出
-```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
+vlan 30
+  untagged ethernet 3
+  router-interface ve 30
+!
+vlan 40
+  untagged ethernet 4
+  router-interface ve 40
+!
+interface ethernet 3
+  enable
+!
+interface ethernet 4
+  enable
+!
+interface ve 30
+  ip address 192.168.2.22 255.255.255.0
+!
+interface ve 40
+  name Heartbeat
+  ip address 192.168.1.22 255.255.255.0
+!
+end
 
 ```
 
-#### 粘贴以下命令到 客户端，并检查相应的输出
+#### 粘贴以下命令到 vADC521_02，并检查相应的输出
++ Ping Ok?
++ shared partition & p1 partition 支持相同的ip地址?
+  + 不适用于一般情况
+  + 适用于对于多租户 (不同的租户可能使用相同的Private IP)
 ```
-enter <ctrl c> to exit AxDebug
+!
+ping 192.168.1.21
+!
+ping 192.168.2.21
+!
+show vrrp-a
 
 ```
 
+#### 粘贴以下命令到 vADC521_02，并检查相应的输出
++ 命令提示符有变化?
++ Switch back to shared 分区
++ Switch to p1 分区
 ```
 !
-exit
+active-partition shared
 !
-show axdebug file
-!
-export axdebug axdebug_1 ?
-!
+active-partition p1
 
 ```
 
-#### AxDebug via GUI
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
-  + 收集 AxDebug Files
-    + 点击 Systems > Diagnostics > Show AxDebug Files
-    + 尝试使用 WireShark 打开 merge.* 文件
-  + 修改 AxDebug Filter
-    + 点击 Systems > Diagnostics > AxDebug Filter
-  + 修改 AxDebug Capture
-    + 执行 Systems > Diagnostics > AxDebug Capture
-
-#### 去除 AxDebug Filter
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
+#### 粘贴以下命令到 vADC521_01, vADC521_02
 ```
 !
-show axdebug filter
-!
-axdebug
-!
-no filter 1
-!
-no filter 2
-!
-exit
-!
-show axdebug filter
-
-```
-
-#### 粘贴以下命令到 vADC521_01，并检查相应的输出
-```
-!
-write memory lab10
+write memory lab12
 y
 !
 show startup-config
