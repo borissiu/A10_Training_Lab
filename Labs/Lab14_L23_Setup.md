@@ -11,7 +11,7 @@ show startup-config all
 
 ## Layer 2 & 3 Setup
 + 像 Cisco CLI
-  + 尝试 show interface ethernet 1
+  + 尝试 show interface
   + 尝试 show arp, show mac, show vlan... etc.
   + 尝试 show ip route
 
