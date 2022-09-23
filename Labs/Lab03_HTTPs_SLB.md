@@ -193,6 +193,13 @@ for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; d
 
 ```
 
+#### 将以下配置粘贴到 vADC521_01
+```
+!
+show slb virtual-server bind
+
+```
+
 #### 记一下
 + Client IP Header insert
   + X-Forwarded-For

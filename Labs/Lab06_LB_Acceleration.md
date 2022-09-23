@@ -201,6 +201,15 @@ show slb cache stats vip 443
   + 记得 Disable Compression before moving to next lab.
   + 记得 Disable Cache before moving to next lab.
 
+#### 将以下配置粘贴到 vADC521_01
+```
+!
+show slb virtual-server bind
+!
+show slb virtual-server config
+
+```
+
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
 ```
 !
