@@ -1,8 +1,11 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 ## Lab. 12 - 分区 (Partitions) 和 虚拟机箱 (aVCS)
- - Shared & L3V Partition (Layer 3 虚拟分区)
- - VCS (Virtual Chassis System)
+- Shared & L3V Partition (Layer 3 虚拟分区)
+  + 单台设备作为多台虚拟设备使用
+- VCS (Virtual Chassis System)
+  + 单一 IP 管理多台设备
+  + 配置自动同步
 
 #### 粘贴以下命令到 vADC521_01
 ```

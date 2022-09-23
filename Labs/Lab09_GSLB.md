@@ -1,7 +1,9 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 9 - GSLB
+## Lab. 9 - GSLB (全局负载平衡)
 - GSLB 配置
+  + 多数据中心
+  + 将用户导向最佳的数据中心, e.g. 最近的数据中心, 比较少流量的数据中心
 
 #### 粘贴以下命令到 vADC521_01
 ```
