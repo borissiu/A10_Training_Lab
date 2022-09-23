@@ -44,7 +44,7 @@ for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 
 ```
 
-## Source IP Persist
+## Source IP Persist (Match Type = Port)
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
   + 修改 Server: web101
     + Advanced Fields
@@ -77,7 +77,12 @@ for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
 ```
 
 #### 将以下配置粘贴到 vADC521_01
+记一下
   + Source IP Persist 默认时间是多少?
+  + 看到 VIP:Port 吗？
+  + 看到 WebServer:Port 吗？
+  + 看到 Protocol 吗？
+
 ```
 !
 show session persist
@@ -107,6 +112,43 @@ for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
 show session persist
 
 ```
+
+
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+
+```
+
+## Source IP Persist (Match Type = Server)
+记一下
++ Template Persist Source IP: 选择 source_ip_test
++ Dont Honor Conn Rules: 打上钩
+  + 这个是干什么用的？
+    + 点击右上角 "?"
++ Match Type: 选择 Server
+  + 这个是干什么用的？
+    + 点击右上角 "?"
+#### 粘贴以下命令到 客户端
+  + 并检查 vADC521_01 相应的输出
+```
+for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+
+```
+
+#### 将以下配置粘贴到 vADC521_01
+记一下
+  + Source IP Persist 默认时间是多少?
+  + 看到 VIP:Port 吗？
+  + 看到 WebServer:Port 吗？
+  + 看到 Protocol 吗？
+```
+!
+show session persist
+
+```
+
 
 ## Cookie Persist
 #### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
