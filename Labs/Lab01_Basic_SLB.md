@@ -5,6 +5,8 @@
  + TCP Load Balancing
 
 #### 粘贴以下命令到 vADC521_01
++ SSH : 192.168.2.21
++ username=admin, password=a10
 ```
 write memory lab00
 y
@@ -46,6 +48,7 @@ y
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
++ SSH : 192.168.2.242
 + 有多少 dns 响应？
 ```
 for i in {1..9}; do dig +short @192.168.2.31 www.a10networks.com; done
