@@ -18,7 +18,7 @@ show startup-config all
 ```
 configure terminal
 !
-ip nat pool snat 192.168.2.161 192.168.2.161 netmask /24
+ip nat pool snat 10.240.70.161 10.240.70.161 netmask /24
 !
 ip nat pool demo1 172.16.1.11 172.16.1.13 netmask /24
 !
@@ -30,7 +30,7 @@ ip nat pool-group demo
 !
 no slb virtual-server vip
 !
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 53 dns-tcp
     source-nat pool snat
     service-group sg-dns-tcp53
@@ -46,7 +46,7 @@ end
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有 dns 响应？
 ```
-for i in {1..8000}; do dig +short @192.168.2.31 www.a10networks.com; done
+for i in {1..8000}; do dig +short @10.240.70.31 www.a10networks.com; done
 
 ```
 
@@ -73,7 +73,7 @@ show session | include Udp
 ```
 configure terminal
 !
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 53 dns-tcp
     source-nat auto
     service-group sg-dns-tcp53
@@ -92,7 +92,7 @@ show run slb virtual-server
 ```
 configure terminal
 !
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 53 dns-udp
     source-nat auto precedence
     service-group sg-dns-udp53
@@ -131,16 +131,16 @@ show ip nat ?
 ```
 configure terminal
 !!
-slb server web101 192.168.2.101
+slb server web101 10.240.70.101
   port 80 tcp
-slb server web102 192.168.2.102
+slb server web102 10.240.70.102
   port 80 tcp
 !
 slb service-group sg-http-tcp80 tcp
   member web101 80
   member web102 80
 
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 80 http
     source-nat pool snat
     service-group sg-http-tcp80
@@ -154,11 +154,11 @@ show run slb virtual-server
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTP 响应 404 Not Found？
 ```
-for i in {1..100000}; do curl http://192.168.2.31/xxx; done
+for i in {1..100000}; do curl http://10.240.70.31/xxx; done
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 点击 Dashboard > ADC
   + Total Throughput 有多少?
   + Global System Throughput 有多少?
