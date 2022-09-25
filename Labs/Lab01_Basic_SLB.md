@@ -5,7 +5,7 @@
  + TCP Load Balancing
 
 #### 粘贴以下命令到 vADC521_01
-+ SSH : 192.168.2.21
++ SSH : 10.240.70.21
 + username=admin, password=a10
 ```
 write memory lab00
@@ -35,7 +35,7 @@ slb service-group sg-dns-udp53 udp
   member dns6 53
   member dns8 53
 !
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 53 udp
     source-nat auto
     service-group sg-dns-udp53
@@ -48,10 +48,10 @@ y
 ```
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
-+ SSH : 192.168.2.242
++ SSH : 10.240.70.242
 + 有多少 dns 响应？
 ```
-for i in {1..9}; do dig +short @192.168.2.31 www.a10networks.com; done
+for i in {1..9}; do dig +short @10.240.70.31 www.a10networks.com; done
 
 ```
 
@@ -65,7 +65,7 @@ show slb virtual-server
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 由于没有 License，GUI 速度会有点慢
 + 点击 ADC > SLB > Virtual Servers
   + 有多少 Total Connection？
@@ -108,7 +108,7 @@ show slb virtual-server
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + 有多少 dns 响应？
 ```
-for i in {1..10}; do dig +short +tcp @192.168.2.31 www.utstar.com; done
+for i in {1..10}; do dig +short +tcp @10.240.70.31 www.utstar.com; done
 
 ```
 
