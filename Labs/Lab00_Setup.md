@@ -179,7 +179,7 @@ Customize Hardware
 Power on the NEW Virtual Machine
   + Install Ubuntu
   + 必须修改 NIC-1
-      ip address 10.10.10.99/24 (Not DHCP)
+      ip address 10.10.10.242/24 (Not DHCP)
   + 必须修改 NIC-2
       ip address 10.240.70.101/24 (Not DHCP)
       gateway 10.240.70.1
@@ -234,7 +234,7 @@ network:
       addresses:
       - 10.10.10.99/24
     ens34:
-      addresses: [10.240.70.xx/24, 10.240.70.yy/24, 10.240.70.101/24, 10.240.70.102/24]
+      addresses: [10.240.70.242/24, 10.240.70.243/24, 10.240.70.101/24, 10.240.70.102/24]
       gateway4: 10.240.70.1
       nameservers:
         addresses: [114.114.114.114]
