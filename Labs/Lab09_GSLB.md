@@ -41,7 +41,7 @@ gslb service-ip 4.2.3.4 4.2.3.4
   health-check-protocol-disable
   health-check-disable
 !
-gslb service-ip vip 192.168.2.31
+gslb service-ip vip 10.240.70.31
   port 80 tcp
 !
 exit
@@ -90,9 +90,9 @@ end
   + gslb service-ip 记录?
 + 健康检查 "Disabled"?
 ```
-for i in {1..4}; do dig +short @192.168.2.31 vpn.a10.com; sleep 1; done
+for i in {1..4}; do dig +short @10.240.70.31 vpn.a10.com; sleep 1; done
 
-for i in {1..4}; do dig +short @192.168.2.31 ftp.a10.com; sleep 1; done
+for i in {1..4}; do dig +short @10.240.70.31 ftp.a10.com; sleep 1; done
 
 ```
 
@@ -102,7 +102,7 @@ for i in {1..4}; do dig +short @192.168.2.31 ftp.a10.com; sleep 1; done
     + IP 健康检查 "Enable"?
     + Port 健康检查 "Enable"?
 ```
-for i in {1..300}; do dig +short @192.168.2.31 www.a10.com; sleep 1; done
+for i in {1..300}; do dig +short @10.240.70.31 www.a10.com; sleep 1; done
 
 ```
 
@@ -125,7 +125,7 @@ show gslb slb-device
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + disable web101
 + disable web102
   + 等待30秒

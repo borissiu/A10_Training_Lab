@@ -42,7 +42,7 @@ vrrp-a common
 
 ```
 
-#### 连接到 vADC521_02 GUI 界面 (https://192.168.2.22)
+#### 连接到 vADC521_02 GUI 界面 (https://10.240.70.22)
 + 检查 VRRP-A 状态
   + 鼠标移到右上角 VRRP-A 图标
 + 点击 Systems > VRRP-A
@@ -91,7 +91,7 @@ configure sync all all-partitions auto-authentication 192.168.1.22
   + show session
   + 为什么?
 ```
-for i in {1..300}; do curl --interface 192.168.2.100 -k https://192.168.2.31; sleep 1; done
+for i in {1..300}; do curl --interface 10.240.70.100 -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -128,9 +128,9 @@ vrrp-a vrid 1
       interface ethernet 1 priority-cost 30
       interface ethernet 2 priority-cost 30
 !
-ip nat pool snat2 192.168.2.162 192.168.2.162 netmask /24 vrid 1
+ip nat pool snat2 10.240.70.162 10.240.70.162 netmask /24 vrid 1
 !
-slb virtual-server vip2 192.168.2.32
+slb virtual-server vip2 10.240.70.32
   vrid 1
   port 443 https
     aflex log_curl_agent
@@ -163,7 +163,7 @@ show vrrp-a all
   + 如何解决这个问题?
       + 自己试试?
 ```
-for i in {1..900}; do curl --interface 192.168.2.100 -k https://192.168.2.32; sleep 1; done
+for i in {1..900}; do curl --interface 10.240.70.100 -k https://10.240.70.32; sleep 1; done
 
 ```
 

@@ -61,10 +61,10 @@ repeat 2 show session | inc 101:\|102:
     + vADC521_01 相应的输出
   + web 服务器忙于建立新连接?
 ```
-for i in {1..10000}; do curl -k https://192.168.2.31; done
+for i in {1..10000}; do curl -k https://10.240.70.31; done
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 Template Connection Reuse
     + 点击 ADC > Templates > Application
       + 点击 Create "Connection Re-use"
@@ -85,7 +85,7 @@ for i in {1..10000}; do curl -k https://192.168.2.31; done
     + vADC521_01 相应的输出
   + web 服务器忙于建立新连接?
 ```
-for i in {1..10000}; do curl -k https://192.168.2.31; done
+for i in {1..10000}; do curl -k https://10.240.70.31; done
 ```
 
 ## HTTP Compression
@@ -98,7 +98,7 @@ repeat 2 show slb compression vip 443
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 修改 Template http_test
     + 点击 ADC > Templates > L7 Protocols
       + 修改 http_template_test
@@ -115,7 +115,7 @@ repeat 2 show slb compression vip 443
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-curl -sH 'Accept-encoding: gzip' -k https://192.168.2.31 | gunzip
+curl -sH 'Accept-encoding: gzip' -k https://10.240.70.31 | gunzip
 
 ```
 
@@ -139,7 +139,7 @@ show slb cache stats vip 443
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 Template RAM Caching
     + 点击 ADC > Templates > Application
       + 点击 Create "RAM Caching"
@@ -158,9 +158,9 @@ show slb cache stats vip 443
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..4}; do curl -k https://192.168.2.31; done
+for i in {1..4}; do curl -k https://10.240.70.31; done
 
-for i in {1..4}; do curl -k https://192.168.2.31/ip; done
+for i in {1..4}; do curl -k https://10.240.70.31/ip; done
 
 ```
 
@@ -193,7 +193,7 @@ show slb cache stats vip 443
   + Does not cache server responses if requests had an "Authorization" header (even if the server specifies "Cache-Control: public”)
   + Does not cache incomplete (partial) responses
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 点击 ADC > Statistics > Applications
     + 检查 Connection Re-use
     + 检查 RAM Caching

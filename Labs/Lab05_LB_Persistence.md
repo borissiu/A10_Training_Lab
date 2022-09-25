@@ -24,7 +24,7 @@ repeat 2 show slb server | include Service\|web
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 修改 Server: web101
     + Advanced Fields
       + Weight: 3
@@ -40,12 +40,12 @@ repeat 2 show slb server | include Service\|web
   + 并检查 vADC521_01 相应的输出
   + {web101, weight=3} and {web102, weight=2}, 为什么所有连接接到 web102?
 ```
-for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..10}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
 ## Source IP Persist (Match Type = Port)
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 修改 Server: web101
     + Advanced Fields
       + Weight: 1
@@ -72,7 +72,7 @@ for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -101,7 +101,7 @@ show session persist
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -117,7 +117,7 @@ show session persist
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -133,7 +133,7 @@ for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -151,7 +151,7 @@ show session persist
 
 
 ## Cookie Persist
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 Persistence Template
     + 点击 ADC > Templates > Persistence
       + 点击 Create "Persist Cookie"
@@ -178,7 +178,7 @@ show session persist
     + Secure ?
     + HTTPOnly ?
 ```
-curl -I -k https://192.168.2.31
+curl -I -k https://10.240.70.31
 
 ```
 

@@ -42,7 +42,7 @@ interface ethernet 4
   enable
 !
 interface ve 30
-  ip address 192.168.2.21 255.255.255.0
+  ip address 10.240.70.21 255.255.255.0
 !
 interface ve 40
   name Heartbeat
@@ -76,7 +76,7 @@ interface ethernet 4
   enable
 !
 interface ve 30
-  ip address 192.168.2.22 255.255.255.0
+  ip address 10.240.70.22 255.255.255.0
 !
 interface ve 40
   name Heartbeat
@@ -95,7 +95,7 @@ end
 !
 ping 192.168.1.21
 !
-ping 192.168.2.21
+ping 10.240.70.21
 !
 show vrrp-a
 
@@ -133,7 +133,7 @@ show ip route
 
 ```
 
-#### 连接到 vADC521_02 GUI 界面 (https://192.168.2.22)
+#### 连接到 vADC521_02 GUI 界面 (https://10.240.70.22)
 + 检查 Partition 状态
   + 鼠标移到右上角 Partition 图标
 + 点击 p1
@@ -164,7 +164,7 @@ no ip nat pool snat2
 !
 vcs enable
 !
-vcs floating-ip 192.168.2.32 /24
+vcs floating-ip 10.240.70.32 /24
 !
 vcs device 1
   interfaces ve 10
@@ -192,7 +192,7 @@ no ip nat pool snat2
 !
 vcs enable
 !
-vcs floating-ip 192.168.2.32 /24
+vcs floating-ip 10.240.70.32 /24
 !
 vcs device 2
   interfaces ve 10
@@ -205,17 +205,17 @@ yes
 
 ```
 
-#### 使用 VCS Floating IP 连接到 GUI 界面 (https://192.168.2.32)
+#### 使用 VCS Floating IP 连接到 GUI 界面 (https://10.240.70.32)
 + 检查 VCS
   + 鼠标移到右上角 VCS 图标
 + 选择 Device
   + 鼠标移到右上角 Device 图标
 
 #### 如有需要，使用以下命令删除旧密钥
-+ ssh-keygen -R 192.168.2.22
-+ ssh-keygen -R 192.168.2.32
++ ssh-keygen -R 10.240.70.22
++ ssh-keygen -R 10.240.70.32
 
-#### 使用 VCS Floating IP 连接到 CLI 界面 (SSH:192.168.2.32)
+#### 使用 VCS Floating IP 连接到 CLI 界面 (SSH:10.240.70.32)
 + 检查 show vcs summary
 + 检查 show run 
 + 创建 partiton p2

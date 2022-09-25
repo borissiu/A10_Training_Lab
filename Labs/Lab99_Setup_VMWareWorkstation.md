@@ -145,9 +145,9 @@ vlan 10
   route ve 10
 !
 interface ve 10
-  ip address 192.168.2.151 /24
+  ip address 10.240.70.151 /24
 !
-ip route 0.0.0.0 /0 192.168.2.1
+ip route 0.0.0.0 /0 10.240.70.1
 !
 enable-management service ssh
   ve 10
@@ -230,8 +230,8 @@ Power on the NEW Virtual Machine
   + 必须修改 NIC-1
       ip address 192.168.1.155/24 (Not DHCP)
   + 必须修改 NIC-2
-      ip address 192.168.2.155/24 (Not DHCP)
-      gateway 192.168.2.1
+      ip address 10.240.70.155/24 (Not DHCP)
+      gateway 10.240.70.1
       dns 114.114.114.114
   + 必须添加安装
       Open SSH Server
@@ -268,8 +268,8 @@ network:
       addresses:
       - 192.168.1.155/24
     ens34:
-      addresses: [192.168.2.155/24, 192.168.2.156/24, 192.168.2.157/24, 192.168.2.158/24]
-      gateway4: 192.168.2.1
+      addresses: [10.240.70.155/24, 10.240.70.156/24, 10.240.70.157/24, 10.240.70.158/24]
+      gateway4: 10.240.70.1
       nameservers:
         addresses: [114.114.114.114]
         search: []
@@ -316,8 +316,8 @@ interface management
   ip add 192.168.1.152 /24
 !
 interface ve 10
-  ip address 192.168.2.152 /24
-  no ip address 192.168.2.151 /24
+  ip address 10.240.70.152 /24
+  no ip address 10.240.70.151 /24
 !
 interface ve 20
   ip address 10.10.10.152 /24
@@ -337,8 +337,8 @@ interface management
   ip add 192.168.1.153 /24
 !
 interface ve 10
-  ip address 192.168.2.153 /24
-  no ip address 192.168.2.151 /24
+  ip address 10.240.70.153 /24
+  no ip address 10.240.70.151 /24
 !
 interface ve 20
   ip address 10.10.10.153 /24

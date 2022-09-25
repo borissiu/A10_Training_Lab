@@ -35,7 +35,7 @@ when HTTP_REQUEST {
 ```
 
 ## aFlex example 1
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 aFlex
     + 点击 Create
       + Name: log_curl_agent
@@ -67,13 +67,13 @@ when HTTP_REQUEST {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
-curl --interface 192.168.2.100 -k https://192.168.2.31
+curl --interface 10.240.70.100 -k https://10.240.70.31
 
-curl --interface 192.168.2.101 -k https://192.168.2.31
+curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 192.168.2.102 -k https://192.168.2.31
+curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 
@@ -91,7 +91,7 @@ show log
 
 
 ## aFlex example 2
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 aFlex
     + 点击 Create
       + Name: reject_ip21_ip23
@@ -113,7 +113,7 @@ show log
     + Commands used: [IP::addr], [IP::client_addr], log, reject
 ```
 when CLIENT_ACCEPTED {
-  if { ([IP::addr [IP::client_addr] equals 192.168.2.99]) or ([IP::addr [IP::client_addr] equals 192.168.2.101]) } {
+  if { ([IP::addr [IP::client_addr] equals 10.240.70.99]) or ([IP::addr [IP::client_addr] equals 10.240.70.101]) } {
     log "Reject connection from [IP::client_addr]"
     reject
   }
@@ -124,13 +124,13 @@ when CLIENT_ACCEPTED {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
-curl --interface 192.168.2.100 -k https://192.168.2.31
+curl --interface 10.240.70.100 -k https://10.240.70.31
 
-curl --interface 192.168.2.101 -k https://192.168.2.31
+curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 192.168.2.102 -k https://192.168.2.31
+curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 
@@ -145,7 +145,7 @@ show log
 ```
 
 ## aFlex example 3
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 aFlex
     + 点击 Create
       + Name: log_tcp
@@ -191,13 +191,13 @@ when SERVER_CONNECTED {
   + 并检查 vADC521_01 相应的输出
     + show log
 ```
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
-curl --interface 192.168.2.100 -k https://192.168.2.31
+curl --interface 10.240.70.100 -k https://10.240.70.31
 
-curl --interface 192.168.2.101 -k https://192.168.2.31
+curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 192.168.2.102 -k https://192.168.2.31
+curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 

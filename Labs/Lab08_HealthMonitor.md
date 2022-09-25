@@ -54,7 +54,7 @@ show run slb server web102
 axdebug
 !
 filter 1
-ip 192.168.2.102 /32
+ip 10.240.70.102 /32
 exit
 !
 capture brief
@@ -71,7 +71,7 @@ exit
 
 
 #### 七层健康检查
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 创建 Health Monitors
   + 点击 ADC > Health Monitors > Create
     + Name: hm-http-nginx
@@ -105,7 +105,7 @@ show health stat
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 #### 修改 hm-http-nginx Health Monitors
 + HTTP Text: nginx
   + 点击 Update

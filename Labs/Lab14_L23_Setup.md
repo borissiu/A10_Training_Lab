@@ -41,13 +41,13 @@ interface ethernet 4
 !
 interface ve 10
   name Data
-  ip address 192.168.2.21 255.255.255.0
+  ip address 10.240.70.21 255.255.255.0
 !
 interface ve 20
   name Heartbeat
   ip address 192.168.1.21 255.255.255.0
 !
-ip route 0.0.0.0 /0 192.168.2.1
+ip route 0.0.0.0 /0 10.240.70.1
 
 ```
 
@@ -94,24 +94,24 @@ interface ethernet 2/4
   enable
 !
 interface ve 1/10
-  ip address 192.168.2.21 255.255.255.0
+  ip address 10.240.70.21 255.255.255.0
 !
 interface ve 1/20
   name Heartbeat
   ip address 192.168.1.21 255.255.255.0
 !
 interface ve 2/10
-  ip address 192.168.2.22 255.255.255.0
+  ip address 10.240.70.22 255.255.255.0
 !
 interface ve 2/20
   name Heartbeat
   ip address 192.168.1.22 255.255.255.0
 !
 device-context 1
-  ip route 0.0.0.0 /0 192.168.2.1
+  ip route 0.0.0.0 /0 10.240.70.1
 !
 device-context 2
-  ip route 0.0.0.0 /0 192.168.2.1
+  ip route 0.0.0.0 /0 10.240.70.1
 ```
 
 ## 保存配置并休息一下

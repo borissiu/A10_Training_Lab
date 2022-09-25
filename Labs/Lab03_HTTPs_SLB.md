@@ -21,7 +21,7 @@ show startup-config all
 ```
 configure terminal
 !
-slb virtual-server vip 192.168.2.31
+slb virtual-server vip 10.240.70.31
   port 443 https
     source-nat pool snat
     service-group sg-http-tcp80
@@ -35,11 +35,11 @@ clear slb all
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTPs 响应？
 ```
-for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.2.31; done
+for i in {1..2}; do curl --connect-timeout 1 -k https://10.240.70.31; done
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 创建或导入ssl证书
   + 点击 ADC > SSL Management
   + 点击 Create
@@ -72,7 +72,7 @@ for i in {1..2}; do curl --connect-timeout 1 -k https://192.168.2.31; done
 #### 粘贴以下命令到 客户端，并检查相应的输出
 + HTTPs 响应？
 ```
-for i in {1..100000}; do curl --connect-timeout 1 -k https://192.168.2.31; done
+for i in {1..100000}; do curl --connect-timeout 1 -k https://10.240.70.31; done
 
 ```
 
@@ -111,7 +111,7 @@ repeat 2 show slb service-group | include 80
 
 ```
 
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 创建 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
   + 点击 Create HTTP
@@ -137,20 +137,20 @@ repeat 2 show slb service-group | include 80
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.2.31; sleep 1; done
+for i in {1..10}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..10}; do curl -k https://192.168.2.31/ip; sleep 1; done
+for i in {1..10}; do curl -k https://10.240.70.31/ip; sleep 1; done
 
 ```
 
 
 ## HTTP Header 源地址插入
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + 修改 HTTP Template
   + 点击 ADC > Templates > L7 Protocols > 
   + 添加 Template HTTP "http_template_test"
@@ -162,12 +162,12 @@ for i in {1..10}; do curl -k https://192.168.2.31/ip; sleep 1; done
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-for i in {1..2}; do curl --interface 192.168.2.99 -k https://192.168.2.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.99 -k https://10.240.70.31/ip; done
 
 ```
 
 ```
-for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.100 -k https://10.240.70.31/ip; done
 
 ```
 
@@ -189,7 +189,7 @@ slb template http http_template_test
   + show log
   + 看到 客户端 ip, Time, Url, User-agent, Virtual-Server and Virtual-Server-Port?
 ```
-for i in {1..2}; do curl --interface 192.168.2.100 -k https://192.168.2.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.100 -k https://10.240.70.31/ip; done
 
 ```
 

@@ -22,12 +22,12 @@ show axdebug filter
 axdebug
 !
 filter 1
-ip 192.168.2.101 /32
+ip 10.240.70.101 /32
 dst port 80
 exit
 !
 filter 2
-ip 192.168.2.102 /32
+ip 10.240.70.102 /32
 dst port 443
 exit
 !
@@ -51,11 +51,11 @@ capture brief
   + Capture 3000 packets by default?
   + Capture 5 mins by default?
 ```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 http://10.240.70.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 http://10.240.70.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
 ```
 
@@ -72,8 +72,8 @@ capture detail save axdebug_1
 
 #### 粘贴以下命令到 客户端
 ```
-curl --interface 192.168.2.99 http://192.168.2.31
-curl --interface 192.168.2.99 -k https://192.168.2.31
+curl --interface 10.240.70.99 http://10.240.70.31
+curl --interface 10.240.70.99 -k https://10.240.70.31
 
 ```
 
@@ -95,7 +95,7 @@ export axdebug axdebug_1 ?
 ```
 
 #### AxDebug via GUI
-#### 连接到 vADC521_01 GUI 界面 (https://192.168.2.21)
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 收集 AxDebug Files
     + 点击 Systems > Diagnostics > Show AxDebug Files
     + 尝试使用 WireShark 打开 merge.* 文件
