@@ -24,7 +24,8 @@ show startup-config all
 | Service Group| OFF| OFF| OFF| OFF|
 
 + 默认设置
-  + Method: Ping (icmp)
+  + 三层健康检查: Ping (ICMP)
+  + 四层健康检查: Tcp/Udp Port
   + 背一下
     + Inteval: 5 seconds, Timeout: 5
     + Retry: 3, Up-Retry: 1

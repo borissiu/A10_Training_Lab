@@ -70,18 +70,22 @@ for i in {1..10}; do curl -k https://10.240.70.31; sleep 1; done
     + 点击 "Save"  
 
 #### 粘贴以下命令到 客户端
-  + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
+for i in {1..2}; do curl --interface 10.240.70.242 -k https://10.240.70.31; sleep 1; done
+
+for i in {1..2}; do curl --interface 10.240.70.243 -k https://10.240.70.31; sleep 1; done
 
 ```
 
 #### 将以下配置粘贴到 vADC521_01
+  + 并检查 vADC521_01 相应的输出
 记一下
   + Source IP Persist 默认时间是多少?
   + 看到 VIP:Port 吗？
   + 看到 WebServer:Port 吗？
   + 看到 Protocol 吗？
+  + 看到 .242, .243 客户端吗？
+    + 那那缺省 Netmask 配置 = 255.255.255.255?
 
 ```
 !
@@ -99,25 +103,20 @@ show session persist
 ```
 
 #### 粘贴以下命令到 客户端
-  + 并检查 vADC521_01 相应的输出
 ```
-for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
+for i in {1..2}; do curl --interface 10.240.70.242 -k https://10.240.70.31; sleep 1; done
+
+for i in {1..2}; do curl --interface 10.240.70.243 -k https://10.240.70.31; sleep 1; done
 
 ```
 
 #### 将以下配置粘贴到 vADC521_01
 + 注意到什么变化?
+  + 如果没有:
+    + "clear sesion persist", 然后再试试
 ```
 !
 show session persist
-
-```
-
-
-#### 粘贴以下命令到 客户端
-  + 并检查 vADC521_01 相应的输出
-```
-for i in {1..2}; do curl -k https://10.240.70.31; sleep 1; done
 
 ```
 
