@@ -125,7 +125,7 @@ repeat 2 show slb service-group | include 80
     + 点击 "Ok"
 + 绑定 HTTP Template "http_test" 到 vip:443
   + 点击 ADC > Virtual Servers
-    + 修改 vip80
+    + 修改 vip
     + 修改 port 443
       + 添加 Template HTTP
         + 选择 http_test
