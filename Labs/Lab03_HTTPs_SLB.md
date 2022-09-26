@@ -162,12 +162,12 @@ for i in {1..10}; do curl -k https://10.240.70.31/ip; sleep 1; done
 
 #### 粘贴以下命令到 客户端，并检查相应的输出
 ```
-for i in {1..2}; do curl --interface 10.240.70.99 -k https://10.240.70.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.242 -k https://10.240.70.31/ip; done
 
 ```
 
 ```
-for i in {1..2}; do curl --interface 10.240.70.100 -k https://10.240.70.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.243 -k https://10.240.70.31/ip; done
 
 ```
 
