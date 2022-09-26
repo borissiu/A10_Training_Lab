@@ -23,9 +23,9 @@ show startup-config all
 ```
 configure terminal
 !
-slb server dns5 223.5.5.5
+slb server dns5 172.18.9.35
   port 53 udp
-slb server dns6 223.6.6.6
+slb server dns6 172.18.9.36
   port 53 udp
 slb server dns8 8.8.8.8
   port 53 udp
