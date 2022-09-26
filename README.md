@@ -1,5 +1,9 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
+## 考试资讯
+  + [A10](https://www.a10networks.com/support/training/adc-4-1/)
+  + [考试](https://www.webassessor.com/wa.do?page=publicHome&branding=A10CERTIFIEDPROFESSIONAL)
+    + 语言: English, 时间: 90分钟, 及格分数: 超过70% 
 
 # A10 Training Lab
 [Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab00_Setup.md)
