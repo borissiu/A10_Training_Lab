@@ -189,7 +189,7 @@ slb template http http_template_test
   + show log
   + 看到 客户端 ip, Time, Url, User-agent, Virtual-Server and Virtual-Server-Port?
 ```
-for i in {1..2}; do curl --interface 10.240.70.100 -k https://10.240.70.31/ip; done
+for i in {1..2}; do curl --interface 10.240.70.243 -k https://10.240.70.31/ip; done
 
 ```
 
