@@ -81,17 +81,16 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
 
 ```
 
+## Algorithm: Service Least Connection
+#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
+  + 修改 Service Group: sg-http-tcp80
+    + Algorithm: Service Least Connection
+
 #### 执行以下命令
   + 客户端: "Ctrl+C" 取消 ssh 10.240.70.31 连接
   + vADC521_01: clear slb all
   + vADC521_01: repeat 2 show slb server | include Service/|web
 
-
-## Algorithm: Service Least Connection
-#### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
-  + 修改 Service Group: sg-http-tcp80
-    + Algorithm: Service Least Connection
-    
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
 ```bash
@@ -114,12 +113,6 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
 
 ```
 
-#### 执行以下命令
-  + 客户端: "Ctrl+C" 取消 ssh 10.240.70.31 连接
-  ~~+ vADC521_01: clear slb all~~
-  + vADC521_01: repeat 2 show slb server | include Service\\\|web
-
-
 ## Algorithm: Weighted Round Robin
 #### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 修改 Service Group: sg-http-tcp80
@@ -127,7 +120,11 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
   + 修改 Server: web102
     + Advanced Fields
       + Weight: 2
-      + 
+
+#### 执行以下命令
+  + 客户端: "Ctrl+C" 取消 ssh 10.240.70.31 连接
+  + vADC521_01: clear slb all
+  + vADC521_01: repeat 2 show slb server | include Service\\\|web
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
@@ -135,11 +132,6 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
 for i in {1..9}; do curl http://10.240.70.31; sleep 1; done
 
 ```
-
-#### 执行以下命令
-  ~~+ vADC521_01: clear slb all~~
-  + vADC521_01: repeat 2 show slb server | include Service\\\|web
-
 
 ## Algorithm: Weighted Least Connection
 #### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
@@ -149,6 +141,10 @@ for i in {1..9}; do curl http://10.240.70.31; sleep 1; done
     + Advanced Fields
       + Weight: 2
     + 点击 "Update"
+
+#### 执行以下命令
+  + vADC521_01: clear slb all
+  + vADC521_01: repeat 2 show slb server | include Service\\\|web
 
 #### 粘贴以下命令到 客户端
   + 并检查 vADC521_01 相应的输出
