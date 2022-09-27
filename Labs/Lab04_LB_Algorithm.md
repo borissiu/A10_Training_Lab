@@ -116,7 +116,7 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
 
 #### 执行以下命令
   + 客户端: "Ctrl+C" 取消 ssh 10.240.70.31 连接
-  + vADC521_01: clear slb all
+  ~~+ vADC521_01: clear slb all~~
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
 
@@ -137,7 +137,7 @@ for i in {1..9}; do curl http://10.240.70.31; sleep 1; done
 ```
 
 #### 执行以下命令
-  + vADC521_01: clear slb all
+  ~~+ vADC521_01: clear slb all~~
   + vADC521_01: repeat 2 show slb server | include Service\|web
 
 
