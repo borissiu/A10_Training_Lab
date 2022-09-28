@@ -1,7 +1,7 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
 
-## Lab. 11 - 高可用性
+## Lab. 11 - 高可用性 (H.A.)
  - Active/Standby
  - Active/Active
  - 配置同步

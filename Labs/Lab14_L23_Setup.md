@@ -1,5 +1,11 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
+## Layer 2 & 3 Setup
++ 像 Cisco CLI
+  + 尝试 show interface
+  + 尝试 show arp, show mac, show vlan... etc.
+  + 尝试 show ip route
+
 #### 粘贴以下命令到 vADC521_01
 ```
 write memory lab14
@@ -8,12 +14,6 @@ y
 show startup-config all
 
 ```
-
-## Layer 2 & 3 Setup
-+ 像 Cisco CLI
-  + 尝试 show interface
-  + 尝试 show arp, show mac, show vlan... etc.
-  + 尝试 show ip route
 
 #### Non VCS 配置
 ```
