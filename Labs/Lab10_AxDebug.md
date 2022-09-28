@@ -22,12 +22,12 @@ show axdebug filter
 axdebug
 !
 filter 1
-ip 10.240.70.101 /32
+ip 10.240.70.242 /32
 dst port 80
 exit
 !
 filter 2
-ip 10.240.70.102 /32
+ip 10.240.70.243 /32
 dst port 443
 exit
 !
@@ -51,8 +51,8 @@ capture brief
   + Capture 3000 packets by default?
   + Capture 5 mins by default?
 ```
-curl --interface 10.240.70.242 http://10.240.70.31
-curl --interface 10.240.70.242 -k https://10.240.70.31
+curl --interface 10.240.70.241 http://10.240.70.31
+curl --interface 10.240.70.241 -k https://10.240.70.31
 
 curl --interface 10.240.70.242 http://10.240.70.31
 curl --interface 10.240.70.242 -k https://10.240.70.31
