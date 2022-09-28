@@ -71,9 +71,9 @@ curl --interface 10.240.70.242 -k https://10.240.70.31
 
 curl --interface 10.240.70.243 -k https://10.240.70.31
 
-curl --interface 10.240.70.101 -k https://10.240.70.31
+###curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 10.240.70.102 -k https://10.240.70.31
+###curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 
@@ -128,9 +128,9 @@ curl --interface 10.240.70.242 -k https://10.240.70.31
 
 curl --interface 10.240.70.243 -k https://10.240.70.31
 
-curl --interface 10.240.70.101 -k https://10.240.70.31
+###curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 10.240.70.102 -k https://10.240.70.31
+###curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 
@@ -195,9 +195,9 @@ curl --interface 10.240.70.242 -k https://10.240.70.31
 
 curl --interface 10.240.70.243 -k https://10.240.70.31
 
-curl --interface 10.240.70.101 -k https://10.240.70.31
+###curl --interface 10.240.70.101 -k https://10.240.70.31
 
-curl --interface 10.240.70.102 -k https://10.240.70.31
+###curl --interface 10.240.70.102 -k https://10.240.70.31
 
 ```
 
