@@ -94,13 +94,13 @@ show log
 #### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 创建 aFlex
     + 点击 Create
-      + Name: reject_ip21_ip23
+      + Name: reject_ip242_ip101
       + Definition: 复制并粘贴以下 aFlex example 2
-  + 绑定 reject_ip21_ip23 到 vip:443
+  + 绑定 reject_ip242_ip101 到 vip:443
     + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
       + 点击 Advanced Fields
-        + aFlex Scripts: reject_ip21_ip23 打上钩
+        + aFlex Scripts: reject_ip242_ip101 打上钩
           + 保持 log_curl_agent 打上钩
         + 点击 Update
       + 点击 Update
@@ -138,7 +138,7 @@ curl --interface 10.240.70.243 -k https://10.240.70.31
   + 并检查 
 ```
 !
-show aflex reject_ip21_ip23
+show aflex reject_ip242_ip101
 !
 show log
 
@@ -156,7 +156,7 @@ show log
       + 点击 Advanced Fields
         + aFlex Scripts: log_tcp 打上钩
           + 保持 log_curl_agent 打上钩
-          + 保持 reject_ip21_ip23 打上钩
+          + 保持 reject_ip242_ip101 打上钩
         + 点击 Update
       + 点击 Update
   + 保存配置
