@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 5 - Load Balancing Persistence
+## Lab. 5 - Priority and Persistence
   + Priority
   + Source IP Persist
   + Cookie Persist
