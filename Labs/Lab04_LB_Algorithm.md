@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 4 - Load Balancing Algorithm
+## Lab. 4 - 负载均衡算法 (Load Balancing Algorithm)
 + Round Robin (Round Robin on SERVER level)
 + Lease Connection (Lease Connection on SERVER level)
 + Service Least Connection (Lease Connection SERVICE PORT level)

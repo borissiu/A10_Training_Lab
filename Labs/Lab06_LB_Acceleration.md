@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 6 - Load Balancing Acceleration
+## Lab. 6 - 应用加速 (Acceleration)
   + Connection Reuse
   + HTTP Compression
   + HTTP Ram Cache

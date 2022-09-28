@@ -1,6 +1,6 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 
-## Lab. 5 - Priority and Persistence
+## Lab. 5 - 优先权 和 会话保持 (Priority and Persistence)
   + Priority
   + Source IP Persist
   + Cookie Persist
