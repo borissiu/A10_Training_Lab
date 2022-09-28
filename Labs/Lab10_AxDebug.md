@@ -51,11 +51,11 @@ capture brief
   + Capture 3000 packets by default?
   + Capture 5 mins by default?
 ```
-curl --interface 10.240.70.241 http://10.240.70.31
-curl --interface 10.240.70.241 -k https://10.240.70.31
-
 curl --interface 10.240.70.242 http://10.240.70.31
 curl --interface 10.240.70.242 -k https://10.240.70.31
+
+curl --interface 10.240.70.243 http://10.240.70.31
+curl --interface 10.240.70.243 -k https://10.240.70.31
 
 ```
 
@@ -73,7 +73,7 @@ capture detail save axdebug_1
 #### 粘贴以下命令到 客户端
 ```
 curl --interface 10.240.70.242 http://10.240.70.31
-curl --interface 10.240.70.242 -k https://10.240.70.31
+curl --interface 10.240.70.243 -k https://10.240.70.31
 
 ```
 
