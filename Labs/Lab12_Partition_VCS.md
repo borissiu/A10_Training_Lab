@@ -25,7 +25,7 @@ configure terminal
 !
 partition p1 id 1 application-type adc
 !
-active p1
+active-partition p1
 !
 vlan 30
   untagged ethernet 3
@@ -59,7 +59,7 @@ configure terminal
 !
 partition p1 id 1 application-type adc
 !
-active p1
+active-partition p1
 !
 vlan 30
   untagged ethernet 3
@@ -103,7 +103,7 @@ show vrrp-a
 
 #### 粘贴以下命令到 vADC521_02，并检查相应的输出
 + 命令提示符有变化?
-+ Switch to shared 分区
++ 如何 Switch to shared 分区
 + 有独立的 MAC 表, ARP 表, 路由表?
 ```
 !
@@ -119,7 +119,7 @@ show ip route
 
 #### 粘贴以下命令到 vADC521_02，并检查相应的输出
 + 命令提示符有变化?
-+ Switch to p1 分区
++ 如何 Switch to p1 分区
 + 有独立的 MAC 表, ARP 表, 路由表?
 ```
 !
