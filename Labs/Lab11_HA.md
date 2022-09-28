@@ -91,7 +91,7 @@ configure sync all all-partitions auto-authentication 192.168.1.22
   + show session
   + 为什么?
 ```
-for i in {1..300}; do curl --interface 10.240.70.100 -k https://10.240.70.31; sleep 1; done
+for i in {1..300}; do curl --interface 10.240.70.243 -k https://10.240.70.31; sleep 1; done
 
 ```
 
@@ -163,7 +163,7 @@ show vrrp-a all
   + 如何解决这个问题?
       + 自己试试?
 ```
-for i in {1..900}; do curl --interface 10.240.70.100 -k https://10.240.70.32; sleep 1; done
+for i in {1..900}; do curl --interface 10.240.70.243 -k https://10.240.70.32; sleep 1; done
 
 ```
 

@@ -67,9 +67,9 @@ when HTTP_REQUEST {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 10.240.70.99 -k https://10.240.70.31
+curl --interface 10.240.70.242 -k https://10.240.70.31
 
-curl --interface 10.240.70.100 -k https://10.240.70.31
+curl --interface 10.240.70.243 -k https://10.240.70.31
 
 curl --interface 10.240.70.101 -k https://10.240.70.31
 
@@ -113,7 +113,7 @@ show log
     + Commands used: [IP::addr], [IP::client_addr], log, reject
 ```
 when CLIENT_ACCEPTED {
-  if { ([IP::addr [IP::client_addr] equals 10.240.70.99]) or ([IP::addr [IP::client_addr] equals 10.240.70.101]) } {
+  if { ([IP::addr [IP::client_addr] equals 10.240.70.242]) or ([IP::addr [IP::client_addr] equals 10.240.70.101]) } {
     log "Reject connection from [IP::client_addr]"
     reject
   }
@@ -124,9 +124,9 @@ when CLIENT_ACCEPTED {
 #### 粘贴以下命令到 客户端
   + 并检查 客户端 相应的输出
 ```
-curl --interface 10.240.70.99 -k https://10.240.70.31
+curl --interface 10.240.70.242 -k https://10.240.70.31
 
-curl --interface 10.240.70.100 -k https://10.240.70.31
+curl --interface 10.240.70.243 -k https://10.240.70.31
 
 curl --interface 10.240.70.101 -k https://10.240.70.31
 
@@ -191,9 +191,9 @@ when SERVER_CONNECTED {
   + 并检查 vADC521_01 相应的输出
     + show log
 ```
-curl --interface 10.240.70.99 -k https://10.240.70.31
+curl --interface 10.240.70.242 -k https://10.240.70.31
 
-curl --interface 10.240.70.100 -k https://10.240.70.31
+curl --interface 10.240.70.243 -k https://10.240.70.31
 
 curl --interface 10.240.70.101 -k https://10.240.70.31
 
