@@ -187,9 +187,9 @@ slb template http http_template_test
 #### 粘贴以下命令到 客户端
 + 并检查 vADC521_01 syslog
   + show log
-  + 看到 客户端 ip, Time, Url, User-agent, Virtual-Server and Virtual-Server-Port?
+  + 看到 客户端 ip, Time, Url+Protocol, Response-Size, Referer, User-agent, Virtual-Server and Virtual-Server-Port?
 ```
-for i in {1..2}; do curl --interface 10.240.70.243 -k https://10.240.70.31/ip; done
+for i in {1..2}; do curl --referer "http://www.demo.com" --interface 10.240.70.243 -k https://10.240.70.31/ip; done
 
 ```
 
