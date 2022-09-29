@@ -265,6 +265,18 @@ vADC521_02-vMaster[1/2](NOLICENSE)#reboot ?
   <cr>
 ```
 
+#### VCS Reload
+记一下
+  + Reload all
+  + Reload device
+  + Reboot vs Reload 之间的差异?
+```
+vADC521_01-vMaster[1/1](NOLICENSE)#reload ?
+  all     Reload all devices when VCS is enabled, or only this device itself if VCS is not enabled
+  device  Reload a specific device when VCS is enabled
+  <cr>
+```
+
 ## 保存配置并休息一下
 #### 粘贴以下命令到 vADC521_01
 ```
