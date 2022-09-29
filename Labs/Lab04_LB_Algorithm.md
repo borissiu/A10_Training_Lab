@@ -2,7 +2,7 @@
 
 ## Lab. 4 - 负载均衡算法 (Load Balancing Algorithm)
 + Round Robin (Round Robin on SERVER level)
-+ Lease Connection (Lease Connection on SERVER level)
++ Lease Connection (Lease CURRENT Connection on SERVER level)
 + Service Least Connection (Lease Connection SERVICE PORT level)
 + Weighted Round Robin
 + Weighted Lease Connection
@@ -54,7 +54,7 @@ for i in {1..10}; do curl http://10.240.70.31; sleep 1; done
 ```
 
 
-## Algorithm: Least Connection
+## Algorithm: Least Connection (Lease CURRENT Connection on SERVER level)
 #### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
   + 修改 Service Group: sg-http-tcp80
     + Algorithm: Least Connection
