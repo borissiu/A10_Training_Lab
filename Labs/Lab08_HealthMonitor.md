@@ -122,6 +122,7 @@ show health stat
   + Python Script
 
 Shell Script Sample
++ Sample for ref..  No testing required.
 + ping_src.sh
 ```bash
 #!/bin/sh
@@ -143,6 +144,7 @@ else
 fi
 ```
 
++ Sample for ref..  No testing required.
 + Passing 2 arguments to Shell Script
 ```
 health monitor hm-llb-gw

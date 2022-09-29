@@ -114,9 +114,7 @@ show run gslb
 show gslb service-ip
 !
 show gslb service-port
-!
-show log
-!
+
 ```
 
 ```
@@ -124,6 +122,13 @@ show log
 show gslb slb-device
 
 ```
+
+```
+!
+show log
+!
+```
+
 
 #### 连接到 vADC521_01 GUI 界面 (https://10.240.70.21)
 + disable web101
