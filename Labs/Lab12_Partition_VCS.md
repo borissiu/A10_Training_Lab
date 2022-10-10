@@ -244,7 +244,7 @@ yes
   + 检查 show vcs summary
 ```
 !
-vcs-take-over 250
+vcs vmaster-take-over 250
 
 ```
 
