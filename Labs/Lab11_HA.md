@@ -54,7 +54,7 @@ vrrp-a common
   + 鼠标移到右上角 VRRP-A 图标
 
 #### 粘贴以下命令到 vADC521_01，并检查相应的输出
-+ VRRP-A 用所有端口发心跳包?
++ VRRP-A 用所有数据端口发心跳包 (数据端口不包括管理端口)?
 + VRRP-A 可以看到 Peer IP?
 + Layer 2, Layer 3 配置有应否同步?
 + 检查 SLB, GSLB 配置有否同步?
