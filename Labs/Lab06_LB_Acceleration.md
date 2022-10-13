@@ -68,7 +68,7 @@ for i in {1..10000}; do curl -k https://10.240.70.31; done
   + 创建 Template Connection Reuse
     + 点击 ADC > Templates > Application
       + 点击 Create "Connection Re-use"
-        + Name: connection_resue_test
+        + Name: connection_reuse_test
   + 绑定 Connection Reuse Template 到 vip:443
     + 点击 ADC > SLB > Virtual Servers
       + 修改 vip, port 443
