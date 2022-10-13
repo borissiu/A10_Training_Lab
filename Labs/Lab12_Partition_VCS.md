@@ -158,7 +158,7 @@ clear admin session all
 !
 configure terminal
 !
-no ip slb virtual-server vip2
+no slb virtual-server vip2
 !
 no ip nat pool snat2
 !
