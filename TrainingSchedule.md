@@ -26,5 +26,7 @@
 + Training Lab Setup : https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab00_Setup.md
 + Lab. Exercise : https://github.com/borissiu/A10_Training_Lab
 + Exam. Execrise : https://www.socrative.com/#login
+  + Click "Login"
+  + Click "Student Login"
   + Room Name : A10NETWORKS
  
