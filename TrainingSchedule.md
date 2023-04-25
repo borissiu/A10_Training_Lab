@@ -1,7 +1,7 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
 
-+ 你们好 , A10 认证和解决方案培训安排如下 (3节，每节2小时).
+### 你们好 , A10 认证和解决方案培训安排如下 (3节，每节2小时).
 + 对于熟悉ADC/LB的工程师们, 他们可以跳过每周的第一节课, 从10:30参加便可以了
 + 培训链接 : https://a10networks.zoom.us/j/2292494773
  
@@ -25,4 +25,6 @@
 + Training Material and Manuals : https://a10networks.sharefile.com/d-s0664f6198e0a41abad3f6817af6a58e1
 + Training Lab Setup : https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab00_Setup.md
 + Lab. Exercise : https://github.com/borissiu/A10_Training_Lab
++ Exam. Execrise : https://www.socrative.com/#login
+  + Room Name : A10NETWORKS
  
