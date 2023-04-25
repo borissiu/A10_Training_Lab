@@ -4,7 +4,7 @@
   + [考试内容](https://www.a10networks.com/support/training/adc-4-1/)
     + A10 Certified Professional Application Delivery 4
   + [考试中心](https://www.webassessor.com/wa.do?page=publicHome&branding=A10CERTIFIEDPROFESSIONAL)
-    + 语言: English, 时间: 90分钟, 及格: 超过70%, 监考: 在线监考
+    + 语言: English, 时间: 60分钟, 30题, 及格: 超过??%, 监考: 在线监考
 
 # A10 Training Lab
 [Lab. 0 - Lab Setup](https://github.com/borissiu/A10_Training_Lab/blob/main/Labs/Lab00_Setup.md)
