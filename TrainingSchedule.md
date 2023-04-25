@@ -34,4 +34,9 @@
   + Click "Login"
   + Click "Student Login"
   + Room Name : A10NETWORKS
- 
+
+### vThunder License
+```
+glm allocate-bandwidth 100
+glm token XXXa5346a6ed
+```
