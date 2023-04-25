@@ -19,7 +19,12 @@
 + 09:30 to 10:30 - A10 Certification Exam (分区 (Partition) 和 虚拟机箱 (VCS), 常见问题, 网络层配置)
 + 10:30 to 11:00 - Lab. 12 to 14 演示, 考证心得
 + 11:00 to 11:30 - 案例分享#3, 新功能演示 (Harmony Controller, NG-WAF), 故障排除 (延迟分析, HTTP 流量分析, DNS 流量分析)
- 
+
+### 考试资讯
+  + [考试内容](https://www.a10networks.com/support/training/adc-4-1/)
+    + A10 Certified Professional Application Delivery 4
+  + [考试中心](https://www.webassessor.com/wa.do?page=publicHome&branding=A10CERTIFIEDPROFESSIONAL)
+    + 语言: English, 时间: 60分钟, 30题, 及格: 超过??%, 监考: 在线监考
  
 ### PS : 培训材料和Lab. Setup Guide 显示如下, 工程师们可预先看一下.
 + Training Material and Manuals : https://a10networks.sharefile.com/d-s0664f6198e0a41abad3f6817af6a58e1
