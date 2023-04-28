@@ -36,7 +36,11 @@
   + Room Name : A10NETWORKS
 
 ### vThunder License
++ make sure vThunder can visit Internet
++ make sure vThunder configured with DNS
++ make sure vThunder configured with NTP
 ```
 glm allocate-bandwidth 100
 glm token XXXa5346a6ed
+glm send license-request
 ```
