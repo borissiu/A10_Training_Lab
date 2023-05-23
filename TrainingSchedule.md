@@ -1,24 +1,24 @@
 ![](/Images/A10-NewLogos-Blue-NoReg-RGB-50.png)
 ---
 
-### 你们好 , A10 认证和解决方案培训安排如下 (3节，每节2小时).
+### 你们好 , A10 认证和解决方案培训安排如下 (3节，每节3小时).
 + 对于熟悉ADC/LB的工程师们, 他们可以跳过每周的第一节课, 从10:30参加便可以了
 + 培训链接 : https://a10networks.zoom.us/j/2292494773
  
 ### 课程#1 (星期二, 25Apr2023)
 + 09:30 to 10:30 - A10 Certification Exam (SLB topology, DNS & HTTP SLB, HTTPs SLB, 负载均衡算法, 优先权 和 会话保持)
 + 10:30 to 11:00 - Lab. 1 to 5 演示, 考证心得
-+ 11:00 to 11:30 - 案例分享#1, 新功能演示 (DNS-HiJack for LLB), 故障排除 (Show techsupport 分析, Backup log 分析)
++ 11:00 to 12:30 - 案例分享#1, 新功能演示 (DNS-HiJack for LLB), 故障排除 (Show techsupport 分析, Backup log 分析)
  
 ### 课程#2 (星期五, 05May2023)
 + 09:30 to 10:30 - A10 Certification Exam (应用加速, aFlex 脚本, 健康检查, GSLB, 抓包, 高可用性)
 + 10:30 to 11:00 - Lab. 6 to 11 演示, 考证心得
-+ 11:00 to 11:30 - 案例分享#2, 新功能演示 (App. Access Mgmt), 故障排除 (aFlex, NAT, Packet capture)
++ 11:00 to 12:30 - 案例分享#2, 新功能演示 (App. Access Mgmt), 故障排除 (aFlex, NAT, Packet capture)
  
 ### 课程#3 (星期二, 09May2023)
 + 09:30 to 10:30 - A10 Certification Exam (分区 (Partition) 和 虚拟机箱 (VCS), 常见问题, 网络层配置)
 + 10:30 to 11:00 - Lab. 12 to 14 演示, 考证心得
-+ 11:00 to 11:30 - 案例分享#3, 新功能演示 (Harmony Controller, NG-WAF), 故障排除 (延迟分析, HTTP 流量分析, DNS 流量分析)
++ 11:00 to 12:30 - 案例分享#3, 新功能演示 (Harmony Controller, NG-WAF), 故障排除 (延迟分析, HTTP 流量分析, DNS 流量分析)
 
 ### 考试资讯
   + [考试内容](https://www.a10networks.com/support/training/adc-4-1/)
